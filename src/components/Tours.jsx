@@ -1,7 +1,3 @@
 export default function Tours() {
-  return (
-    <section>
-      Tours
-    </section>
-  );
+  return null;
 }

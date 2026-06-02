@@ -1,7 +1,3 @@
 export default function Guide() {
-  return (
-    <section>
-      Guide
-    </section>
-  );
+  return null;
 }
