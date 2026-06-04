@@ -27,11 +27,7 @@ function App() {
   altText="奄美の森"
 />
       <Faq />
-      <ParallaxSection
-  imageUrl="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
-  altText="奄美の海"
-  overlay={true}
-/>
+      
       <Contact />
       <Footer />
     </>
