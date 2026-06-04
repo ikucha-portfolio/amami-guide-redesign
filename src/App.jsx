@@ -21,10 +21,6 @@ function App() {
   altText="滝"
 />
       <Tours />
-       <ParallaxSection
-  imageUrl="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80"
-  altText="奄美の森"
-/>
       <Guide />
       <ParallaxSection
   imageUrl="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
