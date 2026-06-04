@@ -24,15 +24,31 @@ export default function GuideSection() {
       <div className="relative z-10 max-w-[950px] mx-auto">
 
         {/* Section Heading */}
-        <div className="text-center mb-8">
-          <p className="text-xs tracking-[0.25em] text-white/60 uppercase mb-2">
-            GUIDE
-          </p>
+<div className="text-center mb-8">
+  <p
+    className="
+      text-[11px]
+      tracking-[0.25em]
+      uppercase
+      text-white/70
+      mb-3
+    "
+  >
+    GUIDE
+  </p>
 
-          <h2 className="font-serif text-2xl md:text-3xl text-white">
-            ガイド紹介
-          </h2>
-        </div>
+  <h2
+    className="
+      text-3xl
+      md:text-4xl
+      font-bold
+      text-white
+      tracking-tight
+    "
+  >
+    ガイド紹介
+  </h2>
+</div>
 
         {/* Card */}
         <div
