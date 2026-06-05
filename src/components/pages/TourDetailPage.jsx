@@ -31,14 +31,14 @@ export default function TourDetailPage() {
 
       
 {/* Tour Overview */}
-<section className="py-12 px-6">
-  <div className="max-w-2xl mx-auto">
+<section className="py-12">
+  <div className="max-w-2xl mx-auto px-6">
 
-    <p className="text-xs tracking-[0.2em] uppercase text-primary mb-2">
+    <p className="text-xs tracking-[0.25em] uppercase text-primary mb-4">
       ABOUT THIS TOUR
     </p>
 
-    <div className="space-y-4 text-foreground/80 leading-7">
+    <div className="space-y-4 text-foreground/80 leading-8">
       <p>
         奄美大島のマングローブ林をカヌーで巡る人気のツアーです。
         穏やかな水面をゆっくり進みながら、
@@ -55,20 +55,21 @@ export default function TourDetailPage() {
         奄美らしい自然を気軽に体験したい方におすすめです。
       </p>
     </div>
+
   </div>
 </section>
 
 {/* TOUR DETAILS */}
-<section className="pb-20">
+<section className="pb-16">
   <div className="max-w-2xl mx-auto px-6">
 
     <p className="text-xs tracking-[0.25em] uppercase text-primary mb-4">
       TOUR DETAILS
     </p>
 
-    <div className="overflow-hidden border border-stone-200 bg-white">
+    <div className="border border-stone-200 bg-white">
 
-      <div className="grid grid-cols-[160px_1fr] border-b border-stone-200">
+      <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           所要時間
         </div>
@@ -77,7 +78,7 @@ export default function TourDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-[160px_1fr] border-b border-stone-200">
+      <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           料金
         </div>
@@ -86,7 +87,7 @@ export default function TourDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-[160px_1fr] border-b border-stone-200">
+      <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           集合場所
         </div>
@@ -95,7 +96,7 @@ export default function TourDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-[160px_1fr] border-b border-stone-200">
+      <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           対象
         </div>
@@ -104,7 +105,7 @@ export default function TourDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-[160px_1fr] border-b border-stone-200">
+      <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           服装
         </div>
@@ -113,7 +114,7 @@ export default function TourDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-[160px_1fr] border-b border-stone-200">
+      <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           持ち物
         </div>
@@ -122,7 +123,7 @@ export default function TourDetailPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-[160px_1fr]">
+      <div className="grid grid-cols-[140px_1fr]">
         <div className="bg-stone-50 px-4 py-3 font-medium">
           雨天時
         </div>
@@ -131,6 +132,13 @@ export default function TourDetailPage() {
         </div>
       </div>
 
+    </div>
+
+{/* おすすめの方 */}
+    <div className="mt-6 space-y-2 text-foreground/80">
+      <p>✓ 初めて奄美を訪れる方</p>
+      <p>✓ 自然をゆっくり楽しみたい方</p>
+      <p>✓ ご夫婦・ご家族で参加したい方</p>
     </div>
 
   </div>
