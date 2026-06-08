@@ -1,4 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Contact from "../Contact";
+import Footer from "../Footer";
 export default function TourDetailPage() {
   const tours = [
   {
@@ -73,11 +75,12 @@ export default function TourDetailPage() {
 <section className="py-12">
   <div className="max-w-2xl mx-auto px-6">
 
-<div className="flex items-center gap-4 mb-6"></div>
+<div className="flex items-center gap-4 mb-6">
     <p className="text-xs tracking-[0.25em] uppercase text-primary mb-4">
       ABOUT THIS TOUR
     </p>
  <div className="h-px flex-1 bg-primary/20" />
+ </div>
  
     <div className="space-y-4 text-foreground/80 leading-8">
       <p>
@@ -103,11 +106,13 @@ export default function TourDetailPage() {
 {/* TOUR DETAILS */}
 <section className="pb-16">
   <div className="max-w-2xl mx-auto px-6">
-
+<div className="flex items-center gap-4 mb-6">
     <p className="text-xs tracking-[0.25em] uppercase text-primary mb-4">
       TOUR DETAILS
     </p>
+  <div className="h-px flex-1 bg-primary/20" />
 
+</div>
     <div className="border border-stone-200 bg-white">
 
       <div className="grid grid-cols-[140px_1fr] border-b border-stone-200">
@@ -188,10 +193,12 @@ export default function TourDetailPage() {
 {/* FLOW */}
 <section className="pb-20">
   <div className="max-w-2xl mx-auto px-6">
-
+<div className="flex items-center gap-4 mb-6">
     <p className="text-xs tracking-[0.25em] uppercase text-primary mb-6">
       FLOW
     </p>
+  <div className="h-px flex-1 bg-primary/20" />
+    </div>
 
     <div className="space-y-6">
 
@@ -251,11 +258,12 @@ export default function TourDetailPage() {
 {/* OTHER TOURS */}
 <section className="pb-20">
   <div className="max-w-6xl mx-auto px-6">
-
+<div className="flex items-center gap-4 mb-6">
     <p className="text-xs tracking-[0.25em] uppercase text-primary mb-6">
       EXPLORE OTHER TOURS
     </p>
-
+<div className="h-px flex-1 bg-primary/20" />
+    </div>
     <div className="relative">
 
       {/* 左矢印 */}
@@ -394,6 +402,8 @@ export default function TourDetailPage() {
 
   </div>
 </section>
+<Contact />
+<Footer />
     </main>
   );
 }
