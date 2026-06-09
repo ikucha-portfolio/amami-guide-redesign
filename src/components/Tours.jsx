@@ -5,18 +5,18 @@ function ToursSection() {
   const tours = [
     {
       image:
-        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=80",
       title: "マングローブカヌー",
       titleEn: "MANGROVE CANOE",
       duration: "約3時間",
       price: "¥8,000〜",
       description:
-        "奄美大島のマングローブ林をゆっくり巡る人気ツアーです。",
+        "奄美のマングローブ林をゆっくり巡る人気ツアーです。",
       tags: ["初心者OK", "人気"],
     },
     {
       image:
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80",
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&q=80",
       title: "滝ツアー",
       titleEn: "WATERFALL TOUR",
       duration: "約3時間",
@@ -27,108 +27,110 @@ function ToursSection() {
     },
     {
       image:
-        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80",
+        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
       title: "ドライブツアー",
       titleEn: "DRIVE TOUR",
       duration: "約4時間",
       price: "¥10,000〜",
       description:
-        "絶景スポットを巡りながら島の魅力を楽しみます。",
+        "絶景スポットを巡りながら島の魅力を楽しめます。",
       tags: ["絶景", "初心者OK"],
     },
     {
       image:
-        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80",
+        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80",
       title: "ナイトツアー",
       titleEn: "NIGHT TOUR",
       duration: "約2時間",
       price: "¥7,000〜",
       description:
-        "夜の森で希少な生き物たちを探す人気ツアーです。",
-      tags: ["夜行性動物", "人気"],
+        "夜の森で奄美固有の生き物たちを探します。",
+      tags: ["夜間", "生き物観察"],
     },
     {
       image:
-        "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=600&q=80",
-      title: "珊瑚礁シュノーケル",
-      titleEn: "CORAL SNORKELING",
+        "https://images.unsplash.com/photo-1521334884684-d80222895322?w=1200&q=80",
+      title: "金作原ツアー",
+      titleEn: "KINSAKU FOREST",
       duration: "約3時間",
       price: "¥9,000〜",
       description:
-        "色鮮やかな珊瑚礁を楽しむ海のツアーです。",
-      tags: ["海", "シュノーケル"],
+        "世界自然遺産の森をゆっくり歩く人気ツアーです。",
+      tags: ["世界遺産", "森林"],
     },
     {
       image:
-        "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80",
-      title: "ウミガメシュノーケル",
-      titleEn: "SEA TURTLE SNORKELING",
+        "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80",
+      title: "シュノーケル",
+      titleEn: "SNORKEL TOUR",
       duration: "約3時間",
-      price: "¥9,000〜",
+      price: "¥8,000〜",
       description:
-        "高確率でウミガメに出会える人気ツアーです。",
-      tags: ["ウミガメ", "人気"],
+        "透明度抜群の海で珊瑚や魚たちを楽しめます。",
+      tags: ["海", "初心者OK"],
     },
   ];
 
   return (
     <section
       id="tours"
-      className="py-20 md:py-24 px-4 bg-background scroll-mt-16"
+      className="py-24 px-4 bg-background scroll-mt-16"
     >
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-14">
-          <p className="font-[family-name:var(--font-display)] text-sm tracking-[0.3em] text-primary mb-3">
-            TOURS
+        <div className="text-center mb-16">
+
+          <p className="text-sm tracking-[0.3em] text-primary mb-3">
+            TOURS.
           </p>
 
-          <h2 className="text-[32px] md:text-[40px] font-bold text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
             体験できるツアー
           </h2>
+
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           {tours.map((tour, index) => (
-            <Card
+            <a
               key={index}
+              href="#"
               className="
                 group
                 relative
                 overflow-hidden
-                border-0
-                rounded-none
-                bg-transparent
-                shadow-none
+                min-h-[560px]
+                bg-black
               "
             >
-              {/* Image */}
-              <div className="aspect-[3/4] overflow-hidden">
-                <img
-                  src={tour.image}
-                  alt={tour.title}
-                  className="
-                    w-full
-                    h-full
-                    object-cover
-                    transition-all
-                    duration-700
-                    group-hover:scale-105
-                  "
-                />
-              </div>
 
-              {/* Gradient */}
+              {/* Image */}
+              <img
+                src={tour.image}
+                alt={tour.title}
+                className="
+                  absolute
+                  inset-0
+                  w-full
+                  h-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
+              />
+
+              {/* Overlay */}
               <div
                 className="
                   absolute
                   inset-0
                   bg-gradient-to-t
-                  from-black/85
-                  via-black/20
+                  from-black/90
+                  via-black/30
                   to-transparent
                 "
               />
@@ -137,68 +139,43 @@ function ToursSection() {
               <div
                 className="
                   absolute
-                  inset-x-0
                   bottom-0
-                  p-5
+                  left-0
+                  right-0
+                  p-7
                   text-white
                 "
               >
-                {/* Category */}
-                <p
-                  className="
-                    text-[10px]
-                    tracking-[0.3em]
-                    uppercase
-                    text-white/60
-                    mb-2
-                  "
-                >
+
+                <p className="text-[11px] tracking-[0.25em] text-white/70 mb-4">
                   {tour.titleEn}
                 </p>
 
-                {/* Title */}
-                <h3
-                  className="
-                    text-xl
-                    font-bold
-                    mb-2
-                  "
-                >
+                <h3 className="text-[20px] md:text-[24px] font-bold leading-tight mb-3">
                   {tour.title}
                 </h3>
 
-                {/* Price */}
-                <div
-                  className="
-                    flex
-                    items-center
-                    gap-3
-                    text-sm
-                    mb-3
-                  "
-                >
-                  <span className="font-semibold">
+                <div className="flex items-end gap-4 mb-4">
+                  <p className="text-xl font-semibold">
                     {tour.price}
-                  </span>
+                  </p>
 
-                  <span className="text-white/70">
+                  <p className="text-sm text-white/70">
                     {tour.duration}
-                  </span>
+                  </p>
                 </div>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {tour.tags.map((tag, tagIndex) => (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {tour.tags.map((tag) => (
                     <span
-                      key={tagIndex}
+                      key={tag}
                       className="
-                        px-2.5
+                        px-3
                         py-1
-                        text-[11px]
                         rounded-full
-                        bg-white/15
+                        bg-white/20
                         backdrop-blur-sm
-                        text-white/90
+                        text-xs
                       "
                     >
                       {tag}
@@ -206,45 +183,45 @@ function ToursSection() {
                   ))}
                 </div>
 
-                {/* Hover Area */}
+                {/* Hover Description */}
                 <div
                   className="
                     overflow-hidden
                     max-h-0
-                    group-hover:max-h-40
+                    group-hover:max-h-24
                     transition-all
                     duration-500
                   "
                 >
-                  <p
-                    className="
-                      text-sm
-                      leading-relaxed
-                      text-white/80
-                      mb-4
-                    "
-                  >
+                  <p className="text-sm text-white/80 leading-relaxed mb-4">
                     {tour.description}
                   </p>
-
-                  <Button
-                    size="sm"
-                    className="
-                      w-full
-                      bg-primary
-                      hover:bg-primary/90
-                    "
-                  >
-                    ツアーを見る
-                  </Button>
                 </div>
+
+                {/* CTA */}
+                <button
+                  className="
+                    w-full
+                    bg-primary
+                    hover:bg-primary/90
+                    text-white
+                    py-3
+                    font-medium
+                    transition
+                  "
+                >
+                  ツアーの詳細へ
+                </button>
+
               </div>
-            </Card>
+
+            </a>
           ))}
+
         </div>
 
-        <p className="text-center text-sm text-muted-foreground mt-12">
-          ツアーはすべて少人数制です。お気軽にご相談ください。
+        <p className="text-center text-sm text-foreground/50 mt-12">
+          ツアーはすべて少人数制です。詳細・ご相談はお気軽に。
         </p>
 
       </div>
