@@ -102,7 +102,7 @@ function ToursSection() {
                 group
                 relative
                 overflow-hidden
-                min-h-[560px]
+                min-h-[460px]
                 bg-black
               "
             >
@@ -205,7 +205,7 @@ function ToursSection() {
                     bg-primary
                     hover:bg-primary/90
                     text-white
-                    py-3
+                    py-1
                     font-medium
                     transition
                   "
