@@ -1,12 +1,13 @@
+import Container from "./common/Container";
+
 export default function GuideSection() {
   return (
     <section
       id="guide"
       className="
         relative
-        py-14
-        md:py-16
-        px-6
+        py-16
+        md:py-20
         scroll-mt-16
       "
       style={{
@@ -20,73 +21,77 @@ export default function GuideSection() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#1e4d2f]/60" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[950px] mx-auto">
+      <Container className="relative z-10">
 
         {/* Section Heading */}
-<div className="text-center mb-8">
-  <p
-    className="
-      text-[11px]
-      tracking-[0.25em]
-      uppercase
-      text-white/70
-      mb-3
-    "
-  >
-    GUIDE
-  </p>
+        <div className="text-center mb-10">
 
-  <h2
-    className="
-      text-3xl
-      md:text-4xl
-      font-bold
-      text-white
-      tracking-tight
-    "
-  >
-    ガイド紹介
-  </h2>
-</div>
+          <p
+            className="
+              text-[11px]
+              tracking-[0.25em]
+              uppercase
+              text-white/70
+              mb-3
+            "
+          >
+            GUIDE
+          </p>
+
+          <h2
+            className="
+              text-3xl
+              md:text-4xl
+              font-bold
+              tracking-tight
+              text-white
+            "
+          >
+            ガイド紹介
+          </h2>
+
+        </div>
 
         {/* Card */}
         <div
           className="
-            bg-[#faf7f1]/96
+            bg-[#faf7f1]/95
             backdrop-blur-sm
             shadow-2xl
             p-8
-            md:p-10
+            md:p-12
           "
         >
+
           <div
             className="
               grid
-              md:grid-cols-[340px_1fr]
+              md:grid-cols-[380px_1fr]
               gap-10
-              md:gap-12
+              md:gap-14
               items-center
             "
           >
 
             {/* Photo */}
             <div className="flex justify-center">
+
               <img
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80"
                 alt="ずーちゃん"
                 className="
                   w-full
-                  max-w-[340px]
-                  h-[320px]
+                  max-w-[380px]
+                  h-[420px]
                   object-cover
                   shadow-lg
                 "
               />
+
             </div>
 
             {/* Text */}
-            <div className="max-w-[500px]">
+            <div className="max-w-[560px]">
 
               <p
                 className="
@@ -132,7 +137,8 @@ export default function GuideSection() {
                   mb-5
                 "
               >
-                奄美生まれ、奄美育ち。<br />
+                奄美生まれ、奄美育ち。
+                <br />
                 海も森も大好きなネイチャーガイドです。
               </p>
 
@@ -140,11 +146,12 @@ export default function GuideSection() {
                 className="
                   space-y-3
                   text-sm
+                  leading-7
                   text-[#5c4535]
-                  leading-6
                   mb-6
                 "
               >
+
                 <p>
                   幼い頃から自然の中で遊びながら育ち、
                   奄美の海や森、生き物たちの魅力に魅了されてきました。
@@ -159,6 +166,7 @@ export default function GuideSection() {
                   初めての方やお子さま連れの方にも安心して楽しんでいただけるよう、
                   一人ひとりのペースに合わせたツアーを心がけています。
                 </p>
+
               </div>
 
               {/* Licenses */}
@@ -184,7 +192,8 @@ export default function GuideSection() {
 
         </div>
 
-      </div>
+      </Container>
+
     </section>
   );
 }
