@@ -5,6 +5,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
+import Section from "./common/Section";
+import SectionHeader from "./common/SectionHeader";
+
 export default function FAQ() {
   const faqs = [
     {
@@ -35,48 +38,15 @@ export default function FAQ() {
   ];
 
   return (
-    <section
-      id="faq"
-      className="
-        py-16
-        md:py-20
-        px-6
-        bg-background
-        scroll-mt-16
-      "
-    >
+    <Section id="faq">
+
+      <SectionHeader
+        eyebrow="FAQ"
+        title="よくある質問"
+      />
+
       <div className="max-w-3xl mx-auto">
 
-        {/* Heading */}
-        <div className="text-center mb-10">
-
-          <p
-            className="
-              text-[11px]
-              uppercase
-              tracking-[0.25em]
-              text-primary
-              mb-3
-            "
-          >
-            FAQ
-          </p>
-
-          <h2
-            className="
-              text-3xl
-              md:text-4xl
-              font-bold
-              text-foreground
-              tracking-tight
-            "
-          >
-            よくある質問
-          </h2>
-
-        </div>
-
-        {/* Accordion */}
         <Accordion
           type="single"
           collapsible
@@ -96,11 +66,11 @@ export default function FAQ() {
             >
               <AccordionTrigger
                 className="
+                  py-4
                   text-left
                   font-medium
                   text-foreground
                   hover:no-underline
-                  py-4
                 "
               >
                 {faq.question}
@@ -108,10 +78,10 @@ export default function FAQ() {
 
               <AccordionContent
                 className="
-                  text-sm
-                  text-muted-foreground
-                  leading-6
                   pb-4
+                  text-sm
+                  leading-6
+                  text-muted-foreground
                 "
               >
                 {faq.answer}
@@ -122,6 +92,7 @@ export default function FAQ() {
         </Accordion>
 
       </div>
-    </section>
+
+    </Section>
   );
 }
