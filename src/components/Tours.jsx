@@ -76,8 +76,6 @@ function ToursSection() {
   id="tours"
   className="
     bg-[#F5F2EC]
-    pt-[100px]
-    pb-[120px]
   "
 >
 

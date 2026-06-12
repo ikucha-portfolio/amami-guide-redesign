@@ -5,6 +5,9 @@ import {
   Smile,
 } from "lucide-react";
 
+import Section from "./common/Section";
+import SectionHeader from "./common/SectionHeader";
+
 const steps = [
   {
     number: 1,
@@ -34,132 +37,108 @@ const steps = [
 
 export default function Flow() {
   return (
-    <section
-      id="flow"
-      className="
-        py-14
-        md:py-16
-        px-6
-        bg-background
-      "
-    >
-      <div className="max-w-2xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-8">
-          <p
-            className="
-              text-[11px]
-              uppercase
-              tracking-[0.25em]
-              text-primary
-              mb-2
-            "
-          >
-            HOW TO BOOK
-          </p>
+    <Section id="flow">
 
-          <h2
-            className="
-              text-3xl
-              md:text-4xl
-              font-bold
-              text-foreground
-              tracking-tight
-            "
-          >
-            ご予約〜体験までの流れ
-          </h2>
-        </div>
+      <SectionHeader
+        eyebrow="HOW TO BOOK"
+        title="ご予約〜体験までの流れ"
+      />
 
-        {/* Timeline */}
-        <div>
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            const isLast = index === steps.length - 1;
+      <div className="max-w-3xl mx-auto">
 
-            return (
-              <div
-                key={step.number}
-                className="flex gap-4"
-              >
-                {/* Number */}
-                <div className="flex flex-col items-center">
-                  <div
-                    className="
-                      w-10
-                      h-10
-                      rounded-full
-                      bg-primary
-                      text-primary-foreground
-                      flex
-                      items-center
-                      justify-center
-                      text-sm
-                      font-semibold
-                    "
-                  >
-                    {step.number}
-                  </div>
+        {steps.map((step, index) => {
+          const Icon = step.icon;
+          const isLast = index === steps.length - 1;
 
-                  {!isLast && (
-                    <div
-                      className="
-                        w-px
-                        flex-1
-                        bg-primary/20
-                        my-1
-                      "
-                    />
-                  )}
-                </div>
+          return (
+            <div
+              key={step.number}
+              className={`
+                flex
+                gap-6
+                ${isLast ? "" : "pb-8"}
+              `}
+            >
+              {/* Number */}
+              <div className="flex flex-col items-center">
 
-                {/* Content */}
                 <div
-                  className={`
-                    flex-1
-                    ${isLast ? "pb-0" : "pb-5"}
-                  `}
+                  className="
+                    w-10
+                    h-10
+                    rounded-full
+                    bg-primary
+                    text-primary-foreground
+                    flex
+                    items-center
+                    justify-center
+                    text-sm
+                    font-semibold
+                  "
                 >
+                  {step.number}
+                </div>
+
+                {!isLast && (
                   <div
                     className="
-                      flex
-                      items-center
-                      gap-2
-                      mb-1
-                      pt-1
+                      w-px
+                      flex-1
+                      bg-primary/20
+                      my-1
                     "
-                  >
-                    <Icon
-                      size={16}
-                      className="text-primary"
-                    />
+                  />
+                )}
 
-                    <h3
-                      className="
-                        text-lg
-                        font-semibold
-                        text-foreground
-                      "
-                    >
-                      {step.title}
-                    </h3>
-                  </div>
-
-                  <p
-                    className="
-                      text-sm
-                      text-muted-foreground
-                      leading-6
-                    "
-                  >
-                    {step.description}
-                  </p>
-                </div>
               </div>
-            );
-          })}
-        </div>
+
+              {/* Content */}
+              <div className="flex-1">
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-2
+                    mb-1
+                    pt-1
+                  "
+                >
+                  <Icon
+                    size={16}
+                    className="text-primary"
+                  />
+
+                  <h3
+                    className="
+                      text-lg
+                      font-semibold
+                      text-foreground
+                    "
+                  >
+                    {step.title}
+                  </h3>
+
+                </div>
+
+                <p
+                  className="
+                    text-sm
+                    text-muted-foreground
+                    leading-6
+                  "
+                >
+                  {step.description}
+                </p>
+
+              </div>
+
+            </div>
+          );
+        })}
+
       </div>
-    </section>
+
+    </Section>
   );
 }

@@ -7,8 +7,6 @@ export default function GuideSection() {
       className="
         relative
         py-16
-        md:py-20
-        scroll-mt-16
       "
       style={{
         backgroundImage:

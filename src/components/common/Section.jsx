@@ -8,7 +8,10 @@ export default function Section({
   return (
     <section
       id={id}
-      className={className}
+      className={`
+        py-24
+        ${className}
+      `}
     >
       <Container>
         {children}
