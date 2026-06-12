@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Section from "./common/Section";
+import SectionHeader from "./common/SectionHeader";
 
 function ToursSection() {
   const tours = [
@@ -72,27 +72,23 @@ function ToursSection() {
   ];
 
   return (
-    <section
-      id="tours"
-      className="py-24 px-4 bg-background scroll-mt-16"
-    >
-      <div className="max-w-7xl mx-auto">
+    <Section
+  id="tours"
+  className="
+    bg-[#F5F2EC]
+    pt-[100px]
+    pb-[120px]
+  "
+>
 
         {/* Header */}
-        <div className="text-center mb-16">
-
-          <p className="text-sm tracking-[0.3em] text-primary mb-3">
-            TOURS.
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            体験できるツアー
-          </h2>
-
-        </div>
+        <SectionHeader
+  eyebrow="TOURS"
+  title="体験できるツアー"
+/>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
           {tours.map((tour, index) => (
             <a
@@ -224,8 +220,8 @@ function ToursSection() {
           ツアーはすべて少人数制です。詳細・ご相談はお気軽に。
         </p>
 
-      </div>
-    </section>
+      
+    </Section>
   );
 }
 

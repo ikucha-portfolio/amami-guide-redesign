@@ -6,20 +6,45 @@ export default function SectionHeader({
   return (
     <div className="text-center mb-16">
 
-      <p className="text-primary uppercase tracking-[0.35em] text-sm font-semibold mb-4">
-        {eyebrow}
-      </p>
+      {eyebrow && (
+        <p
+          className="
+            text-[11px]
+            tracking-[0.25em]
+            uppercase
+            text-primary
+            mb-3
+          "
+        >
+          {eyebrow}
+        </p>
+      )}
 
-      <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
+      <h2
+        className="
+          text-3xl
+          md:text-4xl
+          font-bold
+          tracking-tight
+          text-foreground
+        "
+      >
         {title}
       </h2>
 
       {description && (
-        <p className="max-w-2xl mx-auto text-muted-foreground">
+        <p
+          className="
+            max-w-2xl
+            mx-auto
+            mt-5
+            text-muted-foreground
+          "
+        >
           {description}
         </p>
       )}
 
     </div>
-  )
+  );
 }

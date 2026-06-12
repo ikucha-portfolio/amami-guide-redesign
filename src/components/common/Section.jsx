@@ -1,14 +1,18 @@
-import Container from "./Container"
+import Container from "./Container";
 
 export default function Section({
   children,
   className = "",
+  id,
 }) {
   return (
-    <section className={`py-24 ${className}`}>
+    <section
+      id={id}
+      className={className}
+    >
       <Container>
         {children}
       </Container>
     </section>
-  )
+  );
 }
