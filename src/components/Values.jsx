@@ -1,7 +1,12 @@
 export default function Values() {
   return (
-    <section className="bg-background">
-
+    <section
+      className="
+        bg-background
+        relative
+        z-20
+      "
+    >
       <div
         className="
           grid
@@ -13,10 +18,16 @@ export default function Values() {
       >
 
         {/* Photo */}
-        <div className="relative min-h-[520px] overflow-hidden">
+        <div
+          className="
+            relative
+            min-h-[620px]
+            overflow-hidden
+          "
+        >
 
           <img
-            src="/images/Values.jpeg"
+            src="/images/guide.jpeg"
             alt="奄美の自然"
             className="
               absolute
@@ -27,17 +38,6 @@ export default function Values() {
             "
           />
 
-          {/* Gradient */}
-          <div
-            className="
-              absolute
-              inset-0
-              bg-gradient-to-r
-              from-transparent
-              via-[#f5f2ec]/20
-              to-[#f5f2ec]/50
-            "
-          />
 
         </div>
 
@@ -101,7 +101,6 @@ export default function Values() {
         </div>
 
       </div>
-
     </section>
   );
 }

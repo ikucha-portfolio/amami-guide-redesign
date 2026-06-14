@@ -7,9 +7,10 @@ export default function Hero() {
 
       {/* Background */}
       <div
-  className="absolute inset-0 bg-cover bg-center md:bg-[center_75%] bg-fixed" 
+  className="absolute inset-0 bg-cover bg-center md:bg-[center_55
+  %] bg-fixed" 
   style={{
-    backgroundImage: "url('/images/hero.jpeg')",
+    backgroundImage: "url('/images/amami2.jpeg')",
   }}
 >
         <div className="absolute inset-0 bg-black/25" />
@@ -57,16 +58,6 @@ export default function Hero() {
           AMAMI NATURE
         </h1>
 
-        <p
-          className="
-            text-lg
-            md:text-2xl
-            text-white/90
-            mb-10
-          "
-        >
-          奄美大島の自然を、心に。
-        </p>
 
       </div>
 

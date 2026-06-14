@@ -3,73 +3,67 @@ import SectionHeader from "./common/SectionHeader";
 
 function ToursSection() {
   const tours = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=80",
-      title: "マングローブカヌー",
-      titleEn: "MANGROVE CANOE",
-      duration: "約3時間",
-      price: "¥8,000〜",
-      description:
-        "奄美のマングローブ林をゆっくり巡る人気ツアーです。",
-      tags: ["初心者OK", "人気"],
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&q=80",
-      title: "滝ツアー",
-      titleEn: "WATERFALL TOUR",
-      duration: "約3時間",
-      price: "¥8,000〜",
-      description:
-        "奄美の滝を巡りながら自然を満喫するツアーです。",
-      tags: ["自然体験", "写真撮影"],
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
-      title: "ドライブツアー",
-      titleEn: "DRIVE TOUR",
-      duration: "約4時間",
-      price: "¥10,000〜",
-      description:
-        "絶景スポットを巡りながら島の魅力を楽しめます。",
-      tags: ["絶景", "初心者OK"],
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80",
-      title: "ナイトツアー",
-      titleEn: "NIGHT TOUR",
-      duration: "約2時間",
-      price: "¥7,000〜",
-      description:
-        "夜の森で奄美固有の生き物たちを探します。",
-      tags: ["夜間", "生き物観察"],
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1521334884684-d80222895322?w=1200&q=80",
-      title: "金作原ツアー",
-      titleEn: "KINSAKU FOREST",
-      duration: "約3時間",
-      price: "¥9,000〜",
-      description:
-        "世界自然遺産の森をゆっくり歩く人気ツアーです。",
-      tags: ["世界遺産", "森林"],
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80",
-      title: "シュノーケル",
-      titleEn: "SNORKEL TOUR",
-      duration: "約3時間",
-      price: "¥8,000〜",
-      description:
-        "透明度抜群の海で珊瑚や魚たちを楽しめます。",
-      tags: ["海", "初心者OK"],
-    },
-  ];
+  {
+    image: "/images/hero.jpeg",
+    title: "マングローブカヌー",
+    titleEn: "MANGROVE CANOE",
+    duration: "約3時間",
+    price: "¥8,000〜",
+    description:
+      "奄美のマングローブ林をゆっくり巡る人気ツアーです。",
+    tags: ["初心者OK", "人気"],
+  },
+  {
+    image: "/images/night1.jpeg",
+    title: "滝ツアー",
+    titleEn: "WATERFALL TOUR",
+    duration: "約3時間",
+    price: "¥8,000〜",
+    description:
+      "奄美の滝を巡りながら自然を満喫するツアーです。",
+    tags: ["自然体験", "写真撮影"],
+  },
+  {
+    image: "/images/night2.jpeg",
+    title: "ドライブツアー",
+    titleEn: "DRIVE TOUR",
+    duration: "約4時間",
+    price: "¥10,000〜",
+    description:
+      "絶景スポットを巡りながら島の魅力を楽しめます。",
+    tags: ["絶景", "初心者OK"],
+  },
+  {
+    image: "/images/values3.jpeg",
+    title: "ナイトツアー",
+    titleEn: "NIGHT TOUR",
+    duration: "約2時間",
+    price: "¥7,000〜",
+    description:
+      "夜の森で奄美固有の生き物たちを探します。",
+    tags: ["夜間", "生き物観察"],
+  },
+  {
+    image: "/images/Values.jpeg",
+    title: "金作原ツアー",
+    titleEn: "KINSAKU FOREST",
+    duration: "約3時間",
+    price: "¥9,000〜",
+    description:
+      "世界自然遺産の森をゆっくり歩く人気ツアーです。",
+    tags: ["世界遺産", "森林"],
+  },
+  {
+    image: "/images/umigame.jpeg",
+    title: "シュノーケル",
+    titleEn: "SNORKEL TOUR",
+    duration: "約3時間",
+    price: "¥8,000〜",
+    description:
+      "透明度抜群の海で珊瑚や魚たちを楽しめます。",
+    tags: ["海", "初心者OK"],
+  },
+];
 
   return (
     <Section

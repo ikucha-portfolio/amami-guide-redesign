@@ -16,12 +16,6 @@ function HomePage() {
       <Nav />
       <Hero />
       <Values />
-
-      <ParallaxSection
-        imageUrl="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1600&q=80"
-        altText="滝"
-      />
-
       <Tours />
 
       <Guide />
@@ -29,9 +23,9 @@ function HomePage() {
       <Flow />
 
       <ParallaxSection
-        imageUrl="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80"
-        altText="奄美の森"
-      />
+  imageUrl="/images/umigame.jpeg"
+  altText="滝"
+/>
 
       <Faq />
 
