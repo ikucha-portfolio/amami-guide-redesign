@@ -124,7 +124,7 @@ export default function Contact() {
                 </a>
 
                 {/* Instagram button */}
-                <a href="https://instagram.com/amami_nature_guide" target="_blank" rel="noopener noreferrer" style={{
+                <a href="https://www.instagram.com/seasummer630/" target="_blank" rel="noopener noreferrer" style={{
                   display: 'flex', alignItems: 'center', gap: '16px',
                   background: 'linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
                   borderRadius: '8px', padding: '16px 20px',
