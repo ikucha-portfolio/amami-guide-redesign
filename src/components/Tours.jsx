@@ -1,220 +1,408 @@
-import Section from "./common/Section";
-import SectionHeader from "./common/SectionHeader";
+import { TOURS, COLORS } from "../siteData";
+import { ImageWithFallback } from "./ImageWithFallback";
+import { Clock, Users } from "lucide-react";
 
-function ToursSection() {
-  const tours = [
-  {
-    image: "/images/hero.jpeg",
-    title: "マングローブカヌー",
-    titleEn: "MANGROVE CANOE",
-    duration: "約3時間",
-    price: "¥8,000〜",
-    description:
-      "奄美のマングローブ林をゆっくり巡る人気ツアーです。",
-    tags: ["初心者OK", "人気"],
-  },
-  {
-    image: "/images/night1.jpeg",
-    title: "滝ツアー",
-    titleEn: "WATERFALL TOUR",
-    duration: "約3時間",
-    price: "¥8,000〜",
-    description:
-      "奄美の滝を巡りながら自然を満喫するツアーです。",
-    tags: ["自然体験", "写真撮影"],
-  },
-  {
-    image: "/images/night2.jpeg",
-    title: "ドライブツアー",
-    titleEn: "DRIVE TOUR",
-    duration: "約4時間",
-    price: "¥10,000〜",
-    description:
-      "絶景スポットを巡りながら島の魅力を楽しめます。",
-    tags: ["絶景", "初心者OK"],
-  },
-  {
-    image: "/images/values3.jpeg",
-    title: "ナイトツアー",
-    titleEn: "NIGHT TOUR",
-    duration: "約2時間",
-    price: "¥7,000〜",
-    description:
-      "夜の森で奄美固有の生き物たちを探します。",
-    tags: ["夜間", "生き物観察"],
-  },
-  {
-    image: "/images/Values.jpeg",
-    title: "金作原ツアー",
-    titleEn: "KINSAKU FOREST",
-    duration: "約3時間",
-    price: "¥9,000〜",
-    description:
-      "世界自然遺産の森をゆっくり歩く人気ツアーです。",
-    tags: ["世界遺産", "森林"],
-  },
-  {
-    image: "/images/umigame.jpeg",
-    title: "シュノーケル",
-    titleEn: "SNORKEL TOUR",
-    duration: "約3時間",
-    price: "¥8,000〜",
-    description:
-      "透明度抜群の海で珊瑚や魚たちを楽しめます。",
-    tags: ["海", "初心者OK"],
-  },
-];
+const C = COLORS;
 
+const cardBase = {
+  borderRadius: "6px",
+  overflow: "hidden",
+  background: C.white,
+  boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
+};
+
+export default function Tours() {
   return (
-    <Section
-  id="tours"
-  className="
-    bg-[#F5F2EC]
-  "
->
+    <section
+      id="tours"
+      style={{
+        padding: "96px 6%",
+        background: C.white,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+        }}
+      >
+        {/* TOUR見出しはここに貼る */}
 
-        {/* Header */}
-        <SectionHeader
-  eyebrow="TOURS"
-  title="体験できるツアー"
-/>
-
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          {tours.map((tour, index) => (
-            <a
-              key={index}
-              href="#"
-              className="
-                group
-                relative
-                overflow-hidden
-                min-h-[460px]
-                bg-black
-              "
-            >
-
-              {/* Image */}
-              <img
-                src={tour.image}
-                alt={tour.title}
-                className="
-                  absolute
-                  inset-0
-                  w-full
-                  h-full
-                  object-cover
-                  transition-transform
-                  duration-700
-                  group-hover:scale-105
-                "
-              />
-
-              {/* Overlay */}
-              <div
-                className="
-                  absolute
-                  inset-0
-                  bg-gradient-to-t
-                  from-black/90
-                  via-black/30
-                  to-transparent
-                "
-              />
-
-              {/* Content */}
-              <div
-                className="
-                  absolute
-                  bottom-0
-                  left-0
-                  right-0
-                  p-7
-                  text-white
-                "
-              >
-
-                <p className="text-[11px] tracking-[0.25em] text-white/70 mb-4">
-                  {tour.titleEn}
-                </p>
-
-                <h3 className="text-[20px] md:text-[24px] font-bold leading-tight mb-3">
-                  {tour.title}
-                </h3>
-
-                <div className="flex items-end gap-4 mb-4">
-                  <p className="text-xl font-semibold">
-                    {tour.price}
-                  </p>
-
-                  <p className="text-sm text-white/70">
-                    {tour.duration}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {tour.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="
-                        px-3
-                        py-1
-                        rounded-full
-                        bg-white/20
-                        backdrop-blur-sm
-                        text-xs
-                      "
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Hover Description */}
-                <div
-                  className="
-                    overflow-hidden
-                    max-h-0
-                    group-hover:max-h-24
-                    transition-all
-                    duration-500
-                  "
-                >
-                  <p className="text-sm text-white/80 leading-relaxed mb-4">
-                    {tour.description}
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <button
-                  className="
-                    w-full
-                    bg-primary
-                    hover:bg-primary/90
-                    text-white
-                    py-1
-                    font-medium
-                    transition
-                  "
-                >
-                  ツアーの詳細へ
-                </button>
-
-              </div>
-
-            </a>
-          ))}
-
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr",
+            gap: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          <TourCardFeatured tour={TOURS[0]} />
+          <TourCardTall tour={TOURS[1]} />
         </div>
 
-        <p className="text-center text-sm text-foreground/50 mt-12">
-          ツアーはすべて少人数制です。詳細・ご相談はお気軽に。
-        </p>
-
-      
-    </Section>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "20px",
+          }}
+        >
+          {TOURS.slice(2).map((tour) => (
+            <TourCardStandard
+              key={tour.id}
+              tour={tour}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
-export default ToursSection;
+// 横長・特集（グリッド左2/3）
+function TourCardFeatured({ tour }) {
+  return (
+    <div
+      style={{
+        ...cardBase,
+        position: "relative",
+        cursor: "pointer",
+        aspectRatio: "16/9",
+      }}
+    >
+      <ImageWithFallback
+        src={tour.image}
+        alt={tour.name}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(10,25,10,0.82) 0%, transparent 55%)",
+        }}
+      />
+
+      {tour.tag && <TagBadge label={tour.tag} />}
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: "24px 26px",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Cabin', sans-serif",
+            fontSize: "11px",
+            letterSpacing: "0.18em",
+            color: "rgba(255,255,255,0.55)",
+            margin: 0,
+            marginBottom: "5px",
+          }}
+        >
+          {tour.nameEn.toUpperCase()}
+        </p>
+
+        <h3
+          style={{
+            fontSize: "22px",
+            fontWeight: 700,
+            color: "#fff",
+            margin: 0,
+            marginBottom: "10px",
+          }}
+        >
+          {tour.name}
+        </h3>
+
+        <p
+          style={{
+            fontSize: "13px",
+            color: "rgba(255,255,255,0.75)",
+            lineHeight: 1.65,
+            marginBottom: "14px",
+          }}
+        >
+          {tour.description}
+        </p>
+
+        <CardMeta tour={tour} light />
+      </div>
+    </div>
+  );
+}
+
+// 縦長（グリッド右1/3）
+function TourCardTall({ tour }) {
+  return (
+    <div
+      style={{
+        ...cardBase,
+        position: "relative",
+        cursor: "pointer",
+        height: "100%",
+        minHeight: "280px",
+      }}
+    >
+      <ImageWithFallback
+        src={tour.image}
+        alt={tour.name}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          minHeight: "280px",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(10,25,10,0.82) 0%, transparent 50%)",
+        }}
+      />
+
+      {tour.tag && <TagBadge label={tour.tag} />}
+
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: "20px 22px",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Cabin', sans-serif",
+            fontSize: "10px",
+            letterSpacing: "0.18em",
+            color: "rgba(255,255,255,0.5)",
+            margin: 0,
+            marginBottom: "4px",
+          }}
+        >
+          {tour.nameEn.toUpperCase()}
+        </p>
+
+        <h3
+          style={{
+            fontSize: "18px",
+            fontWeight: 700,
+            color: "#fff",
+            margin: 0,
+            marginBottom: "10px",
+          }}
+        >
+          {tour.name}
+        </h3>
+
+        <CardMeta tour={tour} light />
+      </div>
+    </div>
+  );
+}
+
+// 標準カード（下3枚）
+function TourCardStandard({ tour }) {
+  return (
+    <div
+      style={{
+        ...cardBase,
+        cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          aspectRatio: "4/3",
+          overflow: "hidden",
+          flexShrink: 0,
+        }}
+      >
+        <ImageWithFallback
+          src={tour.image}
+          alt={tour.name}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+
+        {tour.tag && <TagBadge label={tour.tag} />}
+      </div>
+
+      <div
+        style={{
+          padding: "18px 20px 22px",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Cabin', sans-serif",
+            fontSize: "10px",
+            letterSpacing: "0.15em",
+            color: C.green,
+            margin: 0,
+            marginBottom: "4px",
+          }}
+        >
+          {tour.nameEn.toUpperCase()}
+        </p>
+
+        <h3
+          style={{
+            fontSize: "16px",
+            fontWeight: 700,
+            color: C.text,
+            margin: 0,
+            marginBottom: "8px",
+            lineHeight: 1.3,
+          }}
+        >
+          {tour.name}
+        </h3>
+
+        <p
+          style={{
+            fontSize: "13px",
+            color: C.textLight,
+            lineHeight: 1.75,
+            marginBottom: "16px",
+            flex: 1,
+          }}
+        >
+          {tour.description}
+        </p>
+
+        <div
+          style={{
+            paddingTop: "12px",
+            borderTop: "1px solid rgba(62,140,42,0.1)",
+          }}
+        >
+          <CardMeta tour={tour} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TagBadge({ label }) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "12px",
+        left: "12px",
+        background: C.green,
+        color: "#fff",
+        padding: "3px 11px",
+        borderRadius: "3px",
+        fontSize: "11px",
+        fontWeight: 700,
+        letterSpacing: "0.04em",
+      }}
+    >
+      {label}
+    </div>
+  );
+}
+
+function CardMeta({ tour, light = false }) {
+  const dim = light ? "rgba(255,255,255,0.6)" : C.textLight;
+  const priceCol = light ? "#fff" : C.green;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: "14px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <span
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5px",
+          fontSize: "12px",
+          color: dim,
+        }}
+      >
+        <Clock
+          size={12}
+          style={{
+            color: light
+              ? "rgba(255,255,255,0.5)"
+              : C.green,
+          }}
+        />
+        {tour.duration}
+      </span>
+
+      <span
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5px",
+          fontSize: "12px",
+          color: dim,
+        }}
+      >
+        <Users
+          size={12}
+          style={{
+            color: light
+              ? "rgba(255,255,255,0.5)"
+              : C.green,
+          }}
+        />
+        {tour.target}
+      </span>
+
+      <span
+        style={{
+          marginLeft: "auto",
+          fontFamily: "'Cabin', sans-serif",
+          fontWeight: 700,
+          fontSize: "19px",
+          color: priceCol,
+          lineHeight: 1,
+        }}
+      >
+        {tour.price}
+        <span
+          style={{
+            fontFamily: "'Noto Sans JP', sans-serif",
+            fontSize: "11px",
+            fontWeight: 400,
+            color: dim,
+          }}
+        >
+          {tour.priceNote}
+        </span>
+      </span>
+    </div>
+  );
+}

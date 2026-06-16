@@ -1,5 +1,6 @@
 import React from "react";
 import Hero from "./Hero";
+import Tours from "./Tours";
 
 import { ImageWithFallback } from "./ImageWithFallback";
 
@@ -104,46 +105,7 @@ export default function DesignA() {
      <Hero />
 
       {/* ══ TOURS ════════════════════════════════════════════ */}
-      {/* 白背景 ＋ 大型セクション見出し */}
-      <section id="tours" style={{ padding: '96px 6%', background: C.white }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-
-          {/* Section heading — large bold like the reference */}
-          <div style={{ marginBottom: '64px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', marginBottom: '12px' }}>
-              <h2 style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: 'clamp(52px, 7vw, 88px)',
-                fontWeight: 700, letterSpacing: '0.04em',
-                color: C.text, margin: 0, lineHeight: 1,
-              }}>
-                TOUR
-              </h2>
-              <span style={{
-                fontFamily: "'Noto Sans JP', sans-serif",
-                fontSize: 'clamp(16px, 2vw, 22px)',
-                fontWeight: 500, color: C.textLight,
-                paddingBottom: '12px',
-              }}>
-                ツアー一覧
-              </span>
-            </div>
-            <div style={{ width: '48px', height: '3px', background: C.green, borderRadius: '2px' }} />
-            <p style={{ fontSize: '15px', color: C.textLight, lineHeight: 1.9, marginTop: '20px', maxWidth: '540px' }}>
-              初めての方も、お子様も、ご夫婦も。全5コース初心者対応。
-            </p>
-          </div>
-
-          {/* Tour grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px', marginBottom: '20px' }}>
-            <TourCardFeatured tour={TOURS[0]} />
-            <TourCardTall tour={TOURS[1]} />
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-            {TOURS.slice(2).map(t => <TourCardStandard key={t.id} tour={t} />)}
-          </div>
-        </div>
-      </section>
+      <Tours />
 
       {/* ══ GUIDE ════════════════════════════════════════════ */}
       {/* 薄いグリーン背景 */}
