@@ -1,7 +1,7 @@
-import DesignA from "./components/DesignA";
+import TourDetailA from "./components/pages/TourDetailA";
 
 function App() {
-  return <DesignA />;
+  return <TourDetailA />;
 }
 
 export default App;

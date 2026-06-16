@@ -1,16 +1,54 @@
 export const TOURS = [
   {
-    id: "mangrove",
-    name: "マングローブカヌー＆滝ツアー",
-    nameEn: "Mangrove & Waterfall",
-    duration: "約3時間",
-    price: "¥9,000",
-    priceNote: "〜",
-    target: "初心者・家族連れ",
-    description:
-      "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。奄美らしい自然を満喫できます。",
-    tag: "人気No.1",
-    image: "/images/hero.jpeg",
+  id: "mangrove",
+  name: "マングローブカヌー＆滝ツアー",
+  nameEn: "Mangrove & Waterfall",
+  duration: "約3時間",
+  price: "¥9,000",
+  priceNote: "〜",
+  target: "初心者・家族連れ",
+  description:
+    "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。奄美らしい自然を満喫できます。",
+  tag: "人気No.1",
+  image: "/images/hero.jpeg",
+
+  details: [
+    { label: "所要時間", value: "約3時間" },
+    { label: "料金", value: "大人 9,000円 / 子ども 8,000円" },
+    { label: "対象", value: "初心者・お子さま連れ歓迎" },
+    { label: "集合場所", value: "ご予約時にご案内" },
+    { label: "持ち物", value: "濡れても良い服装・タオル・飲み物" },
+  ],
+
+  recommended: [
+    "初めて奄美を訪れる方",
+    "お子さま連れのご家族",
+    "自然の中でゆっくり過ごしたい方",
+    "奄美らしい景色を楽しみたい方",
+  ],
+
+  flow: [
+    {
+      num: "01",
+      title: "集合・受付",
+      desc: "集合場所で受付後、ツアー内容や安全についてご説明します。",
+    },
+    {
+      num: "02",
+      title: "カヌースタート",
+      desc: "マングローブ林をゆっくり進みながら自然観察を楽しみます。",
+    },
+    {
+      num: "03",
+      title: "滝を散策",
+      desc: "周辺の滝を訪れ、写真撮影や休憩を楽しみます。",
+    },
+    {
+      num: "04",
+      title: "ツアー終了",
+      desc: "集合場所へ戻り解散となります。",
+    },
+  ],
   },
 
   {
