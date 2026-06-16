@@ -4,13 +4,41 @@ export const TOURS = [
     name: "マングローブカヌー＆滝ツアー",
     nameEn: "Mangrove & Waterfall",
     duration: "約3時間",
-    price: "¥8,000",
-    priceNote: "/ 1名",
+    price: "¥9,000",
+    priceNote: "〜",
     target: "初心者・家族連れ",
     description:
-      "マングローブをカヌーで進み、奄美の自然豊かな滝を目指す人気コース。",
+      "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。奄美らしい自然を満喫できます。",
     tag: "人気No.1",
     image: "/images/hero.jpeg",
+  },
+
+  {
+    id: "turtle-snorkeling",
+    name: "ウミガメシュノーケリングツアー",
+    nameEn: "Sea Turtle Snorkeling",
+    duration: "約2.5時間",
+    price: "¥9,680",
+    priceNote: "〜",
+    target: "初心者OK",
+    description:
+      "ウミガメと一緒に泳ぎながら記念撮影も楽しめる人気のシュノーケリングツアー。",
+    tag: "おすすめ",
+    image: "/images/umigame.jpeg",
+  },
+
+  {
+    id: "boat-snorkeling",
+    name: "ボートシュノーケリングツアー",
+    nameEn: "Boat Snorkeling",
+    duration: "約3時間",
+    price: "¥11,000",
+    priceNote: "〜",
+    target: "初心者OK",
+    description:
+      "船でサンゴ礁のポイントへ向かい、美しい海中世界を観察する本格シュノーケリング。",
+    tag: "海満喫",
+    image: "/images/night2.jpeg",
   },
 
   {
@@ -18,11 +46,11 @@ export const TOURS = [
     name: "ナイトツアー",
     nameEn: "Night Tour",
     duration: "約2時間",
-    price: "¥5,000",
-    priceNote: "/ 1名",
+    price: "¥8,000",
+    priceNote: "〜",
     target: "全年齢OK",
     description:
-      "アマミノクロウサギや夜の生き物を探しに出かける夜限定ツアー。",
+      "アマミノクロウサギをはじめ、奄美ならではの夜行性生物を車中から探します。",
     tag: "夜限定",
     image: "/images/night.jpeg",
   },
@@ -31,42 +59,14 @@ export const TOURS = [
     id: "drive",
     name: "ドライブツアー",
     nameEn: "Island Drive",
-    duration: "約4時間",
-    price: "¥8,500",
-    priceNote: "/ 1名",
+    duration: "半日〜1日",
+    price: "お問い合わせ",
+    priceNote: "",
     target: "ご年配の方も安心",
     description:
-      "奄美の絶景スポットを巡りながら、島の魅力をゆったり楽しめます。",
+      "奄美の絶景や隠れた名所を巡る、のんびり楽しめるプライベートドライブツアー。",
     tag: "のんびり",
     image: "/images/drive.jpeg",
-  },
-
-  {
-    id: "boat-snorkeling",
-    name: "ボートシュノーケリングツアー",
-    nameEn: "Boat Snorkeling",
-    duration: "約3時間",
-    price: "¥8,000",
-    priceNote: "/ 1名",
-    target: "初心者OK",
-    description:
-      "ボートでポイントへ移動し、サンゴや熱帯魚を観察する海遊びツアー。",
-    tag: "海満喫",
-    image: "/images/night2.jpeg",
-  },
-
-  {
-    id: "turtle-snorkeling",
-    name: "ウミガメシュノーケリングツアー",
-    nameEn: "Sea Turtle Snorkeling",
-    duration: "約2.5時間",
-    price: "¥8,500",
-    priceNote: "/ 1名",
-    target: "初心者OK",
-    description:
-      "高確率でウミガメに出会える人気のシュノーケリングツアー。",
-    tag: "おすすめ",
-    image: "/images/umigame.jpeg",
   },
 ];
 
