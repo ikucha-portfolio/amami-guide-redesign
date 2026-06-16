@@ -5,6 +5,7 @@ import Guide from "./Guide";
 import Faq from "./Faq";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import Nav from "./Nav";
 
 
 import { ImageWithFallback } from "./ImageWithFallback";
@@ -46,65 +47,7 @@ export default function DesignA() {
     <div style={{ background: C.white, color: C.text, fontFamily: "'Noto Sans JP', sans-serif" }}>
 
       {/* ══ NAV ══════════════════════════════════════════════ */}
-      <nav style={{
-        position: 'sticky', top: 52, zIndex: 200,
-        background: C.white,
-        borderBottom: `1px solid rgba(62,140,42,0.15)`,
-        padding: '0 6%',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        height: '64px',
-      }}>
-        {/* Logo */}
-        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '9px' }}>
-          <div style={{
-            width: '34px', height: '34px', borderRadius: '50%',
-            border: `2px solid ${C.green}`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            flexShrink: 0,
-          }}>
-            <Leaf size={16} color={C.green} />
-          </div>
-          <div>
-            <div style={{ fontFamily: "'Cabin', sans-serif", fontSize: '14px', fontWeight: 700, letterSpacing: '0.12em', color: C.green, lineHeight: 1.1 }}>
-              AMAMI
-            </div>
-            <div style={{ fontFamily: "'Cabin', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.1em', color: C.green, lineHeight: 1.1, opacity: 0.8 }}>
-              NATURE GUIDE
-            </div>
-          </div>
-        </a>
-
-        {/* Links */}
-        <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          {['ホーム', 'ツアー', 'ガイド', 'よくある質問'].map(l => (
-            <a key={l} href="#" style={{
-              color: C.textLight, textDecoration: 'none',
-              fontSize: '13px', letterSpacing: '0.03em',
-            }}>
-              {l}
-            </a>
-          ))}
-        </div>
-
-        {/* CTAs — green like the reference */}
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-          <a href="#contact" style={{
-            background: C.green, color: '#fff',
-            padding: '9px 20px', borderRadius: '4px',
-            textDecoration: 'none', fontSize: '13px', fontWeight: 700,
-            display: 'flex', alignItems: 'center', gap: '6px',
-          }}>
-            ツアー予約
-          </a>
-          <a href="#contact" style={{
-            border: `1.5px solid ${C.green}`, color: C.green,
-            padding: '8px 18px', borderRadius: '4px',
-            textDecoration: 'none', fontSize: '13px', fontWeight: 600,
-          }}>
-            お問い合わせ
-          </a>
-        </div>
-      </nav>
+      <Nav />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
      <Hero />
