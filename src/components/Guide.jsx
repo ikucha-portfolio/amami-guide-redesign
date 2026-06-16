@@ -1,197 +1,96 @@
-import Container from "./common/Container";
+import { GUIDE, COLORS } from "../siteData";
+import { ImageWithFallback } from "./ImageWithFallback";
+import { CheckCircle2 } from "lucide-react";
 
-export default function GuideSection() {
+const C = COLORS;
+
+export default function Guide() {
   return (
     <section
       id="guide"
-      className="
-        relative
-        py-16
-      "
       style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=2000&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+        padding: "96px 6%",
+        background: C.offWhite,
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-[#1e4d2f]/60" />
-
-      <Container className="relative z-10">
-
-        {/* Section Heading */}
-        <div className="text-center mb-10">
-
-          <p
-            className="
-              text-[11px]
-              tracking-[0.25em]
-              uppercase
-              text-white/70
-              mb-3
-            "
-          >
-            GUIDE
-          </p>
-
-          <h2
-            className="
-              text-3xl
-              md:text-4xl
-              font-bold
-              tracking-tight
-              text-white
-            "
-          >
-            ガイド紹介
-          </h2>
-
-        </div>
-
-        {/* Card */}
-        <div
-          className="
-            bg-[#faf7f1]/95
-            backdrop-blur-sm
-            shadow-2xl
-            p-8
-            md:p-12
-          "
-        >
-
-          <div
-            className="
-              grid
-              md:grid-cols-[380px_1fr]
-              gap-10
-              md:gap-14
-              items-center
-            "
-          >
-
-            {/* Photo */}
-            <div className="flex justify-center">
-
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80"
-                alt="ずーちゃん"
-                className="
-                  w-full
-                  max-w-[380px]
-                  h-[420px]
-                  object-cover
-                  shadow-lg
-                "
-              />
-
-            </div>
-
-            {/* Text */}
-            <div className="max-w-[560px]">
-
-              <p
-                className="
-                  text-[11px]
-                  tracking-[0.25em]
-                  uppercase
-                  text-[#1e4d2f]
-                  mb-3
-                "
-              >
-                MEET YOUR GUIDE
-              </p>
-
-              <h3
-                className="
-                  text-2xl
-                  md:text-3xl
-                  font-bold
-                  text-[#3d2d21]
-                  mb-2
-                "
-              >
-                ずーちゃん
-              </h3>
-
-              <p
-                className="
-                  text-sm
-                  text-[#8a7666]
-                  mb-5
-                "
-              >
-                Nature Guide in Amami
-              </p>
-
-              <p
-                className="
-                  text-base
-                  md:text-lg
-                  font-semibold
-                  leading-relaxed
-                  text-[#3d2d21]
-                  mb-5
-                "
-              >
-                奄美生まれ、奄美育ち。
-                <br />
-                海も森も大好きなネイチャーガイドです。
-              </p>
-
-              <div
-                className="
-                  space-y-3
-                  text-sm
-                  leading-7
-                  text-[#5c4535]
-                  mb-6
-                "
-              >
-
-                <p>
-                  幼い頃から自然の中で遊びながら育ち、
-                  奄美の海や森、生き物たちの魅力に魅了されてきました。
-                </p>
-
-                <p>
-                  マングローブや森歩き、ナイトツアーなどを通して、
-                  ガイドブックには載っていない奄美の魅力をご案内しています。
-                </p>
-
-                <p>
-                  初めての方やお子さま連れの方にも安心して楽しんでいただけるよう、
-                  一人ひとりのペースに合わせたツアーを心がけています。
-                </p>
-
+      {/* ══ GUIDE ════════════════════════════════════════════ */}
+            {/* 薄いグリーン背景 */}
+            <section id="guide" style={{ padding: '96px 6%', background: C.offWhite }}>
+              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      
+                {/* Section heading */}
+                <div style={{ marginBottom: '64px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', marginBottom: '12px' }}>
+                    <h2 style={{
+                      fontFamily: "'Cabin', sans-serif",
+                      fontSize: 'clamp(52px, 7vw, 88px)',
+                      fontWeight: 700, letterSpacing: '0.04em',
+                      color: C.text, margin: 0, lineHeight: 1,
+                    }}>
+                      GUIDE
+                    </h2>
+                    <span style={{
+                      fontFamily: "'Noto Sans JP', sans-serif",
+                      fontSize: 'clamp(16px, 2vw, 22px)',
+                      fontWeight: 500, color: C.textLight, paddingBottom: '12px',
+                    }}>
+                      ガイド紹介
+                    </span>
+                  </div>
+                  <div style={{ width: '48px', height: '3px', background: C.green, borderRadius: '2px' }} />
+                </div>
+      
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: '80px', alignItems: 'start' }}>
+                  {/* Text */}
+                  <div>
+                    <h3 style={{
+                      fontFamily: "'Noto Sans JP', sans-serif",
+                      fontSize: 'clamp(28px, 3.5vw, 44px)',
+                      fontWeight: 700, color: C.text,
+                      margin: 0, marginBottom: '4px',
+                    }}>
+                      {GUIDE.name}
+                    </h3>
+                    <p style={{ fontSize: '14px', color: C.green, fontWeight: 700, marginBottom: '28px', marginTop: '6px', letterSpacing: '0.04em' }}>
+                      {GUIDE.experience}
+                    </p>
+                    <p style={{ fontSize: '16px', color: C.textLight, lineHeight: 2.1, marginBottom: '40px' }}>
+                      {GUIDE.message}
+                    </p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      {GUIDE.certifications.map(cert => (
+                        <div key={cert} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          <CheckCircle2 size={16} style={{ color: C.green, flexShrink: 0 }} />
+                          <span style={{ fontSize: '14px', color: C.textLight }}>{cert}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+      
+                  {/* Photo */}
+<div
+  style={{
+    borderRadius: "8px",
+    overflow: "hidden",
+    aspectRatio: "3/4",
+    boxShadow: "0 8px 40px rgba(62,140,42,0.12)",
+  }}
+>
+  <ImageWithFallback
+    src="/images/guide.jpeg"
+    alt="ガイド紹介"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      objectPosition: "center top",
+    }}
+  />
+</div>
+                </div>
               </div>
-
-              {/* Licenses */}
-              <div className="flex flex-wrap gap-2">
-
-                <span className="px-3 py-1 text-xs bg-[#efe9df] text-[#5c4535]">
-                  奄美群島認定ガイド
-                </span>
-
-                <span className="px-3 py-1 text-xs bg-[#efe9df] text-[#5c4535]">
-                  救急救命講習修了
-                </span>
-
-                <span className="px-3 py-1 text-xs bg-[#efe9df] text-[#5c4535]">
-                  エコツアーガイド
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </Container>
-
+            </section>
+      {/* 今貼ってくれたsectionの中身をそのまま */}
     </section>
   );
 }
