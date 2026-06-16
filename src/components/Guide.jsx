@@ -54,9 +54,17 @@ export default function Guide() {
                     <p style={{ fontSize: '14px', color: C.green, fontWeight: 700, marginBottom: '28px', marginTop: '6px', letterSpacing: '0.04em' }}>
                       {GUIDE.experience}
                     </p>
-                    <p style={{ fontSize: '16px', color: C.textLight, lineHeight: 2.1, marginBottom: '40px' }}>
-                      {GUIDE.message}
-                    </p>
+                    <p
+  style={{
+    fontSize: '16px',
+    color: C.textLight,
+    lineHeight: 2.1,
+    marginBottom: '40px',
+    whiteSpace: 'pre-line',
+  }}
+>
+  {GUIDE.message}
+</p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       {GUIDE.certifications.map(cert => (
                         <div key={cert} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
