@@ -1,4 +1,6 @@
 import { useState } from "react";
+import TourHero from "../tour/TourHero";
+import TourAbout from "../tour/TourAbout";
 import {
   Leaf,
   ChevronRight,
@@ -13,7 +15,9 @@ import { TOURS, COLORS as C } from "../../siteData";
 const IMG_HERO = "/images/hero.jpeg";
 const IMG_CONTACT = "/images/amami2.jpeg";
 
-const tour = TOURS.find((t) => t.id === "mangrove");
+const tour = TOURS.find(
+  (t) => t.id === "turtle-snorkeling"
+);
 
 const TOUR_DETAILS = tour.details;
 const RECOMMENDED = tour.recommended;
@@ -82,54 +86,9 @@ export default function TourDetailA({ onBack }) {
       </nav>
 
       {/* ══ HERO ══ 写真ヒーロー ════════════════════════════════ */}
-      <section style={{ position: 'relative', height: '60vh', overflow: 'hidden' }}>
-        <img
-          src={IMG_HERO}
-          alt="マングローブカヌーツアー"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }}
-        />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.62) 100%)',
-        }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0 6% 52px' }}>
-          <p style={{
-            fontFamily: "'Cabin', sans-serif", fontSize: '11px', letterSpacing: '0.25em',
-            color: 'rgba(255,255,255,0.65)', marginBottom: '12px',
-          }}>
-            MANGROVE TOUR
-          </p>
-          <h1 style={{
-            fontFamily: "'Noto Sans JP', sans-serif",
-            fontSize: 'clamp(30px, 4.5vw, 58px)',
-            fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.2,
-            textShadow: '0 2px 20px rgba(0,0,0,0.3)',
-          }}>
-            マングローブカヌーツアー
-          </h1>
-          <p style={{ fontSize: 'clamp(13px, 1.4vw, 16px)', color: 'rgba(255,255,255,0.8)', marginTop: '12px' }}>
-            奄美大島のマングローブ林をゆっくり巡る人気のツアーです。
-          </p>
-        </div>
-      </section>
-
+      <TourHero tour={tour} />
       {/* ══ ABOUT ══ ════════════════════════════════════════════ */}
-      <section style={{ padding: '96px 6%', background: C.white }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <SectionHeading en="ABOUT" ja="このツアーについて" />
-          <div style={{ maxWidth: '640px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <p style={{ fontSize: '15px', color: C.textLight, lineHeight: 2.1, margin: 0 }}>
-              奄美大島のマングローブ林をカヌーで巡る人気のツアーです。穏やかな水面をゆっくり進みながら、マングローブや生き物たちを観察できます。
-            </p>
-            <p style={{ fontSize: '15px', color: C.textLight, lineHeight: 2.1, margin: 0 }}>
-              初めての方でも安心してご参加いただけます。少人数でご案内するため、ご家族やご友人同士でもゆったり楽しめます。
-            </p>
-            <p style={{ fontSize: '15px', color: C.textLight, lineHeight: 2.1, margin: 0 }}>
-              奄美らしい自然を気軽に体験したい方におすすめです。
-            </p>
-          </div>
-        </div>
-      </section>
+      <TourAbout tour={tour} />
 
       {/* ══ DETAILS ══ ══════════════════════════════════════════ */}
       <section style={{ padding: '96px 6%', background: C.offWhite }}>
