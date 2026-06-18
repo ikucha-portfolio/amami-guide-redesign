@@ -11,7 +11,9 @@ const cardBase = {
   boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
 };
 
-export default function Tours() {
+export default function Tours({
+  onSelectTour,
+}) {
   return (
     <section
       id="tours"
@@ -36,8 +38,14 @@ export default function Tours() {
             marginBottom: "20px",
           }}
         >
-          <TourCardFeatured tour={TOURS[0]} />
-          <TourCardTall tour={TOURS[1]} />
+          <TourCardFeatured
+  tour={TOURS[0]}
+  onSelectTour={onSelectTour}
+/>
+          <TourCardTall
+  tour={TOURS[1]}
+  onSelectTour={onSelectTour}
+/>
         </div>
 
         <div
@@ -48,11 +56,12 @@ export default function Tours() {
           }}
         >
           {TOURS.slice(2).map((tour) => (
-            <TourCardStandard
-              key={tour.id}
-              tour={tour}
-            />
-          ))}
+  <TourCardStandard
+    key={tour.id}
+    tour={tour}
+    onSelectTour={onSelectTour}
+  />
+))}
         </div>
       </div>
     </section>
@@ -60,16 +69,21 @@ export default function Tours() {
 }
 
 // 横長・特集（グリッド左2/3）
-function TourCardFeatured({ tour }) {
+function TourCardFeatured({
+  tour,
+  onSelectTour,
+}) {
   return (
     <div
-      style={{
-        ...cardBase,
-        position: "relative",
-        cursor: "pointer",
-        aspectRatio: "16/9",
-      }}
-    >
+  onClick={() => onSelectTour?.(tour)}
+  style={{
+    ...cardBase,
+    position: "relative",
+    cursor: "pointer",
+    aspectRatio: "16/9",
+  }}
+>
+    
       <ImageWithFallback
         src={tour.image}
         alt={tour.name}
@@ -143,11 +157,15 @@ function TourCardFeatured({ tour }) {
 }
 
 // 縦長（グリッド右1/3）
-function TourCardTall({ tour }) {
+function TourCardTall({
+  tour,
+  onSelectTour,
+}) {
   return (
     <div
-      style={{
-        ...cardBase,
+  onClick={() => onSelectTour?.(tour)}
+  style={{
+    ...cardBase,
         position: "relative",
         cursor: "pointer",
         height: "100%",
@@ -217,11 +235,15 @@ function TourCardTall({ tour }) {
 }
 
 // 標準カード（下3枚）
-function TourCardStandard({ tour }) {
+function TourCardStandard({
+  tour,
+  onSelectTour,
+}) {
   return (
     <div
-      style={{
-        ...cardBase,
+  onClick={() => onSelectTour?.(tour)}
+  style={{
+    ...cardBase,
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",

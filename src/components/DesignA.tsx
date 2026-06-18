@@ -42,7 +42,9 @@ const C = COLORS;
 //  ・白背景・広い余白・クリーンな構成
 // ─────────────────────────────────────────────────────────────
 
-export default function DesignA() {
+export default function DesignA({
+  onSelectTour,
+}) {
   return (
     <div style={{ background: C.white, color: C.text, fontFamily: "'Noto Sans JP', sans-serif" }}>
 
@@ -53,7 +55,9 @@ export default function DesignA() {
      <Hero />
 
       {/* ══ TOURS ════════════════════════════════════════════ */}
-      <Tours />
+      <Tours
+  onSelectTour={onSelectTour}
+/>
 
       {/* ══ GUIDE ════════════════════════════════════════════ */}
       {/* 薄いグリーン背景 */}
