@@ -1,0 +1,241 @@
+import {
+  Clock,
+  Users,
+} from "lucide-react";
+
+import {
+  TOURS,
+  COLORS as C,
+} from "../../siteData";
+
+export default function OtherTours({
+  currentTourId,
+}) {
+  const OTHER_TOURS = TOURS.filter(
+    (t) => t.id !== currentTourId
+  );
+
+  return (
+    <section
+      style={{
+        padding: "96px 6%",
+        background: C.offWhite,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+        }}
+      >
+        <div
+          style={{
+            marginBottom: "40px",
+          }}
+        >
+          <h2
+            style={{
+              fontFamily:
+                "'Noto Sans JP', sans-serif",
+              fontSize: "20px",
+              fontWeight: 700,
+              color: C.text,
+              margin: 0,
+              marginBottom: "12px",
+            }}
+          >
+            他のツアーを見る
+          </h2>
+
+          <div
+            style={{
+              width: "32px",
+              height: "2px",
+              background: C.green,
+              borderRadius: "2px",
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(4, 1fr)",
+            gap: "20px",
+          }}
+        >
+          {OTHER_TOURS.map((tour) => (
+            <div
+              key={tour.id}
+              style={{
+                borderRadius: "6px",
+                overflow: "hidden",
+                background: C.white,
+                boxShadow:
+                  "0 2px 20px rgba(0,0,0,0.08)",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  aspectRatio: "4/3",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src={tour.image}
+                  alt={tour.name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(to top, rgba(10,25,10,0.75) 0%, transparent 55%)",
+                  }}
+                />
+
+                {tour.tag && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "12px",
+                      left: "12px",
+                      background: C.green,
+                      color: "#ffffff",
+                      padding: "3px 11px",
+                      borderRadius: "3px",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {tour.tag}
+                  </div>
+                )}
+
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: "16px 20px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily:
+                        "'Cabin', sans-serif",
+                      fontSize: "10px",
+                      letterSpacing: "0.15em",
+                      color:
+                        "rgba(255,255,255,0.55)",
+                      margin: 0,
+                      marginBottom: "3px",
+                    }}
+                  >
+                    {tour.nameEn.toUpperCase()}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 700,
+                      color: "#ffffff",
+                      margin: 0,
+                    }}
+                  >
+                    {tour.name}
+                  </p>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  padding: "16px 20px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "14px",
+                    alignItems: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "12px",
+                      color: C.textLight,
+                    }}
+                  >
+                    <Clock
+                      size={12}
+                      style={{
+                        color: C.green,
+                      }}
+                    />
+                    {tour.duration}
+                  </span>
+
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      fontSize: "12px",
+                      color: C.textLight,
+                    }}
+                  >
+                    <Users
+                      size={12}
+                      style={{
+                        color: C.green,
+                      }}
+                    />
+                    {tour.target}
+                  </span>
+
+                  <span
+                    style={{
+                      marginLeft: "auto",
+                      fontFamily:
+                        "'Cabin', sans-serif",
+                      fontWeight: 700,
+                      fontSize: "18px",
+                      color: C.green,
+                    }}
+                  >
+                    {tour.price}
+
+                    <span
+                      style={{
+                        fontFamily:
+                          "'Noto Sans JP', sans-serif",
+                        fontSize: "11px",
+                        fontWeight: 400,
+                        color: C.textLight,
+                      }}
+                    >
+                      {tour.priceNote}
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
