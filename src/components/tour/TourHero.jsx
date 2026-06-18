@@ -3,7 +3,7 @@ export default function TourHero({ tour }) {
     <section
       style={{
         position: "relative",
-        height: "60vh",
+        height: "40vh",
         overflow: "hidden",
       }}
     >
@@ -14,7 +14,7 @@ export default function TourHero({ tour }) {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          objectPosition: "center 40%",
+          objectPosition: "center 60%",
         }}
       />
 
@@ -49,19 +49,20 @@ export default function TourHero({ tour }) {
         </p>
 
         <h1
-          style={{
-            fontFamily: "'Noto Sans JP', sans-serif",
-            fontSize: "clamp(24px, 3.5vw, 40px)",
-            fontWeight: 700,
-            color: "#fff",
-            margin: 0,
-            lineHeight: 1.2,
-            textShadow: "0 2px 20px rgba(0,0,0,0.3)",
-            maxWidth: "900px",
-          }}
-        >
-          {tour.name}
-        </h1>
+  style={{
+    fontFamily: "'Noto Sans JP', sans-serif",
+    fontSize: "clamp(22px, 2.5vw, 32px)",
+    fontWeight: 700,
+    color: "#fff",
+    margin: 0,
+    lineHeight: 1.3,
+    letterSpacing: "-0.01em",
+    textShadow: "0 2px 20px rgba(0,0,0,0.3)",
+    maxWidth: "900px",
+  }}
+>
+  {tour.name}
+</h1>
 
         <p
           style={{

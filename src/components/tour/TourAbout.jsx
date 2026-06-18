@@ -4,7 +4,7 @@ export default function TourAbout({ tour }) {
   return (
     <section
       style={{
-        padding: "96px 6%",
+        padding: "64px 6%",
         background: C.white,
       }}
     >
@@ -14,7 +14,8 @@ export default function TourAbout({ tour }) {
           margin: "0 auto",
         }}
       >
-        <div style={{ marginBottom: "40px" }}>
+        {/* Heading */}
+        <div style={{ marginBottom: "20px" }}>
           <h2
             style={{
               fontSize: "20px",
@@ -35,28 +36,29 @@ export default function TourAbout({ tour }) {
           />
         </div>
 
+        {/* Body */}
         <div
-          style={{
-            maxWidth: "700px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-          }}
-        >
-          {tour.about?.map((text, index) => (
-            <p
-              key={index}
-              style={{
-                fontSize: "15px",
-                color: C.textLight,
-                lineHeight: 2.1,
-                margin: 0,
-              }}
-            >
-              {text}
-            </p>
-          ))}
-        </div>
+  style={{
+    maxWidth: "600px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+  }}
+>
+  {tour.about?.map((text, index) => (
+    <p
+      key={index}
+      style={{
+        fontSize: "14px",
+        color: C.textLight,
+        lineHeight: 1.55,
+        margin: 0,
+      }}
+    >
+      {text}
+    </p>
+  ))}
+</div>
       </div>
     </section>
   );
