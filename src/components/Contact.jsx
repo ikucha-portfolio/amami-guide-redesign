@@ -1,4 +1,10 @@
 import { COLORS } from "../siteData";
+import SectionHeader from "./common/SectionHeader";
+
+import {
+  SECTION,
+  CONTAINER,
+} from "../styles/designSystem";
 
 const C = COLORS;
 
@@ -7,42 +13,47 @@ export default function Contact() {
     <section
       id="contact"
       style={{
-        padding: "96px 6%",
+        ...SECTION,
         position: "relative",
         backgroundImage: "url('/images/amami2.jpeg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-        {/* Overlay */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(20, 55, 30, 0.72)',
-          backdropFilter: 'blur(1px)',
-        }} />
-        <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      {/* Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(20, 55, 30, 0.72)",
+          backdropFilter: "blur(1px)",
+        }}
+      />
 
-          {/* Heading */}
-          <div style={{ marginBottom: '56px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', marginBottom: '12px' }}>
-              <h2 style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: 'clamp(52px, 7vw, 88px)',
-                fontWeight: 700, letterSpacing: '0.04em',
-                color: '#fff', margin: 0, lineHeight: 1,
-              }}>
-                CONTACT
-              </h2>
-              <span style={{
-                fontFamily: "'Noto Sans JP', sans-serif",
-                fontSize: 'clamp(15px, 1.8vw, 20px)',
-                fontWeight: 500, color: 'rgba(255,255,255,0.75)', paddingBottom: '14px',
-              }}>
-                お問い合わせ・ご予約
-              </span>
-            </div>
-            <div style={{ width: '44px', height: '3px', background: 'rgba(255,255,255,0.5)', borderRadius: '2px' }} />
-          </div>
+      <div
+        style={{
+          ...CONTAINER,
+          maxWidth: "1000px",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <SectionHeader
+  title="CONTACT"
+  subtitle="お問い合わせ・ご予約"
+  light
+/>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "80px",
+            alignItems: "start",
+          }}
+        >
+          
+        </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
             {/* Left: WHAT TO INCLUDE */}

@@ -1,7 +1,7 @@
 import { TOURS, COLORS } from "../siteData";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { Clock, Users } from "lucide-react";
-
+import SectionHeader from "./common/SectionHeader";
 const C = COLORS;
 
 const cardBase = {
@@ -28,7 +28,10 @@ export default function Tours({
           margin: "0 auto",
         }}
       >
-        {/* TOUR見出しはここに貼る */}
+       <SectionHeader
+  title="TOURS"
+  subtitle="ツアー一覧"
+/>
 
         <div
           style={{

@@ -1,50 +1,52 @@
+import { COLORS } from "../../siteData";
+
+import {
+  SECTION_HEADER,
+  SECTION_TITLE_ROW,
+  SECTION_TITLE,
+  SECTION_SUBTITLE,
+  SECTION_BAR,
+} from "../../styles/designSystem";
+
+const C = COLORS;
+
 export default function SectionHeader({
-  eyebrow,
   title,
-  description,
+  subtitle,
+  light = false,
 }) {
   return (
-    <div className="text-center mb-16">
-
-      {eyebrow && (
-        <p
-          className="
-            text-[11px]
-            tracking-[0.25em]
-            uppercase
-            text-primary
-            mb-3
-          "
+    <div style={SECTION_HEADER}>
+      <div style={SECTION_TITLE_ROW}>
+        <h2
+          style={{
+            ...SECTION_TITLE,
+            color: light ? "#fff" : C.text,
+          }}
         >
-          {eyebrow}
-        </p>
-      )}
+          {title}
+        </h2>
 
-      <h2
-        className="
-          text-3xl
-          md:text-4xl
-          font-bold
-          tracking-tight
-          text-foreground
-        "
-      >
-        {title}
-      </h2>
-
-      {description && (
-        <p
-          className="
-            max-w-2xl
-            mx-auto
-            mt-5
-            text-muted-foreground
-          "
+        <span
+          style={{
+            ...SECTION_SUBTITLE,
+            color: light
+              ? "rgba(255,255,255,0.75)"
+              : C.textLight,
+          }}
         >
-          {description}
-        </p>
-      )}
+          {subtitle}
+        </span>
+      </div>
 
+      <div
+        style={{
+          ...SECTION_BAR,
+          background: light
+            ? "rgba(255,255,255,0.5)"
+            : C.green,
+        }}
+      />
     </div>
   );
 }

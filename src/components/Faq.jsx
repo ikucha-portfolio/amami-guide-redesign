@@ -1,4 +1,10 @@
 import { FAQS, COLORS } from "../siteData";
+import SectionHeader from "./common/SectionHeader";
+
+import {
+  SECTION,
+  CONTAINER,
+} from "../styles/designSystem";
 
 import {
   Accordion,
@@ -12,39 +18,22 @@ const C = COLORS;
 export default function Faq() {
   return (
     <section
-      id="faq"
-      style={{
-        padding: "96px 6%",
-        background: C.white,
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "860px",
-          margin: "0 auto",
-        }}
-      >
-        {/* Section heading */}
-          <div style={{ marginBottom: '56px' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', marginBottom: '12px' }}>
-              <h2 style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: 'clamp(52px, 7vw, 88px)',
-                fontWeight: 700, letterSpacing: '0.04em',
-                color: C.text, margin: 0, lineHeight: 1,
-              }}>
-                FAQ
-              </h2>
-              <span style={{
-                fontFamily: "'Noto Sans JP', sans-serif",
-                fontSize: 'clamp(16px, 2vw, 22px)',
-                fontWeight: 500, color: C.textLight, paddingBottom: '12px',
-              }}>
-                よくある質問
-              </span>
-            </div>
-            <div style={{ width: '48px', height: '3px', background: C.green, borderRadius: '2px' }} />
-          </div>
+  id="faq"
+  style={{
+    ...SECTION,
+    background: C.white,
+  }}
+>
+  <div
+    style={{
+      ...CONTAINER,
+      maxWidth: "860px",
+    }}
+  >
+    <SectionHeader
+      title="FAQ"
+      subtitle="よくある質問"
+    />
 
         <Accordion
           type="single"
