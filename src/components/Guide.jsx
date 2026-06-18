@@ -64,16 +64,16 @@ export default function Guide() {
             </p>
 
             <p
-              style={{
-                fontSize: "16px",
-                color: C.textLight,
-                lineHeight: 2.1,
-                marginBottom: "40px",
-                whiteSpace: "pre-line",
-              }}
-            >
-              {GUIDE.message}
-            </p>
+  style={{
+    fontSize: "15px",
+    color: C.textLight,
+lineHeight: 1.7,
+marginBottom: "28px",
+    whiteSpace: "pre-line",
+  }}
+>
+  {GUIDE.message}
+</p>
 
             <div
               style={{
