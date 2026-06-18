@@ -14,6 +14,7 @@ import {
 export default function TourDetailA({
   tour,
   onBack,
+  onSelectTour,
 }) {
   return (
     <div
@@ -33,7 +34,10 @@ export default function TourDetailA({
 
       <TourFlow tour={tour} />
 
-      <OtherTours currentTourId={tour.id} />
+      <OtherTours
+  currentTourId={tour.id}
+  onSelectTour={onSelectTour}
+/>
 
       <Contact />
 

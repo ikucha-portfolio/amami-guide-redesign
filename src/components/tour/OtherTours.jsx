@@ -10,6 +10,7 @@ import {
 
 export default function OtherTours({
   currentTourId,
+  onSelectTour,
 }) {
   const OTHER_TOURS = TOURS.filter(
     (t) => t.id !== currentTourId
@@ -67,8 +68,9 @@ export default function OtherTours({
         >
           {OTHER_TOURS.map((tour) => (
             <div
-              key={tour.id}
-              style={{
+  key={tour.id}
+  onClick={() => onSelectTour?.(tour)}
+  style={{
                 borderRadius: "6px",
                 overflow: "hidden",
                 background: C.white,
