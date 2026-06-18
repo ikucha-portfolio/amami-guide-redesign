@@ -23,7 +23,7 @@ export default function TourDetailA({
         fontFamily: "'Noto Sans JP', sans-serif",
       }}
     >
-      <Nav />
+      <Nav onBack={onBack} />
 
       <TourHero tour={tour} />
 

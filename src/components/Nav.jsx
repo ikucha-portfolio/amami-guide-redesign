@@ -3,7 +3,9 @@ import { COLORS } from "../siteData";
 
 const C = COLORS;
 
-export default function Nav() {
+export default function Nav({
+  onBack,
+}) {
   return (
     <nav
       style={{
@@ -21,14 +23,21 @@ export default function Nav() {
     >
       {/* Logo */}
       <a
-        href="#"
-        style={{
-          textDecoration: "none",
-          display: "flex",
-          alignItems: "center",
-          gap: "9px",
-        }}
-      >
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+
+    if (onBack) {
+      onBack();
+    }
+  }}
+  style={{
+    textDecoration: "none",
+    display: "flex",
+    alignItems: "center",
+    gap: "9px",
+  }}
+>
         <div
           style={{
             width: "34px",
@@ -82,7 +91,19 @@ export default function Nav() {
           alignItems: "center",
         }}
       >
-        <a href="#hero" style={linkStyle}>ホーム</a>
+        <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+
+    if (onBack) {
+      onBack();
+    }
+  }}
+  style={linkStyle}
+>
+  ホーム
+</a>
         <a href="#tours" style={linkStyle}>ツアー</a>
         <a href="#guide" style={linkStyle}>ガイド</a>
         <a href="#faq" style={linkStyle}>よくある質問</a>
