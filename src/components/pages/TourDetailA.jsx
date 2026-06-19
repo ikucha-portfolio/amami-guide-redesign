@@ -7,6 +7,7 @@ import Contact from "../Contact";
 import OtherTours from "../tour/OtherTours";
 import Footer from "../Footer";
 
+
 import {
   COLORS as C,
 } from "../../siteData";

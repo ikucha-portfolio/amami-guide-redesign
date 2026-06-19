@@ -1,5 +1,8 @@
 import { CheckCircle2 } from "lucide-react";
 import { COLORS as C } from "../../siteData";
+import {
+  CONTAINER,
+} from "../../styles/designSystem";
 
 function SectionHeading({ ja }) {
   return (
@@ -38,11 +41,10 @@ export default function TourInfo({ tour }) {
       }}
     >
       <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-        }}
-      >
+  style={{
+    ...CONTAINER,
+  }}
+>
         <SectionHeading ja="ツアー詳細" />
 
         <div

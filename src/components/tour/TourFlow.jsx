@@ -1,5 +1,7 @@
 import { COLORS as C } from "../../siteData";
-
+import {
+  CONTAINER,
+} from "../../styles/designSystem";
 function SectionHeading({ ja }) {
   return (
     <div style={{ marginBottom: "40px" }}>
@@ -37,11 +39,10 @@ export default function TourFlow({ tour }) {
       }}
     >
       <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-        }}
-      >
+  style={{
+    ...CONTAINER,
+  }}
+>
         <SectionHeading ja="当日の流れ" />
 
         <div

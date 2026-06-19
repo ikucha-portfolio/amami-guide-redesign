@@ -1,4 +1,7 @@
 import { COLORS as C } from "../../siteData";
+import {
+  CONTAINER,
+} from "../../styles/designSystem";
 
 export default function TourAbout({ tour }) {
   return (
@@ -9,11 +12,10 @@ export default function TourAbout({ tour }) {
       }}
     >
       <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-        }}
-      >
+  style={{
+    ...CONTAINER,
+  }}
+>
         {/* Heading */}
         <div style={{ marginBottom: "20px" }}>
           <h2
