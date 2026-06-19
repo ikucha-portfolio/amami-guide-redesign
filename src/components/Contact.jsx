@@ -31,13 +31,12 @@ export default function Contact() {
       />
 
       <div
-        style={{
-          ...CONTAINER,
-          maxWidth: "1000px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
+  style={{
+    ...CONTAINER,
+    position: "relative",
+    zIndex: 1,
+  }}
+>
         <SectionHeader
   title="CONTACT"
   subtitle="お問い合わせ・ご予約"

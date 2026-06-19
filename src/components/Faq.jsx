@@ -25,11 +25,10 @@ export default function Faq() {
   }}
 >
   <div
-    style={{
-      ...CONTAINER,
-      maxWidth: "860px",
-    }}
-  >
+  style={{
+    ...CONTAINER,
+  }}
+>
     <SectionHeader
       title="FAQ"
       subtitle="よくある質問"

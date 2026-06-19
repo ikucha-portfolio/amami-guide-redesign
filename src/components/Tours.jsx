@@ -2,6 +2,11 @@ import { TOURS, COLORS } from "../siteData";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { Clock, Users } from "lucide-react";
 import SectionHeader from "./common/SectionHeader";
+import {
+  SECTION,
+  CONTAINER_WIDE,
+} from "../styles/designSystem";
+
 const C = COLORS;
 
 const cardBase = {
@@ -15,19 +20,19 @@ export default function Tours({
   onSelectTour,
 }) {
   return (
+    
     <section
-      id="tours"
-      style={{
-        padding: "96px 6%",
-        background: C.white,
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-        }}
-      >
+  id="tours"
+  style={{
+    ...SECTION,
+    background: C.white,
+  }}
+>
+<div
+  style={{
+    ...CONTAINER_WIDE,
+  }}
+>
        <SectionHeader
   title="TOURS"
   subtitle="ツアー一覧"

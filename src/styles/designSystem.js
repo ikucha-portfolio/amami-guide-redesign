@@ -5,12 +5,12 @@ export const SECTION = {
 };
 
 export const CONTAINER = {
-  maxWidth: "1200px",
+  maxWidth: "860px",
   margin: "0 auto",
 };
 
 export const CONTAINER_WIDE = {
-  maxWidth: "1280px",
+  maxWidth: "1000px",
   margin: "0 auto",
 };
 
