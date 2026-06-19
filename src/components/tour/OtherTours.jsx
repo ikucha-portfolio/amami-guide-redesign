@@ -1,7 +1,4 @@
-import {
-  Clock,
-  Users,
-} from "lucide-react";
+import { Clock, Users } from "lucide-react";
 
 import {
   TOURS,
@@ -36,8 +33,7 @@ export default function OtherTours({
         >
           <h2
             style={{
-              fontFamily:
-                "'Noto Sans JP', sans-serif",
+              fontFamily: "'Noto Sans JP', sans-serif",
               fontSize: "20px",
               fontWeight: 700,
               color: C.text,
@@ -61,21 +57,19 @@ export default function OtherTours({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "repeat(4, 1fr)",
+            gridTemplateColumns: "repeat(4, 1fr)",
             gap: "20px",
           }}
         >
           {OTHER_TOURS.map((tour) => (
             <div
-  key={tour.id}
-  onClick={() => onSelectTour?.(tour)}
-  style={{
+              key={tour.id}
+              onClick={() => onSelectTour?.(tour)}
+              style={{
                 borderRadius: "6px",
                 overflow: "hidden",
                 background: C.white,
-                boxShadow:
-                  "0 2px 20px rgba(0,0,0,0.08)",
+                boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
                 cursor: "pointer",
               }}
             >
@@ -134,14 +128,12 @@ export default function OtherTours({
                 >
                   <p
                     style={{
-                      fontFamily:
-                        "'Cabin', sans-serif",
-                      fontSize: "10px",
-                      letterSpacing: "0.15em",
-                      color:
-                        "rgba(255,255,255,0.55)",
+                      fontFamily: "'Cabin', sans-serif",
+                      fontSize: "9px",
+                      letterSpacing: "0.12em",
+                      color: "rgba(255,255,255,0.55)",
                       margin: 0,
-                      marginBottom: "3px",
+                      marginBottom: "4px",
                     }}
                   >
                     {tour.nameEn.toUpperCase()}
@@ -149,7 +141,8 @@ export default function OtherTours({
 
                   <p
                     style={{
-                      fontSize: "16px",
+                      fontSize: "13px",
+                      lineHeight: 1.4,
                       fontWeight: 700,
                       color: "#ffffff",
                       margin: 0,
@@ -162,68 +155,79 @@ export default function OtherTours({
 
               <div
                 style={{
-                  padding: "16px 20px",
+                  padding: "14px 16px",
                 }}
               >
                 <div
                   style={{
                     display: "flex",
-                    gap: "14px",
+                    justifyContent: "space-between",
                     alignItems: "center",
+                    gap: "8px",
                   }}
                 >
-                  <span
+                  <div
                     style={{
                       display: "flex",
+                      gap: "12px",
                       alignItems: "center",
-                      gap: "5px",
-                      fontSize: "12px",
-                      color: C.textLight,
+                      minWidth: 0,
                     }}
                   >
-                    <Clock
-                      size={12}
+                    <span
                       style={{
-                        color: C.green,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        fontSize: "11px",
+                        color: C.textLight,
+                        whiteSpace: "nowrap",
                       }}
-                    />
-                    {tour.duration}
-                  </span>
+                    >
+                      <Clock
+                        size={11}
+                        style={{
+                          color: C.green,
+                        }}
+                      />
+                      {tour.duration}
+                    </span>
+
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        fontSize: "11px",
+                        color: C.textLight,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <Users
+                        size={11}
+                        style={{
+                          color: C.green,
+                        }}
+                      />
+                      {tour.target}
+                    </span>
+                  </div>
 
                   <span
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      fontSize: "12px",
-                      color: C.textLight,
-                    }}
-                  >
-                    <Users
-                      size={12}
-                      style={{
-                        color: C.green,
-                      }}
-                    />
-                    {tour.target}
-                  </span>
-
-                  <span
-                    style={{
-                      marginLeft: "auto",
-                      fontFamily:
-                        "'Cabin', sans-serif",
+                      fontFamily: "'Cabin', sans-serif",
                       fontWeight: 700,
-                      fontSize: "18px",
+                      fontSize: "16px",
                       color: C.green,
+                      whiteSpace: "nowrap",
+                      flexShrink: 0,
                     }}
                   >
                     {tour.price}
 
                     <span
                       style={{
-                        fontFamily:
-                          "'Noto Sans JP', sans-serif",
+                        fontFamily: "'Noto Sans JP', sans-serif",
                         fontSize: "11px",
                         fontWeight: 400,
                         color: C.textLight,

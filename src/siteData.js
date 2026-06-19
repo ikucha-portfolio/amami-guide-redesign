@@ -293,13 +293,13 @@ export const TOURS = [
 
   nameEn: "Island Drive",
 
-  duration: "半日〜1日",
+  duration: "半日",
 
   price: "お問い合わせ",
 
   priceNote: "",
 
-  target: "ご年配の方も安心",
+  target: "ご年配も安心",
 
   description:
     "奄美の絶景や隠れた名所を巡る、のんびり楽しめるプライベートドライブツアー。",
