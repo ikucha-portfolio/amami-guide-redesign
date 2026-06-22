@@ -64,7 +64,7 @@ export default function Nav({
               lineHeight: 1.1,
             }}
           >
-            AMAMI
+            Amami
           </div>
 
           <div
@@ -78,7 +78,7 @@ export default function Nav({
               opacity: 0.8,
             }}
           >
-            NATURE GUIDE
+            Sunshine Guide
           </div>
         </div>
       </a>

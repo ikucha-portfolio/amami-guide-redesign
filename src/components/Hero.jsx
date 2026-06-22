@@ -55,9 +55,9 @@ export default function Hero() {
             textShadow: "0 2px 20px rgba(0,0,0,0.3)",
           }}
         >
-          AMAMI
+          Amami
           <br />
-          NATURE GUIDE
+          Sunshine Guide
         </div>
 
         <div
