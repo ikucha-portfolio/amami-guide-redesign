@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TOURS, COLORS } from "../siteData";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { Clock, Users } from "lucide-react";
@@ -16,168 +17,76 @@ const cardBase = {
   boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
 };
 
-export default function Tours({
-  onSelectTour,
-}) {
+export default function Tours({ onSelectTour }) {
   return (
-    
     <section
-  id="tours"
-  style={{
-    ...SECTION,
-    background: C.white,
-  }}
->
-<div
-  style={{
-    ...CONTAINER_WIDE,
-  }}
->
-       <SectionHeader
-  title="TOURS"
-  subtitle="ツアー一覧"
-/>
+      id="tours"
+      style={{
+        ...SECTION,
+        background: C.white,
+      }}
+    >
+      <div
+        style={{
+          ...CONTAINER_WIDE,
+        }}
+      >
+        <SectionHeader title="TOURS" subtitle="ツアー一覧" />
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "2fr 1fr",
-            gap: "20px",
-            marginBottom: "20px",
+            gap: "24px",
+            marginBottom: "24px",
+            alignItems: "stretch",
           }}
         >
           <TourCardFeatured
-  tour={TOURS[0]}
-  onSelectTour={onSelectTour}
-/>
+            tour={TOURS[0]}
+            onSelectTour={onSelectTour}
+          />
+
           <TourCardTall
-  tour={TOURS[1]}
-  onSelectTour={onSelectTour}
-/>
+            tour={TOURS[1]}
+            onSelectTour={onSelectTour}
+          />
         </div>
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "20px",
+            gap: "24px",
+            alignItems: "stretch",
           }}
         >
           {TOURS.slice(2).map((tour) => (
-  <TourCardStandard
-    key={tour.id}
-    tour={tour}
-    onSelectTour={onSelectTour}
-  />
-))}
+            <TourCardStandard
+              key={tour.id}
+              tour={tour}
+              onSelectTour={onSelectTour}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-// 横長・特集（グリッド左2/3）
-function TourCardFeatured({
-  tour,
-  onSelectTour,
-}) {
+function TourCardFeatured({ tour, onSelectTour }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
-  onClick={() => onSelectTour?.(tour)}
-  style={{
-    ...cardBase,
-    position: "relative",
-    cursor: "pointer",
-    aspectRatio: "16/9",
-  }}
->
-    
-      <ImageWithFallback
-        src={tour.image}
-        alt={tour.name}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-      />
-
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to top, rgba(10,25,10,0.82) 0%, transparent 55%)",
-        }}
-      />
-
-      {tour.tag && <TagBadge label={tour.tag} />}
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          padding: "24px 26px",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "'Cabin', sans-serif",
-            fontSize: "11px",
-            letterSpacing: "0.18em",
-            color: "rgba(255,255,255,0.55)",
-            margin: 0,
-            marginBottom: "5px",
-          }}
-        >
-          {tour.nameEn.toUpperCase()}
-        </p>
-
-        <h3
-          style={{
-            fontSize: "22px",
-            fontWeight: 700,
-            color: "#fff",
-            margin: 0,
-            marginBottom: "10px",
-          }}
-        >
-          {tour.name}
-        </h3>
-
-        <p
-          style={{
-            fontSize: "13px",
-            color: "rgba(255,255,255,0.75)",
-            lineHeight: 1.65,
-            marginBottom: "14px",
-          }}
-        >
-          {tour.description}
-        </p>
-
-        <CardMeta tour={tour} light />
-      </div>
-    </div>
-  );
-}
-
-// 縦長（グリッド右1/3）
-function TourCardTall({
-  tour,
-  onSelectTour,
-}) {
-  return (
-    <div
-  onClick={() => onSelectTour?.(tour)}
-  style={{
-    ...cardBase,
+      onClick={() => onSelectTour?.(tour)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        ...cardBase,
         position: "relative",
         cursor: "pointer",
-        height: "100%",
-        minHeight: "280px",
+        aspectRatio: "16 / 9",
       }}
     >
       <ImageWithFallback
@@ -187,7 +96,8 @@ function TourCardTall({
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          minHeight: "280px",
+          transform: isHovered ? "scale(1.045)" : "scale(1)",
+          transition: "transform 0.7s ease",
         }}
       />
 
@@ -196,7 +106,7 @@ function TourCardTall({
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(to top, rgba(10,25,10,0.82) 0%, transparent 50%)",
+            "linear-gradient(to top, rgba(10,25,10,0.84) 0%, rgba(10,25,10,0.22) 48%, rgba(10,25,10,0.04) 100%)",
         }}
       />
 
@@ -205,20 +115,21 @@ function TourCardTall({
       <div
         style={{
           position: "absolute",
-          bottom: 0,
           left: 0,
           right: 0,
-          padding: "20px 22px",
+          bottom: 0,
+          padding: "20px 26px 18px",
         }}
       >
         <p
           style={{
             fontFamily: "'Cabin', sans-serif",
             fontSize: "10px",
-            letterSpacing: "0.18em",
-            color: "rgba(255,255,255,0.5)",
+            letterSpacing: "0.16em",
+            color: "rgba(255,255,255,0.62)",
             margin: 0,
-            marginBottom: "4px",
+            marginBottom: "6px",
+            lineHeight: 1.15,
           }}
         >
           {tour.nameEn.toUpperCase()}
@@ -226,32 +137,155 @@ function TourCardTall({
 
         <h3
           style={{
-            fontSize: "18px",
+            fontSize: "20px",
             fontWeight: 700,
-            color: "#fff",
+            color: "#FFFFFF",
             margin: 0,
-            marginBottom: "10px",
+            marginBottom: "8px",
+            lineHeight: 1.25,
           }}
         >
           {tour.name}
         </h3>
 
-        <CardMeta tour={tour} light />
+        <p
+          style={{
+            fontSize: "12.5px",
+            color: "rgba(255,255,255,0.86)",
+            lineHeight: 1.55,
+            margin: 0,
+            marginBottom: "12px",
+            maxWidth: "88%",
+            whiteSpace: "pre-line",
+          }}
+        >
+          {tour.description}
+        </p>
+
+        <CardMeta
+          tour={tour}
+          light
+          compact
+          priceSize="17px"
+          metaSize="11.5px"
+        />
       </div>
     </div>
   );
 }
 
-// 標準カード（下3枚）
-function TourCardStandard({
-  tour,
-  onSelectTour,
-}) {
+function TourCardTall({ tour, onSelectTour }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
-  onClick={() => onSelectTour?.(tour)}
-  style={{
-    ...cardBase,
+      onClick={() => onSelectTour?.(tour)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        ...cardBase,
+        position: "relative",
+        cursor: "pointer",
+        minHeight: "100%",
+      }}
+    >
+      <ImageWithFallback
+        src={tour.image}
+        alt={tour.name}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transform: isHovered ? "scale(1.045)" : "scale(1)",
+          transition: "transform 0.7s ease",
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(10,25,10,0.90) 0%, rgba(10,25,10,0.38) 55%, rgba(10,25,10,0.08) 100%)",
+        }}
+      />
+
+      {tour.tag && <TagBadge label={tour.tag} />}
+
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          padding: "20px 22px 18px",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Cabin', sans-serif",
+            fontSize: "9.5px",
+            letterSpacing: "0.16em",
+            color: "rgba(255,255,255,0.62)",
+            margin: 0,
+            marginBottom: "6px",
+            lineHeight: 1.15,
+          }}
+        >
+          {tour.nameEn.toUpperCase()}
+        </p>
+
+        <h3
+          style={{
+            fontSize: "16px",
+            fontWeight: 700,
+            color: "#FFFFFF",
+            margin: 0,
+            marginBottom: "8px",
+            lineHeight: 1.3,
+          }}
+        >
+          {tour.name}
+        </h3>
+
+        <p
+          style={{
+            fontSize: "12.5px",
+            color: "rgba(255,255,255,0.86)",
+            lineHeight: 1.55,
+            margin: 0,
+            marginBottom: "12px",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          {tour.description}
+        </p>
+
+        <CardMeta
+          tour={tour}
+          light
+          compact
+          priceSize="16px"
+          metaSize="11.5px"
+        />
+      </div>
+    </div>
+  );
+}
+
+function TourCardStandard({ tour, onSelectTour }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      onClick={() => onSelectTour?.(tour)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        ...cardBase,
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
@@ -260,7 +294,7 @@ function TourCardStandard({
       <div
         style={{
           position: "relative",
-          aspectRatio: "4/3",
+          aspectRatio: "4 / 3",
           overflow: "hidden",
           flexShrink: 0,
         }}
@@ -272,6 +306,8 @@ function TourCardStandard({
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            transform: isHovered ? "scale(1.045)" : "scale(1)",
+            transition: "transform 0.7s ease",
           }}
         />
 
@@ -280,8 +316,7 @@ function TourCardStandard({
 
       <div
         style={{
-          padding: "18px 20px 22px",
-          flex: 1,
+          padding: "14px 18px 16px",
           display: "flex",
           flexDirection: "column",
         }}
@@ -289,11 +324,12 @@ function TourCardStandard({
         <p
           style={{
             fontFamily: "'Cabin', sans-serif",
-            fontSize: "10px",
+            fontSize: "9.5px",
             letterSpacing: "0.15em",
             color: C.green,
             margin: 0,
-            marginBottom: "4px",
+            marginBottom: "5px",
+            lineHeight: 1.15,
           }}
         >
           {tour.nameEn.toUpperCase()}
@@ -301,11 +337,11 @@ function TourCardStandard({
 
         <h3
           style={{
-            fontSize: "16px",
+            fontSize: "15px",
             fontWeight: 700,
             color: C.text,
             margin: 0,
-            marginBottom: "8px",
+            marginBottom: "7px",
             lineHeight: 1.3,
           }}
         >
@@ -314,11 +350,16 @@ function TourCardStandard({
 
         <p
           style={{
-            fontSize: "13px",
+            fontSize: "12.5px",
             color: C.textLight,
-            lineHeight: 1.75,
-            marginBottom: "16px",
-            flex: 1,
+            lineHeight: 1.6,
+            margin: 0,
+            marginBottom: "12px",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+            minHeight: "40px",
           }}
         >
           {tour.description}
@@ -326,11 +367,16 @@ function TourCardStandard({
 
         <div
           style={{
-            paddingTop: "12px",
-            borderTop: "1px solid rgba(62,140,42,0.1)",
+            paddingTop: "10px",
+            borderTop: "1px solid rgba(62,140,42,0.10)",
           }}
         >
-          <CardMeta tour={tour} />
+          <CardMeta
+            tour={tour}
+            compact
+            priceSize="15.5px"
+            metaSize="11.5px"
+          />
         </div>
       </div>
     </div>
@@ -342,15 +388,16 @@ function TagBadge({ label }) {
     <div
       style={{
         position: "absolute",
-        top: "12px",
-        left: "12px",
+        top: "14px",
+        left: "14px",
         background: C.green,
-        color: "#fff",
-        padding: "3px 11px",
-        borderRadius: "3px",
-        fontSize: "11px",
+        color: "#FFFFFF",
+        padding: "4px 11px",
+        borderRadius: "4px",
+        fontSize: "10.5px",
         fontWeight: 700,
-        letterSpacing: "0.04em",
+        letterSpacing: "0.03em",
+        zIndex: 2,
       }}
     >
       {label}
@@ -358,16 +405,23 @@ function TagBadge({ label }) {
   );
 }
 
-function CardMeta({ tour, light = false }) {
-  const dim = light ? "rgba(255,255,255,0.6)" : C.textLight;
-  const priceCol = light ? "#fff" : C.green;
+function CardMeta({
+  tour,
+  light = false,
+  compact = false,
+  priceSize = "18px",
+  metaSize = "12px",
+}) {
+  const textColor = light ? "rgba(255,255,255,0.82)" : C.textLight;
+  const iconColor = light ? "rgba(255,255,255,0.55)" : C.green;
+  const priceColor = light ? "#FFFFFF" : C.green;
 
   return (
     <div
       style={{
         display: "flex",
-        gap: "14px",
         alignItems: "center",
+        gap: compact ? "9px" : "14px",
         flexWrap: "wrap",
       }}
     >
@@ -375,17 +429,18 @@ function CardMeta({ tour, light = false }) {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "5px",
-          fontSize: "12px",
-          color: dim,
+          gap: "4px",
+          fontSize: metaSize,
+          color: textColor,
+          lineHeight: 1.15,
+          whiteSpace: "nowrap",
         }}
       >
         <Clock
-          size={12}
+          size={11.5}
           style={{
-            color: light
-              ? "rgba(255,255,255,0.5)"
-              : C.green,
+            color: iconColor,
+            flexShrink: 0,
           }}
         />
         {tour.duration}
@@ -395,17 +450,18 @@ function CardMeta({ tour, light = false }) {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "5px",
-          fontSize: "12px",
-          color: dim,
+          gap: "4px",
+          fontSize: metaSize,
+          color: textColor,
+          lineHeight: 1.15,
+          whiteSpace: "nowrap",
         }}
       >
         <Users
-          size={12}
+          size={11.5}
           style={{
-            color: light
-              ? "rgba(255,255,255,0.5)"
-              : C.green,
+            color: iconColor,
+            flexShrink: 0,
           }}
         />
         {tour.target}
@@ -416,18 +472,19 @@ function CardMeta({ tour, light = false }) {
           marginLeft: "auto",
           fontFamily: "'Cabin', sans-serif",
           fontWeight: 700,
-          fontSize: "19px",
-          color: priceCol,
+          fontSize: priceSize,
+          color: priceColor,
           lineHeight: 1,
+          whiteSpace: "nowrap",
         }}
       >
         {tour.price}
         <span
           style={{
             fontFamily: "'Noto Sans JP', sans-serif",
-            fontSize: "11px",
+            fontSize: "10.5px",
             fontWeight: 400,
-            color: dim,
+            color: light ? "rgba(255,255,255,0.72)" : C.textLight,
           }}
         >
           {tour.priceNote}

@@ -8,7 +8,7 @@ export const TOURS = [
   priceNote: "〜",
   target: "初心者OK",
   description:
-    "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。奄美らしい自然を満喫できます。",
+    "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。\n奄美らしい自然を満喫できます。",
   tag: "人気No.1",
   image: "/images/hero.jpeg",
 
