@@ -6,7 +6,7 @@ export const TOURS = [
   duration: "約3時間",
   price: "¥9,000",
   priceNote: "〜",
-  target: "初心者・家族連れ",
+  target: "初心者OK",
   description:
     "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。奄美らしい自然を満喫できます。",
   tag: "人気No.1",

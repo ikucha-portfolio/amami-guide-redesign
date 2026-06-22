@@ -108,45 +108,44 @@ export default function Nav({
         <a href="#guide" style={linkStyle}>ガイド</a>
         <a href="#faq" style={linkStyle}>よくある質問</a>
       </div>
+{/* CTA */}
+<div
+  style={{
+    display: "flex",
+    gap: "10px",
+    alignItems: "center",
+  }}
+>
+  <a
+    href="#tours"
+    style={{
+      background: C.green,
+      color: "#fff",
+      padding: "9px 20px",
+      borderRadius: "4px",
+      textDecoration: "none",
+      fontSize: "13px",
+      fontWeight: 700,
+    }}
+  >
+    ツアーを見る
+  </a>
 
-      {/* CTA */}
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          alignItems: "center",
-        }}
-      >
-        <a
-          href="#contact"
-          style={{
-            background: C.green,
-            color: "#fff",
-            padding: "9px 20px",
-            borderRadius: "4px",
-            textDecoration: "none",
-            fontSize: "13px",
-            fontWeight: 700,
-          }}
-        >
-          ツアー予約
-        </a>
-
-        <a
-          href="#contact"
-          style={{
-            border: `1.5px solid ${C.green}`,
-            color: C.green,
-            padding: "8px 18px",
-            borderRadius: "4px",
-            textDecoration: "none",
-            fontSize: "13px",
-            fontWeight: 600,
-          }}
-        >
-          お問い合わせ
-        </a>
-      </div>
+  <a
+    href="#contact"
+    style={{
+      border: `1.5px solid ${C.green}`,
+      color: C.green,
+      padding: "8px 18px",
+      borderRadius: "4px",
+      textDecoration: "none",
+      fontSize: "13px",
+      fontWeight: 600,
+    }}
+  >
+    お問い合わせ
+  </a>
+</div>
     </nav>
   );
 }

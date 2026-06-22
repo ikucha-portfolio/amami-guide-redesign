@@ -1,6 +1,5 @@
-import { Leaf, ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
-import { COLORS as C } from "../siteData";
 
 export default function Hero() {
   return (
@@ -22,7 +21,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Very subtle overlay */}
+      {/* Overlay */}
       <div
         style={{
           position: "absolute",
@@ -32,7 +31,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Centered brand mark */}
+      {/* Center Typography */}
       <div
         style={{
           position: "absolute",
@@ -42,31 +41,17 @@ export default function Hero() {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
+          transform: "translateY(0)",
         }}
       >
         <div
           style={{
-            width: "72px",
-            height: "72px",
-            borderRadius: "50%",
-            border: "2px solid rgba(255,255,255,0.9)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "20px",
-          }}
-        >
-          <Leaf size={30} color="rgba(255,255,255,0.95)" />
-        </div>
-
-        <div
-          style={{
             fontFamily: "'Cabin', sans-serif",
-            fontSize: "clamp(24px, 3.8vw, 48px)",
-            fontWeight: 700,
-            letterSpacing: "0.18em",
-            color: "#fff",
-            lineHeight: 1.1,
+            fontSize: "clamp(24px, 3.2vw, 42px)",
+            fontWeight: 600,
+            letterSpacing: "0.16em",
+            color: "#ffffff",
+            lineHeight: 1.05,
             textShadow: "0 2px 20px rgba(0,0,0,0.3)",
           }}
         >
@@ -87,51 +72,9 @@ export default function Hero() {
         >
           奄美大島の自然を、ガイドと一緒に体験しよう。
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            marginTop: "36px",
-          }}
-        >
-          <a
-            href="#tours"
-            style={{
-              background: C.green,
-              color: "#fff",
-              padding: "13px 32px",
-              borderRadius: "4px",
-              textDecoration: "none",
-              fontWeight: 700,
-              fontSize: "14px",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}
-          >
-            ツアーを見る
-            <ChevronRight size={16} />
-          </a>
-
-          <a
-            href="#guide"
-            style={{
-              background: "rgba(255,255,255,0.18)",
-              color: "#fff",
-              border: "1.5px solid rgba(255,255,255,0.6)",
-              padding: "12px 26px",
-              borderRadius: "4px",
-              textDecoration: "none",
-              fontSize: "14px",
-              fontWeight: 500,
-            }}
-          >
-            ガイドを知る
-          </a>
-        </div>
       </div>
 
+      {/* Scroll */}
       <div
         style={{
           position: "absolute",
