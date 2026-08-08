@@ -23,12 +23,12 @@ export const TOURS = [
 ],
 
   details: [
-    { label: "所要時間", value: "約3時間" },
-    { label: "料金", value: "大人 9,000円 / 子ども 8,000円" },
-    { label: "対象", value: "初心者・お子さま連れ歓迎" },
-    { label: "集合場所", value: "ご予約時にご案内" },
-    { label: "持ち物", value: "濡れても良い服装・タオル・飲み物" },
-  ],
+  { label: "所要時間", value: "約3時間" },
+  { label: "料金", value: "大人 9,000円 / 子ども 8,000円" },
+  { label: "対象", value: "初心者・お子さま連れ歓迎" },
+  { label: "集合場所", value: "マングローブパーク駐車場" },
+  { label: "持ち物", value: "濡れても良い服装・タオル・飲み物" },
+],
 
   recommended: [
     "初めて奄美を訪れる方",
@@ -74,7 +74,7 @@ export const TOURS = [
 
   priceNote: "〜",
 
-  target: "初心者OK",
+  target: "4歳以上",
 
   description:
     "ウミガメと一緒に泳ぎながら記念撮影も楽しめる人気のシュノーケリングツアー。",
@@ -94,12 +94,12 @@ export const TOURS = [
   ],
 
   details: [
-    { label: "所要時間", value: "約2.5時間" },
-    { label: "料金", value: "大人 9,680円 / 子ども 8,580円" },
-    { label: "対象", value: "初心者歓迎" },
-    { label: "集合場所", value: "ご予約時にご案内" },
-    { label: "持ち物", value: "水着・タオル・飲み物" },
-  ],
+  { label: "所要時間", value: "約2.5時間" },
+  { label: "料金", value: "大人 9,680円 / 子ども 8,580円" },
+  { label: "対象", value: "4歳〜" },
+  { label: "集合場所", value: "Oceanz" },
+  { label: "持ち物", value: "水着・着がえ・濡れた水着を入れる袋" },
+],
 
   recommended: [
     "ウミガメを間近で見たい方",
@@ -145,7 +145,7 @@ export const TOURS = [
 
   priceNote: "〜",
 
-  target: "初心者OK",
+  target: "4歳以上",
 
   description:
     "船でサンゴ礁のポイントへ向かい、美しい海中世界を観察する本格シュノーケリング。",
@@ -171,12 +171,12 @@ export const TOURS = [
   ],
 
   details: [
-    { label: "所要時間", value: "約3時間" },
-    { label: "料金", value: "大人 11,000円 / 子ども 9,900円" },
-    { label: "対象", value: "初心者歓迎" },
-    { label: "集合場所", value: "港（詳細はご予約時にご案内）" },
-    { label: "持ち物", value: "水着・タオル・飲み物" },
-  ],
+  { label: "所要時間", value: "約3時間" },
+  { label: "料金", value: "大人 11,000円 / 子ども 9,900円" },
+  { label: "対象", value: "4歳〜" },
+  { label: "集合場所", value: "芦徳漁港" },
+  { label: "持ち物", value: "水着・着がえ・飲みもの・タオル" },
+],
 
   recommended: [
     "シュノーケリングを楽しみたい方",
@@ -293,13 +293,13 @@ export const TOURS = [
 
   nameEn: "Island Drive",
 
-  duration: "半日",
+  duration: "半日 / 1日",
 
-  price: "お問い合わせ",
+  price: "¥10,000",
 
-  priceNote: "",
+  priceNote: "〜",
 
-  target: "ご年配も安心",
+  target: "全年齢OK",
 
   description:
     "奄美の絶景や隠れた名所を巡る、のんびり楽しめるプライベートドライブツアー。",
@@ -323,12 +323,16 @@ export const TOURS = [
   ],
 
   details: [
-    { label: "所要時間", value: "半日〜1日" },
-    { label: "料金", value: "お問い合わせ" },
-    { label: "対象", value: "全年齢OK" },
-    { label: "集合場所", value: "ご宿泊先またはご相談" },
-    { label: "持ち物", value: "飲み物・帽子・カメラなど" },
-  ],
+  { label: "所要時間", value: "半日 約4時間 / 1日 約7時間" },
+  {
+    label: "料金",
+    value:
+      "半日：大人 10,000円 / 小学生以下 7,000円 / 3歳以下 1,000円\n1日：大人 16,000円 / 小学生以下 13,000円 / 3歳以下 1,000円",
+  },
+  { label: "対象", value: "全年齢OK" },
+  { label: "集合場所", value: "ご宿泊先またはご相談" },
+  { label: "持ち物", value: "飲みもの・日焼け止め・サングラス" },
+],
 
   recommended: [
     "のんびり観光を楽しみたい方",

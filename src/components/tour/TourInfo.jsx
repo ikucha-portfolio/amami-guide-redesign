@@ -1,8 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import { COLORS as C } from "../../siteData";
-import {
-  CONTAINER,
-} from "../../styles/designSystem";
+import { CONTAINER } from "../../styles/designSystem";
 
 function SectionHeading({ ja }) {
   return (
@@ -32,6 +30,93 @@ function SectionHeading({ ja }) {
   );
 }
 
+function DetailValue({ row }) {
+  const isMultiLinePrice =
+    row.label === "料金" && typeof row.value === "string" && row.value.includes("\n");
+
+  if (!isMultiLinePrice) {
+    return (
+      <span
+        style={{
+          fontSize: "14px",
+          color: C.textLight,
+          lineHeight: 1.7,
+          whiteSpace: "pre-line",
+          flex: 1,
+        }}
+      >
+        {row.value}
+      </span>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        fontSize: "14px",
+        color: C.textLight,
+        lineHeight: 1.7,
+      }}
+    >
+      {row.value.split("\n").map((line, index) => {
+        const [plan, priceText = ""] = line.split("：");
+        const prices = priceText.split(" / ");
+
+        return (
+          <div
+            key={index}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "64px 1fr",
+              columnGap: "16px",
+              alignItems: "start",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "14px",
+                fontWeight: 400,
+                color: C.textLight,
+                lineHeight: 1.7,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {plan}
+            </span>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "2px",
+              }}
+            >
+              {prices.map((price, priceIndex) => (
+                <span
+                  key={priceIndex}
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    color: C.textLight,
+                    lineHeight: 1.7,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {price}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function TourInfo({ tour }) {
   return (
     <section
@@ -41,10 +126,10 @@ export default function TourInfo({ tour }) {
       }}
     >
       <div
-  style={{
-    ...CONTAINER,
-  }}
->
+        style={{
+          ...CONTAINER,
+        }}
+      >
         <SectionHeading ja="ツアー詳細" />
 
         <div
@@ -68,7 +153,7 @@ export default function TourInfo({ tour }) {
                 key={i}
                 style={{
                   display: "flex",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   padding: "18px 28px",
                   background: C.white,
                   borderBottom:
@@ -84,19 +169,13 @@ export default function TourInfo({ tour }) {
                     fontSize: "14px",
                     fontWeight: 600,
                     color: C.text,
+                    lineHeight: 1.7,
                   }}
                 >
                   {row.label}
                 </span>
 
-                <span
-                  style={{
-                    fontSize: "14px",
-                    color: C.textLight,
-                  }}
-                >
-                  {row.value}
-                </span>
+                <DetailValue row={row} />
               </div>
             ))}
           </div>
@@ -110,6 +189,7 @@ export default function TourInfo({ tour }) {
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 color: C.green,
+                margin: 0,
                 marginBottom: "20px",
               }}
             >
@@ -167,6 +247,7 @@ export default function TourInfo({ tour }) {
                   fontWeight: 700,
                   letterSpacing: "0.2em",
                   color: C.green,
+                  margin: 0,
                   marginBottom: "12px",
                 }}
               >
@@ -199,6 +280,7 @@ export default function TourInfo({ tour }) {
                   style={{
                     fontSize: "12px",
                     color: C.textLight,
+                    margin: 0,
                     marginTop: "6px",
                     lineHeight: 1.7,
                   }}
