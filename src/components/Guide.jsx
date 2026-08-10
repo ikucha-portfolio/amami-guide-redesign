@@ -121,7 +121,7 @@ marginBottom: "28px",
             }}
           >
             <ImageWithFallback
-              src="/images/guide.jpeg"
+              src="/images/guide1.jpeg"
               alt="ガイド紹介"
               style={{
                 width: "100%",
