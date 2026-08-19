@@ -81,7 +81,7 @@ export const TOURS = [
 
   tag: "おすすめ",
 
-  image: "/images/umigame.jpeg",
+  image: "/images/umigame_1.jpeg",
 
   about: [
     "さあ、奄美の美しい海の世界へ。",
@@ -152,7 +152,7 @@ export const TOURS = [
 
   tag: "海満喫",
 
-  image: "/images/night2.jpeg",
+  image: "/images/boat.jpeg",
 
   about: [
     "さあ、船に乗って特別な海の世界へ出航しましょう。",
@@ -216,7 +216,7 @@ export const TOURS = [
 
   nameEn: "Night Tour",
 
-  duration: "約2時間",
+  duration: "約2.5時間",
 
   price: "¥8,000",
 
@@ -248,7 +248,7 @@ export const TOURS = [
   ],
 
   details: [
-    { label: "所要時間", value: "約2時間" },
+    { label: "所要時間", value: "約2.5時間" },
     { label: "料金", value: "大人 8,000円 / 小学生 5,000円" },
     { label: "対象", value: "全年齢OK" },
     { label: "集合場所", value: "ご予約時にご案内" },

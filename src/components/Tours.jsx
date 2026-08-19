@@ -36,7 +36,7 @@ export default function Tours({ onSelectTour }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "2fr 1fr",
+            gridTemplateColumns: "minmax(0, 2fr) minmax(0, 1fr)",
             gap: "24px",
             marginBottom: "24px",
             alignItems: "stretch",
@@ -83,23 +83,27 @@ function TourCardFeatured({ tour, onSelectTour }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        ...cardBase,
-        position: "relative",
-        cursor: "pointer",
-        aspectRatio: "16 / 9",
-      }}
+  ...cardBase,
+  position: "relative",
+  cursor: "pointer",
+  aspectRatio: "16 / 9",
+  minWidth: 0,
+}}
     >
       <ImageWithFallback
-        src={tour.image}
-        alt={tour.name}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          transform: isHovered ? "scale(1.045)" : "scale(1)",
-          transition: "transform 0.7s ease",
-        }}
-      />
+  src={tour.image}
+  alt={tour.name}
+  style={{
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    transform: isHovered ? "scale(1.045)" : "scale(1)",
+    transition: "transform 0.7s ease",
+  }}
+/>
+    
 
       <div
         style={{
@@ -183,23 +187,27 @@ function TourCardTall({ tour, onSelectTour }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        ...cardBase,
-        position: "relative",
-        cursor: "pointer",
-        minHeight: "100%",
-      }}
+  ...cardBase,
+  position: "relative",
+  cursor: "pointer",
+  minHeight: 0,
+  minWidth: 0,
+  height: "100%",
+}}
     >
       <ImageWithFallback
-        src={tour.image}
-        alt={tour.name}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          transform: isHovered ? "scale(1.045)" : "scale(1)",
-          transition: "transform 0.7s ease",
-        }}
-      />
+  src={tour.image}
+  alt={tour.name}
+  style={{
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    transform: isHovered ? "scale(1.045)" : "scale(1)",
+    transition: "transform 0.7s ease",
+  }}
+/>
 
       <div
         style={{
