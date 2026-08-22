@@ -34,7 +34,9 @@ export default function Nav({ onBack }) {
   // ========================================
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const mediaQuery = window.matchMedia(
+      "(max-width: 768px)"
+    );
 
     const handleResize = () => {
       setIsMobile(mediaQuery.matches);
@@ -49,47 +51,168 @@ export default function Nav({ onBack }) {
     mediaQuery.addEventListener("change", handleResize);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleResize);
+      mediaQuery.removeEventListener(
+        "change",
+        handleResize
+      );
     };
   }, []);
+
+  // ========================================
+  // Lock body scroll while menu is open
+  // ========================================
+
+  useEffect(() => {
+    if (isMenuOpen && isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen, isMobile]);
 
   // ========================================
   // Navigation
   // ========================================
 
-  const handleHomeClick = (e) => {
-    e.preventDefault();
-    setIsMenuOpen(false);
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
 
-    if (onBack) {
-      onBack();
-    } else {
-      window.location.href = "#";
+    if (!element) {
+      return false;
     }
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    return true;
   };
 
-  const handleMenuLinkClick = () => {
+  // ----------------------------------------
+  // Home
+  // ----------------------------------------
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+
     setIsMenuOpen(false);
+
+    // Home上にいる場合
+    if (scrollToSection("top")) {
+      return;
+    }
+
+    // 詳細ページなどからHomeへ戻る
+    if (onBack) {
+      onBack();
+
+      // Home描画後にトップへ
+      setTimeout(() => {
+        const top = document.getElementById("top");
+
+        if (top) {
+          top.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        } else {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }
+      }, 150);
+
+      return;
+    }
+
+    // フォールバック
+    window.location.href = "/";
+  };
+
+  // ----------------------------------------
+  // Home Section
+  // ----------------------------------------
+
+  const handleSectionClick = (e, sectionId) => {
+    e.preventDefault();
+
+    setIsMenuOpen(false);
+
+    // Home上に該当セクションがある場合
+    if (scrollToSection(sectionId)) {
+      return;
+    }
+
+    // 詳細ページなどからHomeへ戻る
+    if (onBack) {
+      onBack();
+
+      // Home描画後に該当セクションへ移動
+      setTimeout(() => {
+        const element =
+          document.getElementById(sectionId);
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 150);
+
+      return;
+    }
+
+    // フォールバック
+    window.location.href = `/#${sectionId}`;
   };
 
   // ========================================
   // Header Colors
   // ========================================
 
-  const textColor = isScrolled ? C.textLight : "#FFFFFF";
-  const logoColor = isScrolled ? C.green : "#FFFFFF";
+  // メニューを開いている間は
+  // 屋号と×を常に緑色＋白背景にする
+  const textColor =
+    isMenuOpen
+      ? C.textLight
+      : isScrolled
+      ? C.textLight
+      : "#FFFFFF";
 
-  const navBackground = isScrolled
-    ? "rgba(255,255,255,0.96)"
-    : "rgba(255,255,255,0)";
+  const logoColor =
+    isMenuOpen
+      ? C.green
+      : isScrolled
+      ? C.green
+      : "#FFFFFF";
 
-  const navShadow = isScrolled
-    ? "0 8px 28px rgba(0,0,0,0.08)"
-    : "none";
+  const navBackground =
+    isMenuOpen
+      ? "#FFFFFF"
+      : isScrolled
+      ? "rgba(255,255,255,0.96)"
+      : "rgba(255,255,255,0)";
 
-  const dividerColor = isScrolled
-    ? "rgba(62,140,42,0.14)"
-    : "rgba(255,255,255,0.34)";
+  const navShadow =
+    isMenuOpen
+      ? "0 4px 20px rgba(0,0,0,0.06)"
+      : isScrolled
+      ? "0 8px 28px rgba(0,0,0,0.08)"
+      : "none";
+
+  const dividerColor =
+    isMenuOpen
+      ? "rgba(62,140,42,0.14)"
+      : isScrolled
+      ? "rgba(62,140,42,0.14)"
+      : "rgba(255,255,255,0.34)";
 
   return (
     <>
@@ -103,7 +226,10 @@ export default function Nav({ onBack }) {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 200,
+
+          // メニューを開いたときも
+          // メニューより必ず前面に表示
+          zIndex: 300,
 
           height: "64px",
 
@@ -111,15 +237,22 @@ export default function Nav({ onBack }) {
           alignItems: "center",
           justifyContent: "space-between",
 
-          padding: isMobile ? "0 20px" : "0 6%",
+          padding: isMobile
+            ? "0 20px"
+            : "0 6%",
 
           background: navBackground,
           boxShadow: navShadow,
 
-          backdropFilter: isScrolled ? "blur(10px)" : "none",
-          WebkitBackdropFilter: isScrolled
-            ? "blur(10px)"
-            : "none",
+          backdropFilter:
+            isScrolled && !isMenuOpen
+              ? "blur(10px)"
+              : "none",
+
+          WebkitBackdropFilter:
+            isScrolled && !isMenuOpen
+              ? "blur(10px)"
+              : "none",
 
           transition:
             "background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease",
@@ -152,7 +285,8 @@ export default function Nav({ onBack }) {
               border: `2px solid ${logoColor}`,
               borderRadius: "50%",
 
-              transition: "border-color 0.35s ease",
+              transition:
+                "border-color 0.35s ease",
             }}
           >
             <Leaf
@@ -172,7 +306,8 @@ export default function Nav({ onBack }) {
                 lineHeight: 1.1,
                 color: logoColor,
 
-                transition: "color 0.35s ease",
+                transition:
+                  "color 0.35s ease",
               }}
             >
               Amami
@@ -189,7 +324,13 @@ export default function Nav({ onBack }) {
                 lineHeight: 1.1,
 
                 color: logoColor,
-                opacity: isScrolled ? 0.8 : 0.9,
+
+                opacity:
+                  isMenuOpen
+                    ? 0.8
+                    : isScrolled
+                    ? 0.8
+                    : 0.9,
 
                 transition:
                   "color 0.35s ease, opacity 0.35s ease",
@@ -226,6 +367,9 @@ export default function Nav({ onBack }) {
 
               <a
                 href="#tours"
+                onClick={(e) =>
+                  handleSectionClick(e, "tours")
+                }
                 style={{
                   ...linkStyle,
                   color: textColor,
@@ -236,6 +380,9 @@ export default function Nav({ onBack }) {
 
               <a
                 href="#guide"
+                onClick={(e) =>
+                  handleSectionClick(e, "guide")
+                }
                 style={{
                   ...linkStyle,
                   color: textColor,
@@ -246,6 +393,9 @@ export default function Nav({ onBack }) {
 
               <a
                 href="#faq"
+                onClick={(e) =>
+                  handleSectionClick(e, "faq")
+                }
                 style={{
                   ...linkStyle,
                   color: textColor,
@@ -266,6 +416,12 @@ export default function Nav({ onBack }) {
             >
               <a
                 href="#tours"
+                onClick={(e) =>
+                  handleSectionClick(
+                    e,
+                    "tours"
+                  )
+                }
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -283,11 +439,13 @@ export default function Nav({ onBack }) {
 
                   textDecoration: "none",
 
-                  boxShadow: isScrolled
-                    ? "none"
-                    : "0 4px 16px rgba(0,0,0,0.16)",
+                  boxShadow:
+                    isScrolled
+                      ? "none"
+                      : "0 4px 16px rgba(0,0,0,0.16)",
 
-                  transition: "box-shadow 0.35s ease",
+                  transition:
+                    "box-shadow 0.35s ease",
                 }}
               >
                 ツアーを見る
@@ -295,6 +453,12 @@ export default function Nav({ onBack }) {
 
               <a
                 href="#contact"
+                onClick={(e) =>
+                  handleSectionClick(
+                    e,
+                    "contact"
+                  )
+                }
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -302,17 +466,20 @@ export default function Nav({ onBack }) {
 
                   padding: "8px 18px",
 
-                  background: isScrolled
-                    ? "transparent"
-                    : "rgba(255,255,255,0.08)",
+                  background:
+                    isScrolled
+                      ? "transparent"
+                      : "rgba(255,255,255,0.08)",
 
-                  color: isScrolled
-                    ? C.green
-                    : "#FFFFFF",
+                  color:
+                    isScrolled
+                      ? C.green
+                      : "#FFFFFF",
 
-                  border: isScrolled
-                    ? `1.5px solid ${C.green}`
-                    : "1.5px solid rgba(255,255,255,0.85)",
+                  border:
+                    isScrolled
+                      ? `1.5px solid ${C.green}`
+                      : "1.5px solid rgba(255,255,255,0.85)",
 
                   borderRadius: "4px",
 
@@ -338,7 +505,9 @@ export default function Nav({ onBack }) {
         {isMobile && (
           <button
             type="button"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
+            onClick={() =>
+              setIsMenuOpen((prev) => !prev)
+            }
             aria-label={
               isMenuOpen
                 ? "メニューを閉じる"
@@ -362,7 +531,8 @@ export default function Nav({ onBack }) {
 
               cursor: "pointer",
 
-              transition: "color 0.35s ease",
+              transition:
+                "color 0.35s ease",
             }}
           >
             {isMenuOpen ? (
@@ -395,9 +565,14 @@ export default function Nav({ onBack }) {
 
             background: dividerColor,
 
-            transform: "translateX(-50%)",
+            transform:
+              "translateX(-50%)",
 
-            opacity: isScrolled ? 1 : 0.9,
+            opacity: isMenuOpen
+              ? 1
+              : isScrolled
+              ? 1
+              : 0.9,
 
             pointerEvents: "none",
 
@@ -415,8 +590,12 @@ export default function Nav({ onBack }) {
         <div
           style={{
             position: "fixed",
-            inset: 0,
-            zIndex: 150,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+
+            zIndex: 250,
 
             background: "#FFFFFF",
 
@@ -424,13 +603,15 @@ export default function Nav({ onBack }) {
 
             opacity: isMenuOpen ? 1 : 0,
 
-            visibility: isMenuOpen
-              ? "visible"
-              : "hidden",
+            visibility:
+              isMenuOpen
+                ? "visible"
+                : "hidden",
 
-            transform: isMenuOpen
-              ? "translateY(0)"
-              : "translateY(-12px)",
+            transform:
+              isMenuOpen
+                ? "translateY(0)"
+                : "translateY(-12px)",
 
             transition:
               "opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease",
@@ -443,14 +624,21 @@ export default function Nav({ onBack }) {
               display: "flex",
               flexDirection: "column",
 
-              padding: "96px 28px 40px",
+              // Header 64px分だけ下から
+              // メニューを開始
+              padding:
+                "64px 28px 40px",
             }}
           >
             {/* ========================================
                 Menu Links
             ======================================== */}
 
-            <div>
+            <div
+              style={{
+                paddingTop: "28px",
+              }}
+            >
               <MobileLink
                 href="#"
                 onClick={handleHomeClick}
@@ -460,21 +648,36 @@ export default function Nav({ onBack }) {
 
               <MobileLink
                 href="#tours"
-                onClick={handleMenuLinkClick}
+                onClick={(e) =>
+                  handleSectionClick(
+                    e,
+                    "tours"
+                  )
+                }
               >
                 ツアー
               </MobileLink>
 
               <MobileLink
                 href="#guide"
-                onClick={handleMenuLinkClick}
+                onClick={(e) =>
+                  handleSectionClick(
+                    e,
+                    "guide"
+                  )
+                }
               >
                 ガイド
               </MobileLink>
 
               <MobileLink
                 href="#faq"
-                onClick={handleMenuLinkClick}
+                onClick={(e) =>
+                  handleSectionClick(
+                    e,
+                    "faq"
+                  )
+                }
               >
                 よくある質問
               </MobileLink>
@@ -493,60 +696,91 @@ export default function Nav({ onBack }) {
                   "1px solid rgba(62,140,42,0.14)",
               }}
             >
-              <a
-                href="#tours"
-                onClick={handleMenuLinkClick}
+              <div
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  width: "100%",
-                  height: "48px",
-
-                  background: C.green,
-                  color: "#FFFFFF",
-
-                  borderRadius: "4px",
-
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  letterSpacing: "0.04em",
-
-                  textDecoration: "none",
+                  display: "grid",
+                  gridTemplateColumns:
+                    "1fr 1fr",
+                  gap: "10px",
                 }}
               >
-                ツアーを見る
-              </a>
+                {/* ツアーを見る */}
 
-              <a
-                href="#contact"
-                onClick={handleMenuLinkClick}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                <a
+                  href="#tours"
+                  onClick={(e) =>
+                    handleSectionClick(
+                      e,
+                      "tours"
+                    )
+                  }
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
 
-                  width: "100%",
-                  height: "48px",
+                    height: "48px",
 
-                  marginTop: "10px",
+                    background: C.green,
+                    color: "#FFFFFF",
 
-                  background: "#FFFFFF",
-                  color: C.green,
+                    borderRadius: "4px",
 
-                  border: `1.5px solid ${C.green}`,
-                  borderRadius: "4px",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    letterSpacing: "0.04em",
 
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  letterSpacing: "0.04em",
+                    textDecoration: "none",
 
-                  textDecoration: "none",
-                }}
-              >
-                お問い合わせ
-              </a>
+                    boxSizing: "border-box",
+
+                    transition:
+                      "opacity 0.2s ease, transform 0.2s ease",
+                  }}
+                >
+                  ツアーを見る
+                </a>
+
+                {/* お問い合わせ */}
+
+                <a
+                  href="#contact"
+                  onClick={(e) =>
+                    handleSectionClick(
+                      e,
+                      "contact"
+                    )
+                  }
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    height: "48px",
+
+                    background: "#FFFFFF",
+                    color: C.green,
+
+                    border:
+                      `1.5px solid ${C.green}`,
+
+                    borderRadius: "4px",
+
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    letterSpacing: "0.04em",
+
+                    textDecoration: "none",
+
+                    boxSizing: "border-box",
+
+                    transition:
+                      "background 0.2s ease, transform 0.2s ease",
+                  }}
+                >
+                  お問い合わせ
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -571,7 +805,11 @@ const linkStyle = {
    Mobile Link
 ======================================== */
 
-function MobileLink({ href, onClick, children }) {
+function MobileLink({
+  href,
+  onClick,
+  children,
+}) {
   return (
     <a
       href={href}
@@ -585,9 +823,11 @@ function MobileLink({ href, onClick, children }) {
         borderBottom:
           "1px solid rgba(62,140,42,0.14)",
 
-        color: "#1D251D",
+        color: C.textLight,
 
-        fontFamily: "'Noto Sans JP', sans-serif",
+        fontFamily:
+          "'Noto Sans JP', sans-serif",
+
         fontSize: "18px",
         fontWeight: 700,
         letterSpacing: "0.02em",
