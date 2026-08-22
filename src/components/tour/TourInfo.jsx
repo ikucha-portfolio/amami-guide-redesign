@@ -1,4 +1,3 @@
-import { CheckCircle2 } from "lucide-react";
 import { COLORS as C } from "../../siteData";
 import { CONTAINER } from "../../styles/designSystem";
 
@@ -32,7 +31,9 @@ function SectionHeading({ ja }) {
 
 function DetailValue({ row }) {
   const isMultiLinePrice =
-    row.label === "料金" && typeof row.value === "string" && row.value.includes("\n");
+    row.label === "料金" &&
+    typeof row.value === "string" &&
+    row.value.includes("\n");
 
   if (!isMultiLinePrice) {
     return (
@@ -180,20 +181,20 @@ export default function TourInfo({ tour }) {
             ))}
           </div>
 
-          {/* Recommended */}
+          {/* おすすめ・安心ポイント */}
           <div>
             <p
               style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: "11px",
+                fontFamily: "'Noto Sans JP', sans-serif",
+                fontSize: "16px",
                 fontWeight: 700,
-                letterSpacing: "0.2em",
+                letterSpacing: "0.08em",
                 color: C.green,
                 margin: 0,
                 marginBottom: "20px",
               }}
             >
-              RECOMMENDED FOR
+              おすすめ・安心ポイント
             </p>
 
             <div
@@ -209,22 +210,27 @@ export default function TourInfo({ tour }) {
                   key={i}
                   style={{
                     display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
+                    alignItems: "flex-start",
+                    gap: "10px",
                   }}
                 >
-                  <CheckCircle2
-                    size={16}
+                  <span
                     style={{
                       color: C.green,
+                      fontSize: "15px",
+                      fontWeight: 700,
+                      lineHeight: 1.5,
                       flexShrink: 0,
                     }}
-                  />
+                  >
+                    ✔
+                  </span>
 
                   <span
                     style={{
                       fontSize: "15px",
                       color: C.textLight,
+                      lineHeight: 1.5,
                     }}
                   >
                     {item}
@@ -233,7 +239,7 @@ export default function TourInfo({ tour }) {
               ))}
             </div>
 
-            {/* Cancellation */}
+            {/* キャンセルポリシー */}
             <div
               style={{
                 borderTop: `1px solid rgba(62,140,42,0.15)`,
@@ -242,16 +248,16 @@ export default function TourInfo({ tour }) {
             >
               <p
                 style={{
-                  fontFamily: "'Cabin', sans-serif",
-                  fontSize: "11px",
+                  fontFamily: "'Noto Sans JP', sans-serif",
+                  fontSize: "16px",
                   fontWeight: 700,
-                  letterSpacing: "0.2em",
+                  letterSpacing: "0.08em",
                   color: C.green,
                   margin: 0,
-                  marginBottom: "12px",
+                  marginBottom: "16px",
                 }}
               >
-                CANCELLATION POLICY
+                キャンセルポリシー
               </p>
 
               <div
@@ -259,6 +265,9 @@ export default function TourInfo({ tour }) {
                   display: "flex",
                   flexDirection: "column",
                   gap: "8px",
+                  fontSize: "14px",
+                  color: C.textLight,
+                  lineHeight: 1.7,
                 }}
               >
                 <div style={{ display: "flex", gap: "12px" }}>
