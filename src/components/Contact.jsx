@@ -12,6 +12,13 @@ const LINE_URL = "https://line.me/ti/p/YDpNqHNQou";
 const INSTAGRAM_URL = "https://www.instagram.com/seasummer630/";
 
 export default function Contact() {
+  const contactItems = [
+    "希望のツアー名（未定でもOK）",
+    "参加人数・年齢（お子様がいる場合も）",
+    "希望の日程・時間帯",
+    "その他、ご質問・ご要望など",
+  ];
+
   return (
     <section
       id="contact"
@@ -21,8 +28,6 @@ export default function Contact() {
         backgroundImage: "url('/images/amami2.jpeg')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
-
-        // Parallax
         backgroundAttachment: "fixed",
       }}
     >
@@ -33,6 +38,7 @@ export default function Contact() {
           inset: 0,
           background: "rgba(20, 55, 30, 0.72)",
           backdropFilter: "blur(1px)",
+          WebkitBackdropFilter: "blur(1px)",
         }}
       />
 
@@ -43,13 +49,16 @@ export default function Contact() {
           zIndex: 1,
         }}
       >
+        {/* Section Header */}
         <SectionHeader
           title="CONTACT"
           subtitle="お問い合わせ・ご予約"
           light
         />
 
+        {/* Contact Content */}
         <div
+          className="contact-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -57,31 +66,26 @@ export default function Contact() {
             alignItems: "start",
           }}
         >
-          {/* Left: WHAT TO INCLUDE */}
-          <div>
-            <div
-              style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.55)",
-                marginBottom: "18px",
-              }}
-            >
+          {/* ========================================
               WHAT TO INCLUDE
-            </div>
+          ======================================== */}
+
+          <div>
+            <ContactLabel>
+              WHAT TO INCLUDE
+            </ContactLabel>
 
             <p
               style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.85)",
-                lineHeight: 1.85,
-                margin: 0,
-                marginBottom: "28px",
+                fontSize: "15px",
+                color: "rgba(255,255,255,0.88)",
+                lineHeight: 1.9,
+                margin: "0 0 24px",
               }}
             >
-              お問い合わせの際は、以下を教えていただくとスムーズです。
+              お問い合わせの際は、
+              <br />
+              以下を教えていただくとスムーズです。
             </p>
 
             <div
@@ -90,31 +94,28 @@ export default function Contact() {
                 flexDirection: "column",
               }}
             >
-              {[
-                "希望のツアー名（未定でもOK）",
-                "参加人数・年齢（お子様がいる場合も）",
-                "希望の日程・時間帯",
-                "その他、ご質問・ご要望など",
-              ].map((item, i) => (
+              {contactItems.map((item, index) => (
                 <div
                   key={item}
                   style={{
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",
-                    padding: "14px 0",
+                    padding: "13px 0",
                     borderBottom:
-                      i < 3
+                      index < contactItems.length - 1
                         ? "1px solid rgba(255,255,255,0.15)"
                         : "none",
                   }}
                 >
+                  {/* Number */}
                   <div
                     style={{
-                      width: "26px",
-                      height: "26px",
+                      width: "28px",
+                      height: "28px",
                       borderRadius: "50%",
-                      background: "rgba(255,255,255,0.2)",
+                      background:
+                        "rgba(255,255,255,0.18)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -125,13 +126,15 @@ export default function Contact() {
                       color: "#FFFFFF",
                     }}
                   >
-                    {i + 1}
+                    {index + 1}
                   </div>
 
+                  {/* Text */}
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "rgba(255,255,255,0.88)",
+                      color: "rgba(255,255,255,0.9)",
+                      lineHeight: 1.6,
                     }}
                   >
                     {item}
@@ -141,81 +144,57 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right: HOW TO CONTACT */}
-          <div>
-            <div
-              style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.55)",
-                marginBottom: "18px",
-              }}
-            >
+          {/* ========================================
               HOW TO CONTACT
-            </div>
+          ======================================== */}
+
+          <div>
+            <ContactLabel>
+              HOW TO CONTACT
+            </ContactLabel>
 
             <p
               style={{
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.85)",
-                lineHeight: 1.85,
-                margin: 0,
-                marginBottom: "28px",
+                fontSize: "15px",
+                color: "rgba(255,255,255,0.88)",
+                lineHeight: 1.9,
+                margin: "0 0 24px",
               }}
             >
-              LINEまたはInstagramのDMでお気軽にご連絡ください。
+              LINEまたはInstagramのDMで
+              <br />
+              お気軽にご連絡ください。
               <br />
               通常1日以内にご返信します。
             </p>
 
+            {/* Contact Buttons */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "12px",
+                gap: "10px",
               }}
             >
-              {/* LINE button */}
+              {/* LINE */}
               <a
                 href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "16px",
-                  background: "#06C755",
-                  borderRadius: "8px",
-                  padding: "16px 20px",
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  justifyContent: "space-between",
-                }}
+                style={contactButtonStyle("#06C755")}
               >
                 <div
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "14px",
+                    gap: "12px",
+                    minWidth: 0,
                   }}
                 >
-                  <div
-                    style={{
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "50%",
-                      background: "rgba(255,255,255,0.2)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
+                  <div style={iconCircleStyle}>
                     <svg
-                      width="20"
-                      height="20"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="white"
                       aria-hidden="true"
@@ -224,13 +203,17 @@ export default function Contact() {
                     </svg>
                   </div>
 
-                  <div>
+                  <div
+                    style={{
+                      minWidth: 0,
+                    }}
+                  >
                     <div
                       style={{
                         color: "#FFFFFF",
                         fontWeight: 700,
-                        fontSize: "15px",
-                        fontFamily: "'Noto Sans JP', sans-serif",
+                        fontSize: "14px",
+                        lineHeight: 1.4,
                       }}
                     >
                       LINEで問い合わせる
@@ -238,8 +221,10 @@ export default function Contact() {
 
                     <div
                       style={{
-                        color: "rgba(255,255,255,0.82)",
-                        fontSize: "12px",
+                        color:
+                          "rgba(255,255,255,0.82)",
+                        fontSize: "11px",
+                        lineHeight: 1.5,
                         marginTop: "2px",
                       }}
                     >
@@ -251,51 +236,31 @@ export default function Contact() {
                 <ArrowIcon />
               </a>
 
-              {/* Instagram button */}
+              {/* Instagram */}
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "16px",
-                  background:
-                    "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-                  borderRadius: "8px",
-                  padding: "16px 20px",
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  justifyContent: "space-between",
-                }}
+                style={contactButtonStyle(
+                  "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)"
+                )}
               >
                 <div
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "14px",
+                    gap: "12px",
                   }}
                 >
-                  <div
-                    style={{
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "50%",
-                      background: "rgba(255,255,255,0.2)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
+                  <div style={iconCircleStyle}>
                     <svg
-                      width="20"
-                      height="20"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="white"
                       aria-hidden="true"
                     >
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618-6.979-6.98C23.986 15.668.014 15.259 0 12zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98C23.986 15.668.014 15.259 0 12zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                     </svg>
                   </div>
 
@@ -304,8 +269,8 @@ export default function Contact() {
                       style={{
                         color: "#FFFFFF",
                         fontWeight: 700,
-                        fontSize: "15px",
-                        fontFamily: "'Noto Sans JP', sans-serif",
+                        fontSize: "14px",
+                        lineHeight: 1.4,
                       }}
                     >
                       InstagramでDM
@@ -313,8 +278,10 @@ export default function Contact() {
 
                     <div
                       style={{
-                        color: "rgba(255,255,255,0.85)",
-                        fontSize: "12px",
+                        color:
+                          "rgba(255,255,255,0.85)",
+                        fontSize: "11px",
+                        lineHeight: 1.5,
                         marginTop: "2px",
                       }}
                     >
@@ -329,20 +296,109 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Responsive */}
+      <style>{`
+        @media (max-width: 768px) {
+          #contact {
+            background-attachment: scroll !important;
+          }
+
+          #contact .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 52px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
 
+/* ========================================
+   Contact Label
+======================================== */
+
+function ContactLabel({ children }) {
+  return (
+    <div
+      style={{
+        fontFamily: "'Cabin', sans-serif",
+        fontSize: "11px",
+        fontWeight: 700,
+        letterSpacing: "0.2em",
+        color: "rgba(255,255,255,0.58)",
+        marginBottom: "18px",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ========================================
+   Contact Button
+======================================== */
+
+function contactButtonStyle(background) {
+  return {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+
+    width: "100%",
+    minHeight: "72px",
+
+    boxSizing: "border-box",
+
+    background,
+    borderRadius: "6px",
+
+    padding: "12px 16px",
+
+    textDecoration: "none",
+    cursor: "pointer",
+
+    transition:
+      "transform 0.2s ease, opacity 0.2s ease",
+  };
+}
+
+/* ========================================
+   Icon Circle
+======================================== */
+
+const iconCircleStyle = {
+  width: "32px",
+  height: "32px",
+  borderRadius: "50%",
+
+  background: "rgba(255,255,255,0.2)",
+
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+  flexShrink: 0,
+};
+
+/* ========================================
+   Arrow
+======================================== */
+
 function ArrowIcon() {
   return (
     <svg
-      width="16"
-      height="16"
+      width="14"
+      height="14"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="rgba(255,255,255,0.7)"
+      stroke="rgba(255,255,255,0.75)"
       strokeWidth="2.5"
       aria-hidden="true"
+      style={{
+        flexShrink: 0,
+        marginLeft: "10px",
+      }}
     >
       <polyline points="9 18 15 12 9 6" />
     </svg>
