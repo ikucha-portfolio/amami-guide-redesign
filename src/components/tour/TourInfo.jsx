@@ -196,7 +196,7 @@ export default function TourInfo({ tour }) {
                   marginBottom: "20px",
                 }}
               >
-                おすすめ・安心ポイント
+                おすすめポイント
               </p>
 
               <div
