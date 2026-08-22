@@ -14,7 +14,7 @@ export default function Guide() {
       id="guide"
       style={{
         ...SECTION,
-        background: "#FBF4EC",
+        background: "#FDF5ED",
       }}
     >
       <div
@@ -23,11 +23,10 @@ export default function Guide() {
         }}
       >
         <SectionHeader
-          title="GUIDE"
-          subtitle="ガイド紹介"
-          accentColor={C.orange}
-        />
-
+  title="GUIDE"
+  subtitle="ガイド紹介"
+  accentColor={C.orange}
+/>
         <div
           style={{
             display: "grid",
@@ -36,6 +35,7 @@ export default function Guide() {
             alignItems: "start",
           }}
         >
+          {/* Profile */}
           <div>
             <h3
               style={{
@@ -55,8 +55,8 @@ export default function Guide() {
                 fontSize: "14px",
                 color: C.orange,
                 fontWeight: 700,
-                marginBottom: "28px",
                 marginTop: "6px",
+                marginBottom: "28px",
                 letterSpacing: "0.04em",
               }}
             >
@@ -75,11 +75,13 @@ export default function Guide() {
               {GUIDE.message}
             </p>
 
+            {/* Features */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 gap: "12px",
+                marginBottom: "28px",
               }}
             >
               {GUIDE.certifications.map((cert) => (
@@ -92,11 +94,10 @@ export default function Guide() {
                   }}
                 >
                   <span
-                    aria-hidden="true"
                     style={{
+                      color: C.orange,
                       fontSize: "15px",
                       lineHeight: 1,
-                      color: C.orange,
                       flexShrink: 0,
                     }}
                   >
@@ -114,14 +115,88 @@ export default function Guide() {
                 </div>
               ))}
             </div>
+
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/seasummer630/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagramで日々の奄美を見る"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "9px",
+                color: C.orange,
+                textDecoration: "none",
+                fontSize: "13px",
+                fontWeight: 600,
+                letterSpacing: "0.02em",
+                transition: "opacity 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.7";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+              }}
+            >
+              {/* Instagram Icon */}
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                />
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                />
+
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                />
+              </svg>
+
+              <span>
+                Instagramで日々の奄美を発信しています
+              </span>
+
+              <span
+                style={{
+                  fontSize: "14px",
+                  marginLeft: "2px",
+                }}
+              >
+                →
+              </span>
+            </a>
           </div>
 
+          {/* Guide Photo */}
           <div
             style={{
               borderRadius: "8px",
               overflow: "hidden",
               aspectRatio: "3 / 4",
-              boxShadow: "0 8px 40px rgba(216,109,44,0.12)",
+              boxShadow: "0 8px 40px rgba(62, 140, 42, 0.12)",
             }}
           >
             <ImageWithFallback
