@@ -146,7 +146,7 @@ export default function TourInfo({ tour }) {
             style={{
               borderRadius: "6px",
               overflow: "hidden",
-              border: `1px solid rgba(62,140,42,0.15)`,
+              border: `1px solid rgba(62, 140, 42, 0.15)`,
             }}
           >
             {tour.details?.map((row, i) => (
@@ -159,7 +159,7 @@ export default function TourInfo({ tour }) {
                   background: C.white,
                   borderBottom:
                     i < tour.details.length - 1
-                      ? `1px solid rgba(62,140,42,0.1)`
+                      ? `1px solid rgba(62, 140, 42, 0.1)`
                       : "none",
                 }}
               >
@@ -181,68 +181,71 @@ export default function TourInfo({ tour }) {
             ))}
           </div>
 
-          {/* おすすめ・安心ポイント */}
+          {/* おすすめ・注意事項 */}
           <div>
-            <p
-              style={{
-                fontFamily: "'Noto Sans JP', sans-serif",
-                fontSize: "16px",
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                color: C.green,
-                margin: 0,
-                marginBottom: "20px",
-              }}
-            >
-              おすすめ・安心ポイント
-            </p>
+            {/* おすすめ・安心ポイント */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "'Noto Sans JP', sans-serif",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  color: C.green,
+                  margin: 0,
+                  marginBottom: "20px",
+                }}
+              >
+                おすすめ・安心ポイント
+              </p>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "14px",
-                marginBottom: "36px",
-              }}
-            >
-              {tour.recommended?.map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "10px",
-                  }}
-                >
-                  <span
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "14px",
+                  marginBottom: "36px",
+                }}
+              >
+                {tour.recommended?.map((item, i) => (
+                  <div
+                    key={i}
                     style={{
-                      color: C.green,
-                      fontSize: "15px",
-                      fontWeight: 700,
-                      lineHeight: 1.5,
-                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "10px",
                     }}
                   >
-                    ✔
-                  </span>
+                    <span
+                      style={{
+                        color: C.green,
+                        fontSize: "15px",
+                        fontWeight: 700,
+                        lineHeight: 1.5,
+                        flexShrink: 0,
+                      }}
+                    >
+                      ✔
+                    </span>
 
-                  <span
-                    style={{
-                      fontSize: "15px",
-                      color: C.textLight,
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {item}
-                  </span>
-                </div>
-              ))}
+                    <span
+                      style={{
+                        fontSize: "15px",
+                        color: C.textLight,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* キャンセルポリシー */}
+            {/* 注意事項 */}
             <div
               style={{
-                borderTop: `1px solid rgba(62,140,42,0.15)`,
+                borderTop: `1px solid rgba(62, 140, 42, 0.15)`,
                 paddingTop: "24px",
               }}
             >
@@ -257,7 +260,7 @@ export default function TourInfo({ tour }) {
                   marginBottom: "16px",
                 }}
               >
-                キャンセルポリシー
+                注意事項
               </p>
 
               <div
@@ -267,35 +270,61 @@ export default function TourInfo({ tour }) {
                   gap: "8px",
                   fontSize: "14px",
                   color: C.textLight,
-                  lineHeight: 1.7,
+                  lineHeight: 1.8,
                 }}
               >
-                <div style={{ display: "flex", gap: "12px" }}>
-                  <span style={{ width: "90px" }}>3日前以降</span>
-                  <span>50%</span>
+                <div>
+                  ・天候や海況により、ツアー内容の変更・中止となる場合があります。
                 </div>
 
-                <div style={{ display: "flex", gap: "12px" }}>
-                  <span style={{ width: "90px" }}>前日</span>
-                  <span>80%</span>
+                <div>
+                  ・服装や持ち物については、各ツアーの案内をご確認ください。
                 </div>
 
-                <div style={{ display: "flex", gap: "12px" }}>
-                  <span style={{ width: "90px" }}>当日・無断</span>
-                  <span>100%</span>
+                <div>
+                  ・小さなお子様連れや、体調面などでご不安がある場合は、事前にご相談ください。
                 </div>
+              </div>
+            </div>
 
+            {/* キャンセルについて */}
+            <div
+              style={{
+                borderTop: `1px solid rgba(62, 140, 42, 0.15)`,
+                marginTop: "28px",
+                paddingTop: "24px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Noto Sans JP', sans-serif",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  color: C.green,
+                  margin: 0,
+                  marginBottom: "16px",
+                }}
+              >
+                キャンセルについて
+              </p>
+
+              <div
+                style={{
+                  fontSize: "14px",
+                  color: C.textLight,
+                  lineHeight: 1.8,
+                }}
+              >
                 <p
                   style={{
-                    fontSize: "12px",
-                    color: C.textLight,
                     margin: 0,
-                    marginTop: "6px",
-                    lineHeight: 1.7,
+                    marginBottom: "4px",
                   }}
                 >
-                  荒天による中止の場合は全額返金いたします。
+                  キャンセル・日程変更については、ご予約時にご案内いたします。ご不明な点はお気軽にご相談ください。
                 </p>
+
               </div>
             </div>
           </div>
