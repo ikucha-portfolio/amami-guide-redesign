@@ -48,7 +48,7 @@ export default function Footer() {
             fontSize: "14px",
           }}
         >
-          AMAMI NATURE GUIDE
+          Amami Sunshine Guide
         </span>
       </div>
 
@@ -58,7 +58,7 @@ export default function Footer() {
           fontSize: "12px",
         }}
       >
-        © 2024 奄美ネイチャーガイド. All rights reserved.
+        © 2026 Amami Sunshine Guide. All rights reserved.
       </span>
     </footer>
   );
