@@ -3,7 +3,11 @@ import { CONTAINER } from "../../styles/designSystem";
 
 function SectionHeading({ ja }) {
   return (
-    <div style={{ marginBottom: "40px" }}>
+    <div
+      style={{
+        marginBottom: "40px",
+      }}
+    >
       <h2
         style={{
           fontFamily: "'Noto Sans JP', sans-serif",
@@ -12,6 +16,7 @@ function SectionHeading({ ja }) {
           color: C.text,
           margin: 0,
           marginBottom: "12px",
+          lineHeight: 1.5,
         }}
       >
         {ja}
@@ -39,10 +44,9 @@ function DetailValue({ row }) {
     return (
       <span
         style={{
-          flex: 1,
           fontSize: "14px",
           color: C.textLight,
-          lineHeight: 1.7,
+          lineHeight: 1.8,
           whiteSpace: "pre-line",
         }}
       >
@@ -54,13 +58,12 @@ function DetailValue({ row }) {
   return (
     <div
       style={{
-        flex: 1,
         display: "flex",
         flexDirection: "column",
         gap: "10px",
         fontSize: "14px",
         color: C.textLight,
-        lineHeight: 1.7,
+        lineHeight: 1.8,
       }}
     >
       {row.value.split("\n").map((line, index) => {
@@ -80,9 +83,8 @@ function DetailValue({ row }) {
             <span
               style={{
                 fontSize: "14px",
-                fontWeight: 400,
                 color: C.textLight,
-                lineHeight: 1.7,
+                lineHeight: 1.8,
                 whiteSpace: "nowrap",
               }}
             >
@@ -101,9 +103,8 @@ function DetailValue({ row }) {
                   key={priceIndex}
                   style={{
                     fontSize: "14px",
-                    fontWeight: 400,
                     color: C.textLight,
-                    lineHeight: 1.7,
+                    lineHeight: 1.8,
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -122,7 +123,7 @@ export default function TourInfo({ tour }) {
   return (
     <section
       style={{
-        padding: "96px 6%",
+        padding: "72px 6%",
         background: C.offWhite,
       }}
     >
@@ -134,59 +135,81 @@ export default function TourInfo({ tour }) {
         <SectionHeading ja="ツアー詳細" />
 
         <div
+          className="tour-info-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
             gap: "64px",
             alignItems: "start",
           }}
         >
-          {/* ツアー詳細 */}
+          {/* ================================
+              ツアー詳細
+          ================================= */}
+
           <div
+            className="tour-details"
             style={{
               borderRadius: "6px",
               overflow: "hidden",
-              border: `1px solid rgba(62, 140, 42, 0.15)`,
+              border: "1px solid rgba(62, 140, 42, 0.15)",
+              background: C.white,
             }}
           >
-            {tour.details?.map((row, i) => (
+            {tour.details?.map((row, index) => (
               <div
-                key={i}
+                key={index}
+                className="tour-detail-row"
                 style={{
                   display: "flex",
                   alignItems: "flex-start",
-                  padding: "18px 28px",
+                  padding: "18px 24px",
                   background: C.white,
                   borderBottom:
-                    i < tour.details.length - 1
-                      ? `1px solid rgba(62, 140, 42, 0.1)`
+                    index < tour.details.length - 1
+                      ? "1px solid rgba(62, 140, 42, 0.1)"
                       : "none",
                 }}
               >
                 <span
                   style={{
-                    width: "96px",
+                    width: "88px",
                     flexShrink: 0,
                     fontSize: "14px",
                     fontWeight: 600,
                     color: C.text,
-                    lineHeight: 1.7,
+                    lineHeight: 1.8,
                   }}
                 >
                   {row.label}
                 </span>
 
-                <DetailValue row={row} />
+                <div
+                  style={{
+                    flex: 1,
+                    minWidth: 0,
+                  }}
+                >
+                  <DetailValue row={row} />
+                </div>
               </div>
             ))}
           </div>
 
-          {/* おすすめ・注意事項 */}
-          <div>
+          {/* ================================
+              おすすめ・注意事項
+          ================================= */}
+
+          <div
+            style={{
+              minWidth: 0,
+            }}
+          >
             {/* おすすめポイント */}
+
             <div
               style={{
-                paddingBottom: "38px",
+                paddingBottom: "36px",
               }}
             >
               <div
@@ -200,7 +223,6 @@ export default function TourInfo({ tour }) {
                 <span
                   style={{
                     fontSize: "18px",
-                    fontWeight: 400,
                     color: C.green,
                     lineHeight: 1,
                   }}
@@ -217,7 +239,6 @@ export default function TourInfo({ tour }) {
                     letterSpacing: "0.06em",
                     color: C.green,
                     margin: 0,
-                    whiteSpace: "nowrap",
                   }}
                 >
                   おすすめポイント
@@ -226,7 +247,6 @@ export default function TourInfo({ tour }) {
                 <span
                   style={{
                     fontSize: "18px",
-                    fontWeight: 400,
                     color: C.green,
                     lineHeight: 1,
                   }}
@@ -243,9 +263,9 @@ export default function TourInfo({ tour }) {
                   gap: "15px",
                 }}
               >
-                {tour.recommended?.map((item, i) => (
+                {tour.recommended?.map((item, index) => (
                   <div
-                    key={i}
+                    key={index}
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
@@ -265,9 +285,9 @@ export default function TourInfo({ tour }) {
 
                     <span
                       style={{
-                        fontSize: "15px",
+                        fontSize: "14px",
                         color: C.textLight,
-                        lineHeight: 1.6,
+                        lineHeight: 1.8,
                       }}
                     >
                       {item}
@@ -278,25 +298,14 @@ export default function TourInfo({ tour }) {
             </div>
 
             {/* 注意事項 */}
+
             <div
               style={{
-                borderTop: `1px solid rgba(62, 140, 42, 0.15)`,
+                borderTop: "1px solid rgba(62, 140, 42, 0.15)",
                 paddingTop: "24px",
               }}
             >
-              <p
-                style={{
-                  fontFamily: "'Noto Sans JP', sans-serif",
-                  fontSize: "16px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  color: C.green,
-                  margin: 0,
-                  marginBottom: "16px",
-                }}
-              >
-                注意事項
-              </p>
+              <SectionSubHeading title="注意事項" />
 
               <div
                 style={{
@@ -308,41 +317,30 @@ export default function TourInfo({ tour }) {
                   lineHeight: 1.8,
                 }}
               >
-                <div>
+                <p style={{ margin: 0 }}>
                   ・天候や海況により、ツアー内容の変更・中止となる場合があります。
-                </div>
+                </p>
 
-                <div>
+                <p style={{ margin: 0 }}>
                   ・服装や持ち物については、各ツアーの案内をご確認ください。
-                </div>
+                </p>
 
-                <div>
+                <p style={{ margin: 0 }}>
                   ・小さなお子様連れや、体調面などでご不安がある場合は、事前にご相談ください。
-                </div>
+                </p>
               </div>
             </div>
 
             {/* キャンセルについて */}
+
             <div
               style={{
-                borderTop: `1px solid rgba(62, 140, 42, 0.15)`,
+                borderTop: "1px solid rgba(62, 140, 42, 0.15)",
                 marginTop: "28px",
                 paddingTop: "24px",
               }}
             >
-              <p
-                style={{
-                  fontFamily: "'Noto Sans JP', sans-serif",
-                  fontSize: "16px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  color: C.green,
-                  margin: 0,
-                  marginBottom: "16px",
-                }}
-              >
-                キャンセルについて
-              </p>
+              <SectionSubHeading title="キャンセルについて" />
 
               <p
                 style={{
@@ -359,6 +357,45 @@ export default function TourInfo({ tour }) {
           </div>
         </div>
       </div>
+
+      {/* ================================
+          Responsive
+      ================================= */}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .tour-info-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
+
+          .tour-detail-row {
+            padding: 16px 18px !important;
+          }
+        }
+      `}</style>
     </section>
+  );
+}
+
+/* ========================================
+   Sub Heading
+======================================== */
+
+function SectionSubHeading({ title }) {
+  return (
+    <p
+      style={{
+        fontFamily: "'Noto Sans JP', sans-serif",
+        fontSize: "16px",
+        fontWeight: 700,
+        letterSpacing: "0.06em",
+        color: C.green,
+        margin: "0 0 16px",
+        lineHeight: 1.5,
+      }}
+    >
+      {title}
+    </p>
   );
 }
