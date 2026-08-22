@@ -31,38 +31,67 @@ export default function Tours({ onSelectTour }) {
           ...CONTAINER_WIDE,
         }}
       >
-        <SectionHeader title="TOURS" subtitle="ツアー一覧" />
+        <SectionHeader
+          title="TOURS"
+          subtitle="ツアー一覧"
+        />
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 2fr) minmax(0, 1fr)",
-            gap: "24px",
-            marginBottom: "24px",
-            alignItems: "stretch",
-          }}
-        >
-          <TourCardFeatured
-            tour={TOURS[0]}
-            onSelectTour={onSelectTour}
-          />
+        {/* ========================================
+            Desktop Layout
+        ======================================== */}
 
-          <TourCardTall
-            tour={TOURS[1]}
-            onSelectTour={onSelectTour}
-          />
+        <div className="tours-desktop">
+          {/* Featured + Tall */}
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "minmax(0, 2fr) minmax(0, 1fr)",
+              gap: "24px",
+              marginBottom: "24px",
+              alignItems: "stretch",
+            }}
+          >
+            <TourCardFeatured
+              tour={TOURS[0]}
+              onSelectTour={onSelectTour}
+            />
+
+            <TourCardTall
+              tour={TOURS[1]}
+              onSelectTour={onSelectTour}
+            />
+          </div>
+
+          {/* Standard Cards */}
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(3, 1fr)",
+              gap: "24px",
+              alignItems: "stretch",
+            }}
+          >
+            {TOURS.slice(2).map((tour) => (
+              <TourCardStandard
+                key={tour.id}
+                tour={tour}
+                onSelectTour={onSelectTour}
+              />
+            ))}
+          </div>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "24px",
-            alignItems: "stretch",
-          }}
-        >
-          {TOURS.slice(2).map((tour) => (
-            <TourCardStandard
+        {/* ========================================
+            Mobile Layout
+        ======================================== */}
+
+        <div className="tours-mobile">
+          {TOURS.map((tour) => (
+            <TourCardMobile
               key={tour.id}
               tour={tour}
               onSelectTour={onSelectTour}
@@ -70,9 +99,38 @@ export default function Tours({ onSelectTour }) {
           ))}
         </div>
       </div>
+
+      {/* ========================================
+          Responsive Styles
+      ======================================== */}
+
+      <style>
+        {`
+          .tours-mobile {
+            display: none;
+          }
+
+          @media (max-width: 768px) {
+            .tours-desktop {
+              display: none;
+            }
+
+            .tours-mobile {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }
+
+/* ========================================
+   Desktop
+   Featured Card
+======================================== */
 
 function TourCardFeatured({ tour, onSelectTour }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -83,27 +141,28 @@ function TourCardFeatured({ tour, onSelectTour }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-  ...cardBase,
-  position: "relative",
-  cursor: "pointer",
-  aspectRatio: "16 / 9",
-  minWidth: 0,
-}}
+        ...cardBase,
+        position: "relative",
+        cursor: "pointer",
+        aspectRatio: "16 / 9",
+        minWidth: 0,
+      }}
     >
       <ImageWithFallback
-  src={tour.image}
-  alt={tour.name}
-  style={{
-    position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    transform: isHovered ? "scale(1.045)" : "scale(1)",
-    transition: "transform 0.7s ease",
-  }}
-/>
-    
+        src={tour.image}
+        alt={tour.name}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transform: isHovered
+            ? "scale(1.045)"
+            : "scale(1)",
+          transition: "transform 0.7s ease",
+        }}
+      />
 
       <div
         style={{
@@ -114,7 +173,9 @@ function TourCardFeatured({ tour, onSelectTour }) {
         }}
       />
 
-      {tour.tag && <TagBadge label={tour.tag} />}
+      {tour.tag && (
+        <TagBadge label={tour.tag} />
+      )}
 
       <div
         style={{
@@ -178,6 +239,11 @@ function TourCardFeatured({ tour, onSelectTour }) {
   );
 }
 
+/* ========================================
+   Desktop
+   Tall Card
+======================================== */
+
 function TourCardTall({ tour, onSelectTour }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -187,27 +253,29 @@ function TourCardTall({ tour, onSelectTour }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-  ...cardBase,
-  position: "relative",
-  cursor: "pointer",
-  minHeight: 0,
-  minWidth: 0,
-  height: "100%",
-}}
+        ...cardBase,
+        position: "relative",
+        cursor: "pointer",
+        minHeight: 0,
+        minWidth: 0,
+        height: "100%",
+      }}
     >
       <ImageWithFallback
-  src={tour.image}
-  alt={tour.name}
-  style={{
-    position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    transform: isHovered ? "scale(1.045)" : "scale(1)",
-    transition: "transform 0.7s ease",
-  }}
-/>
+        src={tour.image}
+        alt={tour.name}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transform: isHovered
+            ? "scale(1.045)"
+            : "scale(1)",
+          transition: "transform 0.7s ease",
+        }}
+      />
 
       <div
         style={{
@@ -218,7 +286,9 @@ function TourCardTall({ tour, onSelectTour }) {
         }}
       />
 
-      {tour.tag && <TagBadge label={tour.tag} />}
+      {tour.tag && (
+        <TagBadge label={tour.tag} />
+      )}
 
       <div
         style={{
@@ -284,7 +354,15 @@ function TourCardTall({ tour, onSelectTour }) {
   );
 }
 
-function TourCardStandard({ tour, onSelectTour }) {
+/* ========================================
+   Desktop
+   Standard Card
+======================================== */
+
+function TourCardStandard({
+  tour,
+  onSelectTour,
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -314,12 +392,16 @@ function TourCardStandard({ tour, onSelectTour }) {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            transform: isHovered ? "scale(1.045)" : "scale(1)",
+            transform: isHovered
+              ? "scale(1.045)"
+              : "scale(1)",
             transition: "transform 0.7s ease",
           }}
         />
 
-        {tour.tag && <TagBadge label={tour.tag} />}
+        {tour.tag && (
+          <TagBadge label={tour.tag} />
+        )}
       </div>
 
       <div
@@ -376,7 +458,8 @@ function TourCardStandard({ tour, onSelectTour }) {
         <div
           style={{
             paddingTop: "10px",
-            borderTop: "1px solid rgba(62,140,42,0.10)",
+            borderTop:
+              "1px solid rgba(62,140,42,0.10)",
           }}
         >
           <CardMeta
@@ -391,6 +474,138 @@ function TourCardStandard({ tour, onSelectTour }) {
   );
 }
 
+/* ========================================
+   Mobile
+   Unified Card
+======================================== */
+
+function TourCardMobile({
+  tour,
+  onSelectTour,
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <article
+      onClick={() => onSelectTour?.(tour)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        ...cardBase,
+        cursor: "pointer",
+      }}
+    >
+      {/* Image */}
+
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          aspectRatio: "16 / 9",
+          overflow: "hidden",
+        }}
+      >
+        <ImageWithFallback
+          src={tour.image}
+          alt={tour.name}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transform: isHovered
+              ? "scale(1.03)"
+              : "scale(1)",
+            transition: "transform 0.7s ease",
+          }}
+        />
+
+        {tour.tag && (
+          <TagBadge label={tour.tag} />
+        )}
+      </div>
+
+      {/* Content */}
+
+      <div
+        style={{
+          padding: "18px 18px 20px",
+        }}
+      >
+        {/* English Name */}
+
+        <p
+          style={{
+            fontFamily: "'Cabin', sans-serif",
+            fontSize: "10px",
+            letterSpacing: "0.15em",
+            color: C.green,
+            margin: 0,
+            marginBottom: "5px",
+            lineHeight: 1.2,
+          }}
+        >
+          {tour.nameEn.toUpperCase()}
+        </p>
+
+        {/* Japanese Name */}
+
+        <h3
+          style={{
+            fontSize: "19px",
+            fontWeight: 700,
+            color: C.text,
+            margin: 0,
+            marginBottom: "8px",
+            lineHeight: 1.4,
+          }}
+        >
+          {tour.name}
+        </h3>
+
+        {/* Description */}
+
+        <p
+          style={{
+            fontSize: "13px",
+            color: C.textLight,
+            lineHeight: 1.7,
+            margin: 0,
+            marginBottom: "14px",
+
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          {tour.description}
+        </p>
+
+        {/* Meta */}
+
+        <div
+          style={{
+            paddingTop: "12px",
+            borderTop:
+              "1px solid rgba(62,140,42,0.12)",
+          }}
+        >
+          <CardMeta
+            tour={tour}
+            compact
+            priceSize="18px"
+            metaSize="12px"
+          />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/* ========================================
+   Tag Badge
+======================================== */
+
 function TagBadge({ label }) {
   return (
     <div
@@ -398,13 +613,18 @@ function TagBadge({ label }) {
         position: "absolute",
         top: "14px",
         left: "14px",
+
         background: C.green,
         color: "#FFFFFF",
+
         padding: "4px 11px",
+
         borderRadius: "4px",
+
         fontSize: "10.5px",
         fontWeight: 700,
         letterSpacing: "0.03em",
+
         zIndex: 2,
       }}
     >
@@ -413,6 +633,10 @@ function TagBadge({ label }) {
   );
 }
 
+/* ========================================
+   Card Meta
+======================================== */
+
 function CardMeta({
   tour,
   light = false,
@@ -420,9 +644,17 @@ function CardMeta({
   priceSize = "18px",
   metaSize = "12px",
 }) {
-  const textColor = light ? "rgba(255,255,255,0.82)" : C.textLight;
-  const iconColor = light ? "rgba(255,255,255,0.55)" : C.green;
-  const priceColor = light ? "#FFFFFF" : C.green;
+  const textColor = light
+    ? "rgba(255,255,255,0.82)"
+    : C.textLight;
+
+  const iconColor = light
+    ? "rgba(255,255,255,0.55)"
+    : C.green;
+
+  const priceColor = light
+    ? "#FFFFFF"
+    : C.green;
 
   return (
     <div
@@ -433,13 +665,17 @@ function CardMeta({
         flexWrap: "wrap",
       }}
     >
+      {/* Duration */}
+
       <span
         style={{
           display: "flex",
           alignItems: "center",
           gap: "4px",
+
           fontSize: metaSize,
           color: textColor,
+
           lineHeight: 1.15,
           whiteSpace: "nowrap",
         }}
@@ -451,16 +687,21 @@ function CardMeta({
             flexShrink: 0,
           }}
         />
+
         {tour.duration}
       </span>
+
+      {/* Target */}
 
       <span
         style={{
           display: "flex",
           alignItems: "center",
           gap: "4px",
+
           fontSize: metaSize,
           color: textColor,
+
           lineHeight: 1.15,
           whiteSpace: "nowrap",
         }}
@@ -472,27 +713,39 @@ function CardMeta({
             flexShrink: 0,
           }}
         />
+
         {tour.target}
       </span>
+
+      {/* Price */}
 
       <span
         style={{
           marginLeft: "auto",
+
           fontFamily: "'Cabin', sans-serif",
           fontWeight: 700,
           fontSize: priceSize,
+
           color: priceColor,
+
           lineHeight: 1,
           whiteSpace: "nowrap",
         }}
       >
         {tour.price}
+
         <span
           style={{
-            fontFamily: "'Noto Sans JP', sans-serif",
+            fontFamily:
+              "'Noto Sans JP', sans-serif",
+
             fontSize: "10.5px",
             fontWeight: 400,
-            color: light ? "rgba(255,255,255,0.72)" : C.textLight,
+
+            color: light
+              ? "rgba(255,255,255,0.72)"
+              : C.textLight,
           }}
         >
           {tour.priceNote}
