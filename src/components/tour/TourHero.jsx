@@ -56,6 +56,7 @@ export default function TourHero({ tour }) {
       style={{
         position: "relative",
         height: "50vh",
+        minHeight: "420px",
         overflow: "hidden",
       }}
     >
@@ -97,10 +98,10 @@ export default function TourHero({ tour }) {
       <div
         style={{
           position: "absolute",
-          bottom: 0,
           left: 0,
           right: 0,
-          padding: "0 6% 52px",
+          bottom: 0,
+          padding: "0 6% 48px",
           pointerEvents: "none",
         }}
       >
@@ -110,8 +111,9 @@ export default function TourHero({ tour }) {
             fontFamily: "'Cabin', sans-serif",
             fontSize: "10px",
             letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.65)",
+            color: "rgba(255,255,255,0.68)",
             margin: "0 0 10px",
+            lineHeight: 1.4,
           }}
         >
           {tour.nameEn.toUpperCase()}
@@ -121,11 +123,11 @@ export default function TourHero({ tour }) {
         <h1
           style={{
             fontFamily: "'Noto Sans JP', sans-serif",
-            fontSize: "clamp(22px, 2.5vw, 32px)",
+            fontSize: "clamp(24px, 2.8vw, 32px)",
             fontWeight: 700,
-            color: "#fff",
+            color: "#FFFFFF",
             margin: 0,
-            lineHeight: 1.3,
+            lineHeight: 1.35,
             letterSpacing: "-0.01em",
             textShadow: "0 2px 20px rgba(0,0,0,0.3)",
             maxWidth: "900px",
@@ -138,7 +140,7 @@ export default function TourHero({ tour }) {
         <p
           style={{
             fontSize: "14px",
-            color: "rgba(255,255,255,0.8)",
+            color: "rgba(255,255,255,0.84)",
             margin: "10px 0 0",
             maxWidth: "700px",
             lineHeight: 1.8,

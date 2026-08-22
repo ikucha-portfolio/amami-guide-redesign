@@ -1,7 +1,5 @@
 import { COLORS as C } from "../../siteData";
-import {
-  CONTAINER,
-} from "../../styles/designSystem";
+import { CONTAINER } from "../../styles/designSystem";
 
 export default function TourAbout({ tour }) {
   return (
@@ -12,18 +10,24 @@ export default function TourAbout({ tour }) {
       }}
     >
       <div
-  style={{
-    ...CONTAINER,
-  }}
->
+        style={{
+          ...CONTAINER,
+        }}
+      >
         {/* Heading */}
-        <div style={{ marginBottom: "20px" }}>
+        <div
+          style={{
+            marginBottom: "28px",
+          }}
+        >
           <h2
             style={{
-              fontSize: "20px",
+              fontSize: "24px",
               fontWeight: 700,
               color: C.text,
+              margin: 0,
               marginBottom: "12px",
+              lineHeight: 1.4,
             }}
           >
             このツアーについて
@@ -31,7 +35,7 @@ export default function TourAbout({ tour }) {
 
           <div
             style={{
-              width: "32px",
+              width: "36px",
               height: "2px",
               background: C.green,
             }}
@@ -40,27 +44,27 @@ export default function TourAbout({ tour }) {
 
         {/* Body */}
         <div
-  style={{
-    maxWidth: "600px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "4px",
-  }}
->
-  {tour.about?.map((text, index) => (
-    <p
-      key={index}
-      style={{
-        fontSize: "14px",
-        color: C.textLight,
-        lineHeight: 1.55,
-        margin: 0,
-      }}
-    >
-      {text}
-    </p>
-  ))}
-</div>
+          style={{
+            maxWidth: "600px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "14px",
+          }}
+        >
+          {tour.about?.map((text, index) => (
+            <p
+              key={index}
+              style={{
+                fontSize: "15px",
+                color: C.textLight,
+                lineHeight: 1.85,
+                margin: 0,
+              }}
+            >
+              {text}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );
