@@ -1,7 +1,6 @@
 import { COLORS } from "../siteData";
 import { Leaf } from "lucide-react";
 
-
 const C = COLORS;
 
 export default function Footer() {
@@ -10,56 +9,94 @@ export default function Footer() {
       style={{
         background: C.greenDark,
         padding: "32px 6%",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
       }}
     >
       <div
+        className="footer-inner"
         style={{
           display: "flex",
+          justifyContent: "space-between",
           alignItems: "center",
-          gap: "10px",
+          gap: "24px",
         }}
       >
+        {/* Logo */}
         <div
           style={{
-            width: "28px",
-            height: "28px",
-            borderRadius: "50%",
-            border: "1.5px solid rgba(255,255,255,0.5)",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            gap: "10px",
+            minWidth: 0,
           }}
         >
-          <Leaf
-            size={13}
-            color="rgba(255,255,255,0.8)"
-          />
+          <div
+            style={{
+              width: "28px",
+              height: "28px",
+              borderRadius: "50%",
+              border: "1.5px solid rgba(255,255,255,0.5)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+            }}
+          >
+            <Leaf
+              size={13}
+              color="rgba(255,255,255,0.8)"
+              strokeWidth={1.8}
+            />
+          </div>
+
+          <span
+            style={{
+              fontFamily: "'Cabin', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              color: "rgba(255,255,255,0.7)",
+              fontSize: "14px",
+              lineHeight: 1.4,
+            }}
+          >
+            Amami Sunshine Guide
+          </span>
         </div>
 
+        {/* Copyright */}
         <span
           style={{
-            fontFamily: "'Cabin', sans-serif",
-            fontWeight: 700,
-            letterSpacing: "0.12em",
-            color: "rgba(255,255,255,0.7)",
-            fontSize: "14px",
+            color: "rgba(255,255,255,0.35)",
+            fontSize: "11px",
+            lineHeight: 1.5,
+            textAlign: "right",
+            flexShrink: 0,
           }}
         >
-          Amami Sunshine Guide
+          © 2026 Amami Sunshine Guide.
+          <br className="footer-break" />
+          All rights reserved.
         </span>
       </div>
 
-      <span
-        style={{
-          color: "rgba(255,255,255,0.35)",
-          fontSize: "12px",
-        }}
-      >
-        © 2026 Amami Sunshine Guide. All rights reserved.
-      </span>
+      {/* Mobile Responsive */}
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-inner {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+          }
+
+          .footer-inner > span {
+            text-align: left !important;
+            margin-left: 38px;
+          }
+
+          .footer-break {
+            display: none;
+          }
+        }
+      `}</style>
     </footer>
   );
 }
