@@ -39,11 +39,11 @@ function DetailValue({ row }) {
     return (
       <span
         style={{
+          flex: 1,
           fontSize: "14px",
           color: C.textLight,
           lineHeight: 1.7,
           whiteSpace: "pre-line",
-          flex: 1,
         }}
       >
         {row.value}
@@ -141,7 +141,7 @@ export default function TourInfo({ tour }) {
             alignItems: "start",
           }}
         >
-          {/* Table */}
+          {/* ツアー詳細 */}
           <div
             style={{
               borderRadius: "6px",
@@ -183,28 +183,64 @@ export default function TourInfo({ tour }) {
 
           {/* おすすめ・注意事項 */}
           <div>
-            {/* おすすめ・安心ポイント */}
-            <div>
-              <p
+            {/* おすすめポイント */}
+            <div
+              style={{
+                paddingBottom: "38px",
+              }}
+            >
+              <div
                 style={{
-                  fontFamily: "'Noto Sans JP', sans-serif",
-                  fontSize: "16px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  color: C.green,
-                  margin: 0,
-                  marginBottom: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  marginBottom: "24px",
                 }}
               >
-                おすすめポイント
-              </p>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 400,
+                    color: C.green,
+                    lineHeight: 1,
+                  }}
+                  aria-hidden="true"
+                >
+                  ＼
+                </span>
+
+                <p
+                  style={{
+                    fontFamily: "'Noto Sans JP', sans-serif",
+                    fontSize: "18px",
+                    fontWeight: 700,
+                    letterSpacing: "0.06em",
+                    color: C.green,
+                    margin: 0,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  おすすめポイント
+                </p>
+
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 400,
+                    color: C.green,
+                    lineHeight: 1,
+                  }}
+                  aria-hidden="true"
+                >
+                  ／
+                </span>
+              </div>
 
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "14px",
-                  marginBottom: "36px",
+                  gap: "15px",
                 }}
               >
                 {tour.recommended?.map((item, i) => (
@@ -213,26 +249,25 @@ export default function TourInfo({ tour }) {
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
-                      gap: "10px",
+                      gap: "12px",
                     }}
                   >
                     <span
                       style={{
-                        color: C.green,
-                        fontSize: "15px",
-                        fontWeight: 700,
-                        lineHeight: 1.5,
+                        width: "5px",
+                        height: "5px",
+                        borderRadius: "50%",
+                        background: C.green,
+                        marginTop: "9px",
                         flexShrink: 0,
                       }}
-                    >
-                      ✔
-                    </span>
+                    />
 
                     <span
                       style={{
                         fontSize: "15px",
                         color: C.textLight,
-                        lineHeight: 1.5,
+                        lineHeight: 1.6,
                       }}
                     >
                       {item}
@@ -309,23 +344,17 @@ export default function TourInfo({ tour }) {
                 キャンセルについて
               </p>
 
-              <div
+              <p
                 style={{
                   fontSize: "14px",
                   color: C.textLight,
                   lineHeight: 1.8,
+                  margin: 0,
                 }}
               >
-                <p
-                  style={{
-                    margin: 0,
-                    marginBottom: "4px",
-                  }}
-                >
-                  キャンセル・日程変更については、ご予約時にご案内いたします。ご不明な点はお気軽にご相談ください。
-                </p>
-
-              </div>
+                キャンセル・日程変更については、ご予約時にご案内いたします。
+                ご不明な点はお気軽にご相談ください。
+              </p>
             </div>
           </div>
         </div>
