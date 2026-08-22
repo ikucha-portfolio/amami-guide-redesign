@@ -4,7 +4,7 @@ import { COLORS } from "../siteData";
 
 const C = COLORS;
 
-export default function Nav({ onBack }) {
+export default function Nav({ onBack = null }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
