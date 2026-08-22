@@ -14,6 +14,7 @@ export default function SectionHeader({
   title,
   subtitle,
   light = false,
+  accentColor,
 }) {
   return (
     <div style={SECTION_HEADER}>
@@ -44,7 +45,7 @@ export default function SectionHeader({
           ...SECTION_BAR,
           background: light
             ? "rgba(255,255,255,0.5)"
-            : C.green,
+            : accentColor || C.green,
         }}
       />
     </div>

@@ -1,6 +1,5 @@
 import { GUIDE, COLORS } from "../siteData";
 import { ImageWithFallback } from "./ImageWithFallback";
-import { CheckCircle2 } from "lucide-react";
 import SectionHeader from "./common/SectionHeader";
 import {
   SECTION,
@@ -15,7 +14,7 @@ export default function Guide() {
       id="guide"
       style={{
         ...SECTION,
-        background: C.offWhite,
+        background: "#FBF4EC",
       }}
     >
       <div
@@ -26,6 +25,7 @@ export default function Guide() {
         <SectionHeader
           title="GUIDE"
           subtitle="ガイド紹介"
+          accentColor={C.orange}
         />
 
         <div
@@ -53,7 +53,7 @@ export default function Guide() {
             <p
               style={{
                 fontSize: "14px",
-                color: C.green,
+                color: C.orange,
                 fontWeight: 700,
                 marginBottom: "28px",
                 marginTop: "6px",
@@ -64,16 +64,16 @@ export default function Guide() {
             </p>
 
             <p
-  style={{
-    fontSize: "15px",
-    color: C.textLight,
-lineHeight: 1.7,
-marginBottom: "28px",
-    whiteSpace: "pre-line",
-  }}
->
-  {GUIDE.message}
-</p>
+              style={{
+                fontSize: "15px",
+                color: C.textLight,
+                lineHeight: 1.7,
+                marginBottom: "28px",
+                whiteSpace: "pre-line",
+              }}
+            >
+              {GUIDE.message}
+            </p>
 
             <div
               style={{
@@ -91,13 +91,17 @@ marginBottom: "28px",
                     gap: "10px",
                   }}
                 >
-                  <CheckCircle2
-                    size={16}
+                  <span
+                    aria-hidden="true"
                     style={{
-                      color: C.green,
+                      fontSize: "15px",
+                      lineHeight: 1,
+                      color: C.orange,
                       flexShrink: 0,
                     }}
-                  />
+                  >
+                    ★
+                  </span>
 
                   <span
                     style={{
@@ -117,7 +121,7 @@ marginBottom: "28px",
               borderRadius: "8px",
               overflow: "hidden",
               aspectRatio: "3 / 4",
-              boxShadow: "0 8px 40px rgba(62,140,42,0.12)",
+              boxShadow: "0 8px 40px rgba(216,109,44,0.12)",
             }}
           >
             <ImageWithFallback
