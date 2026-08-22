@@ -26,6 +26,7 @@ export default function OtherTours({
           margin: "0 auto",
         }}
       >
+        {/* Section Heading */}
         <div
           style={{
             marginBottom: "40px",
@@ -54,6 +55,7 @@ export default function OtherTours({
           />
         </div>
 
+        {/* Tour Cards */}
         <div
           style={{
             display: "grid",
@@ -73,6 +75,7 @@ export default function OtherTours({
                 cursor: "pointer",
               }}
             >
+              {/* Image */}
               <div
                 style={{
                   position: "relative",
@@ -87,18 +90,28 @@ export default function OtherTours({
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
+                    transition: "transform 0.6s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.06)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
                   }}
                 />
 
+                {/* Overlay */}
                 <div
                   style={{
                     position: "absolute",
                     inset: 0,
                     background:
                       "linear-gradient(to top, rgba(10,25,10,0.75) 0%, transparent 55%)",
+                    pointerEvents: "none",
                   }}
                 />
 
+                {/* Tag */}
                 {tour.tag && (
                   <div
                     style={{
@@ -117,6 +130,7 @@ export default function OtherTours({
                   </div>
                 )}
 
+                {/* Image Text */}
                 <div
                   style={{
                     position: "absolute",
@@ -153,6 +167,7 @@ export default function OtherTours({
                 </div>
               </div>
 
+              {/* Card Info */}
               <div
                 style={{
                   padding: "14px 16px",
@@ -166,6 +181,7 @@ export default function OtherTours({
                     gap: "8px",
                   }}
                 >
+                  {/* Duration / Target */}
                   <div
                     style={{
                       display: "flex",
@@ -213,6 +229,7 @@ export default function OtherTours({
                     </span>
                   </div>
 
+                  {/* Price */}
                   <span
                     style={{
                       fontFamily: "'Cabin', sans-serif",

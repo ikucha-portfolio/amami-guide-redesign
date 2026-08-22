@@ -1,6 +1,58 @@
+import { useEffect, useRef } from "react";
+
 export default function TourHero({ tour }) {
+  const heroRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const updateParallax = () => {
+      if (!heroRef.current || !imageRef.current) {
+        ticking = false;
+        return;
+      }
+
+      const rect = heroRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Heroが画面内にあるときだけパララックスを適用
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const offset = Math.max(
+          -60,
+          Math.min(60, -rect.top * 0.16)
+        );
+
+        imageRef.current.style.transform = `
+          translate3d(0, ${offset}px, 0)
+          scale(1.06)
+        `;
+      }
+
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    updateParallax();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <section
+      ref={heroRef}
       style={{
         position: "relative",
         height: "50vh",
@@ -8,16 +60,27 @@ export default function TourHero({ tour }) {
       }}
     >
       {/* Hero Image */}
-      <img
-        src={tour.image}
-        alt={tour.name}
+      <div
+        ref={imageRef}
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center 45%",
+          position: "absolute",
+          inset: "-6%",
+          width: "112%",
+          height: "112%",
+          willChange: "transform",
         }}
-      />
+      >
+        <img
+          src={tour.image}
+          alt={tour.name}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 45%",
+          }}
+        />
+      </div>
 
       {/* Overlay */}
       <div
@@ -26,6 +89,7 @@ export default function TourHero({ tour }) {
           inset: 0,
           background:
             "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.62) 100%)",
+          pointerEvents: "none",
         }}
       />
 
@@ -37,6 +101,7 @@ export default function TourHero({ tour }) {
           left: 0,
           right: 0,
           padding: "0 6% 52px",
+          pointerEvents: "none",
         }}
       >
         {/* English Title */}
