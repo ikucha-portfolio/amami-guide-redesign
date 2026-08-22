@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
 
+const HERO_IMAGES = [
+  "/images/hero.jpeg",
+  "/images/night.jpeg",
+  "/images/umigame_1.jpeg",
+  "/images/boat.jpeg",
+];
+
 export default function Hero() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section
       style={{
@@ -10,16 +28,25 @@ export default function Hero() {
         overflow: "hidden",
       }}
     >
-      <ImageWithFallback
-        src="/images/hero.jpeg"
-        alt="奄美の青い海でカヤック体験"
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center center",
-        }}
-      />
+      {/* Hero Images */}
+      {HERO_IMAGES.map((image, index) => (
+        <ImageWithFallback
+          key={image}
+          src={image}
+          alt="奄美大島の自然"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center center",
+            opacity: index === currentImage ? 1 : 0,
+            transition: "opacity 1.8s ease-in-out",
+            filter: "saturate(1.12) contrast(1.06)",
+          }}
+        />
+      ))}
 
       {/* Overlay */}
       <div
@@ -27,7 +54,7 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.35) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.3) 100%)",
         }}
       />
 
@@ -41,7 +68,6 @@ export default function Hero() {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          transform: "translateY(0)",
         }}
       >
         <div
@@ -62,7 +88,7 @@ export default function Hero() {
 
         <div
           style={{
-            color: "rgba(255,255,255,0.82)",
+            color: "rgba(255,255,255,0.88)",
             fontSize: "clamp(13px, 1.4vw, 16px)",
             marginTop: "18px",
             letterSpacing: "0.06em",
@@ -85,7 +111,7 @@ export default function Hero() {
           flexDirection: "column",
           alignItems: "center",
           gap: "6px",
-          color: "rgba(255,255,255,0.65)",
+          color: "rgba(255,255,255,0.7)",
         }}
       >
         <span
