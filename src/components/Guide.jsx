@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { GUIDE, COLORS } from "../siteData";
 import { ImageWithFallback } from "./ImageWithFallback";
 import SectionHeader from "./common/SectionHeader";
@@ -9,6 +10,24 @@ import {
 const C = COLORS;
 
 export default function Guide() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleResize = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    handleResize();
+
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleResize);
+    };
+  }, []);
+
   return (
     <section
       id="guide"
@@ -22,29 +41,50 @@ export default function Guide() {
           ...CONTAINER,
         }}
       >
+        {/* ================================
+            Section Header
+        ================================= */}
+
         <SectionHeader
-  title="GUIDE"
-  subtitle="ガイド紹介"
-  accentColor={C.orange}
-/>
+          title="GUIDE"
+          subtitle="ガイド紹介"
+          accentColor={C.orange}
+        />
+
+        {/* ================================
+            Guide Content
+        ================================= */}
+
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 420px",
-            gap: "80px",
+            gridTemplateColumns: isMobile
+              ? "1fr"
+              : "1fr 420px",
+            gap: isMobile ? "36px" : "80px",
             alignItems: "start",
           }}
         >
-          {/* Profile */}
-          <div>
+          {/* ================================
+              Profile
+          ================================= */}
+
+          <div
+            style={{
+              order: isMobile ? 1 : 0,
+            }}
+          >
             <h3
               style={{
                 fontFamily: "'Noto Sans JP', sans-serif",
-                fontSize: "clamp(28px, 3.5vw, 44px)",
+                fontSize: isMobile
+                  ? "30px"
+                  : "clamp(28px, 3.5vw, 44px)",
                 fontWeight: 700,
                 color: C.text,
                 margin: 0,
                 marginBottom: "4px",
+                lineHeight: 1.3,
               }}
             >
               {GUIDE.name}
@@ -52,11 +92,11 @@ export default function Guide() {
 
             <p
               style={{
-                fontSize: "14px",
+                fontSize: isMobile ? "13px" : "14px",
                 color: C.orange,
                 fontWeight: 700,
                 marginTop: "6px",
-                marginBottom: "28px",
+                marginBottom: isMobile ? "24px" : "28px",
                 letterSpacing: "0.04em",
               }}
             >
@@ -65,17 +105,21 @@ export default function Guide() {
 
             <p
               style={{
-                fontSize: "15px",
+                fontSize: isMobile ? "14px" : "15px",
                 color: C.textLight,
-                lineHeight: 1.7,
-                marginBottom: "28px",
+                lineHeight: 1.8,
+                margin: 0,
+                marginBottom: isMobile ? "28px" : "28px",
                 whiteSpace: "pre-line",
               }}
             >
               {GUIDE.message}
             </p>
 
-            {/* Features */}
+            {/* ================================
+                Features
+            ================================= */}
+
             <div
               style={{
                 display: "flex",
@@ -96,7 +140,7 @@ export default function Guide() {
                   <span
                     style={{
                       color: C.orange,
-                      fontSize: "15px",
+                      fontSize: "14px",
                       lineHeight: 1,
                       flexShrink: 0,
                     }}
@@ -106,8 +150,9 @@ export default function Guide() {
 
                   <span
                     style={{
-                      fontSize: "14px",
+                      fontSize: isMobile ? "13px" : "14px",
                       color: C.textLight,
+                      lineHeight: 1.5,
                     }}
                   >
                     {cert}
@@ -116,7 +161,10 @@ export default function Guide() {
               ))}
             </div>
 
-            {/* Instagram */}
+            {/* ================================
+                Instagram
+            ================================= */}
+
             <a
               href="https://www.instagram.com/seasummer630/"
               target="_blank"
@@ -125,10 +173,10 @@ export default function Guide() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "9px",
+                gap: "8px",
                 color: C.orange,
                 textDecoration: "none",
-                fontSize: "13px",
+                fontSize: isMobile ? "12px" : "13px",
                 fontWeight: 600,
                 letterSpacing: "0.02em",
                 transition: "opacity 0.2s ease",
@@ -141,6 +189,7 @@ export default function Guide() {
               }}
             >
               {/* Instagram Icon */}
+
               <svg
                 width="18"
                 height="18"
@@ -190,13 +239,21 @@ export default function Guide() {
             </a>
           </div>
 
-          {/* Guide Photo */}
+          {/* ================================
+              Guide Photo
+          ================================= */}
+
           <div
             style={{
+              order: isMobile ? 0 : 1,
+              width: "100%",
+              maxWidth: isMobile ? "100%" : "420px",
+              margin: isMobile ? "0 auto" : 0,
               borderRadius: "8px",
               overflow: "hidden",
               aspectRatio: "3 / 4",
-              boxShadow: "0 8px 40px rgba(62, 140, 42, 0.12)",
+              boxShadow:
+                "0 8px 40px rgba(62, 140, 42, 0.12)",
             }}
           >
             <ImageWithFallback
