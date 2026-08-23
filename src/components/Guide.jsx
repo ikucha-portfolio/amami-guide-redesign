@@ -167,19 +167,19 @@ export default function Guide() {
               }}
             >
               <h3
-                style={{
-                  margin: "0 0 4px",
-                  fontFamily: "'Noto Sans JP', sans-serif",
-                  fontSize: isMobile
-                    ? "30px"
-                    : "clamp(28px, 3.5vw, 44px)",
-                  fontWeight: 700,
-                  lineHeight: 1.3,
-                  color: C.text,
-                }}
-              >
-                {GUIDE.name}
-              </h3>
+  style={{
+    margin: "0 0 4px",
+    fontFamily: "'Noto Sans JP', sans-serif",
+    fontSize: isMobile
+  ? "22px"
+  : "clamp(22px, 2.3vw, 28px)",
+    fontWeight: 700,
+    lineHeight: 1.3,
+    color: C.text,
+  }}
+>
+  {GUIDE.name}
+</h3>
 
               <p
                 style={{
@@ -243,8 +243,6 @@ export default function Guide() {
               display: "flex",
               justifyContent: "flex-start",
               marginTop: isMobile ? "48px" : "64px",
-              paddingTop: isMobile ? "28px" : "32px",
-              borderTop: "1px solid rgba(62, 45, 33, 0.15)",
             }}
           >
             <a

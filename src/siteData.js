@@ -378,7 +378,7 @@ export const GUIDE = {
     "海も陸も、奄美の魅力をまるごとご案内します！"
   ],
 
-  image: "/images/guide.jpeg",
+  image: "/images/guide1.jpeg",
 
   forestImage: "/images/guide-sub.jpg",
 };
