@@ -1,84 +1,108 @@
+import { useEffect, useState } from "react";
 import { Clock, Users } from "lucide-react";
 
-import { TOURS, COLORS as C } from "../../siteData";
-import { CONTAINER } from "../../styles/designSystem";
-
-function SectionHeading() {
-  return (
-    <div style={{ marginBottom: "40px" }}>
-      <h2
-        style={{
-          fontFamily: "'Noto Sans JP', sans-serif",
-          fontSize: "20px",
-          fontWeight: 700,
-          color: C.text,
-          margin: 0,
-          marginBottom: "12px",
-        }}
-      >
-        他のツアーを見る
-      </h2>
-
-      <div
-        style={{
-          width: "32px",
-          height: "2px",
-          background: C.green,
-          borderRadius: "2px",
-        }}
-      />
-    </div>
-  );
-}
+import {
+  TOURS,
+  COLORS as C,
+} from "../../siteData";
 
 export default function OtherTours({
   currentTourId,
   onSelectTour,
 }) {
-  const otherTours = TOURS.filter(
-    (tour) => tour.id !== currentTourId
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    const handleChange = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  const OTHER_TOURS = TOURS.filter(
+    (t) => t.id !== currentTourId
   );
 
   return (
     <section
       style={{
-        padding: "96px 6%",
+        padding: isMobile ? "64px 5%" : "96px 6%",
         background: C.offWhite,
       }}
     >
       <div
         style={{
-          ...CONTAINER,
+          maxWidth: "1280px",
+          margin: "0 auto",
         }}
       >
-        <SectionHeading />
+        {/* Section Heading */}
 
-        {/* Tour Cards */}
         <div
-          className="other-tours-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "20px",
+            marginBottom: isMobile ? "28px" : "40px",
           }}
         >
-          {otherTours.map((tour) => (
-            <article
+          <h2
+            style={{
+              fontFamily: "'Noto Sans JP', sans-serif",
+              fontSize: isMobile ? "18px" : "20px",
+              fontWeight: 700,
+              color: C.text,
+              margin: 0,
+              marginBottom: "12px",
+            }}
+          >
+            他のツアーを見る
+          </h2>
+
+          <div
+            style={{
+              width: "32px",
+              height: "2px",
+              background: C.green,
+              borderRadius: "2px",
+            }}
+          />
+        </div>
+
+        {/* Tour Cards */}
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile
+              ? "repeat(2, minmax(0, 1fr))"
+              : "repeat(4, 1fr)",
+            gap: isMobile ? "12px" : "20px",
+          }}
+        >
+          {OTHER_TOURS.map((tour) => (
+            <div
               key={tour.id}
               onClick={() => onSelectTour?.(tour)}
               style={{
-                background: C.white,
                 borderRadius: "6px",
                 overflow: "hidden",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.06)",
+                background: C.white,
+                boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
                 cursor: "pointer",
               }}
             >
               {/* Image */}
+
               <div
                 style={{
                   position: "relative",
-                  aspectRatio: "4 / 3",
+                  aspectRatio: "4/3",
                   overflow: "hidden",
                 }}
               >
@@ -89,79 +113,82 @@ export default function OtherTours({
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    display: "block",
-                    transition: "transform 0.5s ease",
+                    transition: "transform 0.6s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform =
-                      "scale(1.04)";
+                    e.currentTarget.style.transform = "scale(1.06)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform =
-                      "scale(1)";
+                    e.currentTarget.style.transform = "scale(1)";
                   }}
                 />
 
-                {/* Image Overlay */}
+                {/* Overlay */}
+
                 <div
                   style={{
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(to top, rgba(10,25,10,0.7) 0%, rgba(10,25,10,0.05) 65%)",
+                      "linear-gradient(to top, rgba(10,25,10,0.75) 0%, transparent 55%)",
                     pointerEvents: "none",
                   }}
                 />
 
                 {/* Tag */}
+
                 {tour.tag && (
-                  <span
+                  <div
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                      padding: "4px 9px",
+                      top: isMobile ? "8px" : "12px",
+                      left: isMobile ? "8px" : "12px",
                       background: C.green,
-                      color: "#FFFFFF",
+                      color: "#ffffff",
+                      padding: isMobile
+                        ? "3px 7px"
+                        : "3px 11px",
                       borderRadius: "3px",
-                      fontSize: "10px",
+                      fontSize: isMobile ? "9px" : "11px",
                       fontWeight: 700,
-                      lineHeight: 1.3,
                     }}
                   >
                     {tour.tag}
-                  </span>
+                  </div>
                 )}
 
                 {/* Image Text */}
+
                 <div
                   style={{
                     position: "absolute",
+                    bottom: 0,
                     left: 0,
                     right: 0,
-                    bottom: 0,
-                    padding: "14px 16px",
+                    padding: isMobile
+                      ? "10px 10px"
+                      : "16px 20px",
                   }}
                 >
                   <p
                     style={{
                       fontFamily: "'Cabin', sans-serif",
-                      fontSize: "9px",
+                      fontSize: isMobile ? "7px" : "9px",
                       letterSpacing: "0.12em",
-                      color: "rgba(255,255,255,0.7)",
-                      margin: "0 0 4px",
+                      color: "rgba(255,255,255,0.55)",
+                      margin: 0,
+                      marginBottom: "3px",
                     }}
                   >
-                    {tour.nameEn?.toUpperCase()}
+                    {tour.nameEn.toUpperCase()}
                   </p>
 
                   <p
                     style={{
-                      fontFamily: "'Noto Sans JP', sans-serif",
-                      fontSize: "13px",
+                      fontSize: isMobile ? "11px" : "13px",
+                      lineHeight: 1.4,
                       fontWeight: 700,
-                      lineHeight: 1.45,
-                      color: "#FFFFFF",
+                      color: "#ffffff",
                       margin: 0,
                     }}
                   >
@@ -171,111 +198,113 @@ export default function OtherTours({
               </div>
 
               {/* Card Info */}
+
               <div
                 style={{
-                  padding: "14px 16px 16px",
+                  padding: isMobile
+                    ? "10px 10px 11px"
+                    : "14px 16px",
                 }}
               >
-                {/* Duration / Target */}
                 <div
                   style={{
                     display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    marginBottom: "10px",
-                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                    alignItems: isMobile
+                      ? "flex-end"
+                      : "center",
+                    gap: isMobile ? "6px" : "8px",
+                    flexDirection: isMobile
+                      ? "column"
+                      : "row",
                   }}
                 >
-                  <InfoItem
-                    icon={<Clock size={11} />}
-                    text={tour.duration}
-                  />
+                  {/* Duration / Target */}
 
-                  <InfoItem
-                    icon={<Users size={11} />}
-                    text={tour.target}
-                  />
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: isMobile ? "7px" : "12px",
+                      alignItems: "center",
+                      minWidth: 0,
+                      width: isMobile ? "100%" : "auto",
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                        fontSize: isMobile ? "9px" : "11px",
+                        color: C.textLight,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <Clock
+                        size={isMobile ? 10 : 11}
+                        style={{
+                          color: C.green,
+                          flexShrink: 0,
+                        }}
+                      />
+                      {tour.duration}
+                    </span>
 
-                {/* Price */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "baseline",
-                    gap: "4px",
-                  }}
-                >
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "3px",
+                        fontSize: isMobile ? "9px" : "11px",
+                        color: C.textLight,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      <Users
+                        size={isMobile ? 10 : 11}
+                        style={{
+                          color: C.green,
+                          flexShrink: 0,
+                        }}
+                      />
+                      {tour.target}
+                    </span>
+                  </div>
+
+                  {/* Price */}
+
                   <span
                     style={{
                       fontFamily: "'Cabin', sans-serif",
-                      fontSize: "16px",
                       fontWeight: 700,
+                      fontSize: isMobile ? "14px" : "16px",
                       color: C.green,
+                      whiteSpace: "nowrap",
+                      flexShrink: 0,
+                      alignSelf: isMobile
+                        ? "flex-end"
+                        : "auto",
                     }}
                   >
                     {tour.price}
-                  </span>
 
-                  {tour.priceNote && (
                     <span
                       style={{
-                        fontSize: "10px",
+                        fontFamily: "'Noto Sans JP', sans-serif",
+                        fontSize: isMobile ? "9px" : "11px",
+                        fontWeight: 400,
                         color: C.textLight,
                       }}
                     >
                       {tour.priceNote}
                     </span>
-                  )}
+                  </span>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>
-
-      {/* Responsive */}
-      <style>{`
-        @media (max-width: 900px) {
-          .other-tours-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 16px !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .other-tours-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px !important;
-          }
-        }
-      `}</style>
     </section>
-  );
-}
-
-function InfoItem({ icon, text }) {
-  return (
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "4px",
-        fontSize: "10px",
-        color: C.textLight,
-        whiteSpace: "nowrap",
-      }}
-    >
-      <span
-        style={{
-          display: "flex",
-          alignItems: "center",
-          color: C.green,
-        }}
-      >
-        {icon}
-      </span>
-
-      {text}
-    </span>
   );
 }

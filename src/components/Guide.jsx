@@ -269,15 +269,14 @@ export default function Guide() {
               }}
             >
               {/* Instagram Icon */}
-
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
+<svg
+  width="28"
+  height="28"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
                 <rect
                   x="3"
                   y="3"
@@ -303,18 +302,18 @@ export default function Guide() {
                   fill="currentColor"
                 />
               </svg>
-
-              <span>Instagramで日々の奄美を見る</span>
-
-              <span
+<span
                 aria-hidden="true"
                 style={{
                   marginLeft: "2px",
                   fontSize: "14px",
                 }}
               >
-                →
+                ←
               </span>
+              <span>ガイドの日常をゆるっと発信しています🌺</span>
+
+              
             </a>
           </div>
         </div>
