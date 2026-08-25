@@ -1,6 +1,10 @@
 import { COLORS as C } from "../../siteData";
 import { CONTAINER } from "../../styles/designSystem";
 
+/* ========================================
+   Section Heading
+======================================== */
+
 function SectionHeading({ ja }) {
   return (
     <div
@@ -34,26 +38,85 @@ function SectionHeading({ ja }) {
   );
 }
 
-function DetailValue({ row }) {
-  const isMultiLinePrice =
-    row.label === "料金" &&
-    typeof row.value === "string" &&
-    row.value.includes("\n");
+/* ========================================
+   Detail Value
+   - 通常の文章
+   - 配列
+   - 改行された料金
+   - 「半日：〜」のようなプラン表示
+======================================== */
 
-  if (!isMultiLinePrice) {
+function DetailValue({ row }) {
+  const value = row?.value;
+
+  if (value === undefined || value === null) {
+    return null;
+  }
+
+  /* ----------------------------------------
+     共通スタイル
+  ---------------------------------------- */
+
+  const textStyle = {
+    fontSize: "14px",
+    color: C.textLight,
+    lineHeight: 1.8,
+    overflowWrap: "anywhere",
+    wordBreak: "normal",
+  };
+
+  /* ----------------------------------------
+     配列の場合
+  ---------------------------------------- */
+
+  if (Array.isArray(value)) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "6px",
+        }}
+      >
+        {value.map((item, index) => (
+          <span key={index} style={textStyle}>
+            {item}
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  /* ----------------------------------------
+     改行なし
+     → 自然に折り返す
+  ---------------------------------------- */
+
+  if (typeof value !== "string" || !value.includes("\n")) {
     return (
       <span
         style={{
-          fontSize: "14px",
-          color: C.textLight,
-          lineHeight: 1.8,
+          ...textStyle,
+          display: "block",
           whiteSpace: "pre-line",
         }}
       >
-        {row.value}
+        {value}
       </span>
     );
   }
+
+  /* ----------------------------------------
+     改行あり
+     例：
+     半日：大人 10,000円 / 小学生以下 7,000円
+     1日：大人 16,000円 / 小学生以下 13,000円
+  ---------------------------------------- */
+
+  const lines = value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
 
   return (
     <div
@@ -61,54 +124,80 @@ function DetailValue({ row }) {
         display: "flex",
         flexDirection: "column",
         gap: "10px",
-        fontSize: "14px",
-        color: C.textLight,
-        lineHeight: 1.8,
+        minWidth: 0,
       }}
     >
-      {row.value.split("\n").map((line, index) => {
-        const [plan, priceText = ""] = line.split("：");
-        const prices = priceText.split(" / ");
+      {lines.map((line, index) => {
+        const colonIndex = line.indexOf("：");
+
+        /* ----------------------------------------
+           「：」がない場合
+        ---------------------------------------- */
+
+        if (colonIndex === -1) {
+          return (
+            <span key={index} style={textStyle}>
+              {line}
+            </span>
+          );
+        }
+
+        /* ----------------------------------------
+           「半日：〜」「1日：〜」など
+        ---------------------------------------- */
+
+        const label = line.slice(0, colonIndex).trim();
+        const content = line.slice(colonIndex + 1).trim();
+
+        const items = content
+          .split(" / ")
+          .map((item) => item.trim())
+          .filter(Boolean);
 
         return (
           <div
             key={index}
             style={{
               display: "grid",
-              gridTemplateColumns: "64px 1fr",
-              columnGap: "16px",
+              gridTemplateColumns: "52px minmax(0, 1fr)",
+              columnGap: "12px",
               alignItems: "start",
+              minWidth: 0,
             }}
           >
+            {/* プラン名 */}
+
             <span
               style={{
                 fontSize: "14px",
-                color: C.textLight,
+                fontWeight: 600,
+                color: C.text,
                 lineHeight: 1.8,
                 whiteSpace: "nowrap",
               }}
             >
-              {plan}
+              {label}
             </span>
+
+            {/* 料金 */}
 
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 gap: "2px",
+                minWidth: 0,
               }}
             >
-              {prices.map((price, priceIndex) => (
+              {items.map((item, itemIndex) => (
                 <span
-                  key={priceIndex}
+                  key={itemIndex}
                   style={{
-                    fontSize: "14px",
-                    color: C.textLight,
-                    lineHeight: 1.8,
-                    whiteSpace: "nowrap",
+                    ...textStyle,
+                    display: "block",
                   }}
                 >
-                  {price}
+                  {item}
                 </span>
               ))}
             </div>
@@ -118,6 +207,299 @@ function DetailValue({ row }) {
     </div>
   );
 }
+
+/* ========================================
+   Detail Row
+======================================== */
+
+function DetailRow({ row, isLast, isPickup }) {
+  return (
+    <div
+      className={`tour-detail-row ${
+        isPickup ? "tour-detail-row-pickup" : ""
+      }`}
+      style={{
+        display: "grid",
+        gridTemplateColumns: "88px minmax(0, 1fr)",
+        columnGap: "20px",
+        alignItems: "start",
+        padding: "18px 24px",
+
+        background: C.white,
+
+        borderBottom: isLast
+          ? "none"
+          : "1px solid rgba(62, 140, 42, 0.1)",
+
+        /* 送迎は少し控えめに */
+        ...(isPickup && {
+          paddingTop: "15px",
+          paddingBottom: "15px",
+          background: "rgba(245, 247, 244, 0.55)",
+        }),
+      }}
+    >
+      {/* 項目名 */}
+
+      <span
+        style={{
+          fontSize: "14px",
+          fontWeight: isPickup ? 500 : 600,
+          color: isPickup ? C.textLight : C.text,
+          lineHeight: 1.8,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {row.label}
+      </span>
+
+      {/* 内容 */}
+
+      <div
+        style={{
+          minWidth: 0,
+        }}
+      >
+        <DetailValue row={row} />
+      </div>
+    </div>
+  );
+}
+
+/* ========================================
+   Tour Details
+   - 送迎は必ず最後へ
+======================================== */
+
+function TourDetails({ details }) {
+  if (!details?.length) {
+    return null;
+  }
+
+  /*
+   * 「送迎」を最後へ移動。
+   * siteData の並び順を変更しなくても、
+   * 表示上は必ず最後になります。
+   */
+
+  const normalDetails = details.filter((row) => row.label !== "送迎");
+
+  const pickupDetail = details.find((row) => row.label === "送迎");
+
+  const displayDetails = pickupDetail
+    ? [...normalDetails, pickupDetail]
+    : normalDetails;
+
+  return (
+    <div
+      className="tour-details"
+      style={{
+        borderRadius: "6px",
+        overflow: "hidden",
+        border: "1px solid rgba(62, 140, 42, 0.15)",
+        background: C.white,
+      }}
+    >
+      {displayDetails.map((row, index) => {
+        const isLast = index === displayDetails.length - 1;
+        const isPickup = row.label === "送迎";
+
+        return (
+          <DetailRow
+            key={`${row.label}-${index}`}
+            row={row}
+            isLast={isLast}
+            isPickup={isPickup}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+/* ========================================
+   Recommended Points
+======================================== */
+
+function RecommendedPoints({ items }) {
+  if (!items?.length) {
+    return null;
+  }
+
+  return (
+    <div
+      style={{
+        paddingBottom: "36px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+          marginBottom: "24px",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "18px",
+            color: C.green,
+            lineHeight: 1,
+          }}
+          aria-hidden="true"
+        >
+          ＼
+        </span>
+
+        <p
+          style={{
+            fontFamily: "'Noto Sans JP', sans-serif",
+            fontSize: "18px",
+            fontWeight: 700,
+            letterSpacing: "0.06em",
+            color: C.green,
+            margin: 0,
+          }}
+        >
+          おすすめポイント
+        </p>
+
+        <span
+          style={{
+            fontSize: "18px",
+            color: C.green,
+            lineHeight: 1,
+          }}
+          aria-hidden="true"
+        >
+          ／
+        </span>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+        }}
+      >
+        {items.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "12px",
+            }}
+          >
+            <span
+              style={{
+                width: "5px",
+                height: "5px",
+                borderRadius: "50%",
+                background: C.green,
+                marginTop: "9px",
+                flexShrink: 0,
+              }}
+            />
+
+            <span
+              style={{
+                fontSize: "14px",
+                color: C.textLight,
+                lineHeight: 1.8,
+                overflowWrap: "anywhere",
+              }}
+            >
+              {item}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ========================================
+   Notes
+   - siteData の notes のみ表示
+   - 内容をここに直接書かない
+======================================== */
+
+function Notes({ notes }) {
+  if (!notes?.length) {
+    return null;
+  }
+
+  return (
+    <div
+      style={{
+        borderTop: "1px solid rgba(62, 140, 42, 0.15)",
+        paddingTop: "24px",
+      }}
+    >
+      <SectionSubHeading title="注意事項" />
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+        }}
+      >
+        {notes.map((note, index) => (
+          <p
+            key={index}
+            style={{
+              margin: 0,
+              fontSize: "14px",
+              color: C.textLight,
+              lineHeight: 1.8,
+              overflowWrap: "anywhere",
+            }}
+          >
+            ・{note}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ========================================
+   Cancellation
+======================================== */
+
+function Cancellation() {
+  return (
+    <div
+      style={{
+        borderTop: "1px solid rgba(62, 140, 42, 0.15)",
+        marginTop: "28px",
+        paddingTop: "24px",
+      }}
+    >
+      <SectionSubHeading title="キャンセルについて" />
+
+      <p
+        style={{
+          fontSize: "14px",
+          color: C.textLight,
+          lineHeight: 1.8,
+          margin: 0,
+          overflowWrap: "anywhere",
+        }}
+      >
+        キャンセル・日程変更については、ご予約時にご案内いたします。
+        ご不明な点はお気軽にご相談ください。
+      </p>
+    </div>
+  );
+}
+
+/* ========================================
+   Tour Info
+======================================== */
 
 export default function TourInfo({ tour }) {
   return (
@@ -143,224 +525,33 @@ export default function TourInfo({ tour }) {
             alignItems: "start",
           }}
         >
-          {/* ================================
-              ツアー詳細
-          ================================= */}
+          {/* ========================================
+              左：ツアー詳細
+          ======================================== */}
 
-          <div
-            className="tour-details"
-            style={{
-              borderRadius: "6px",
-              overflow: "hidden",
-              border: "1px solid rgba(62, 140, 42, 0.15)",
-              background: C.white,
-            }}
-          >
-            {tour.details?.map((row, index) => (
-              <div
-                key={index}
-                className="tour-detail-row"
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  padding: "18px 24px",
-                  background: C.white,
-                  borderBottom:
-                    index < tour.details.length - 1
-                      ? "1px solid rgba(62, 140, 42, 0.1)"
-                      : "none",
-                }}
-              >
-                <span
-                  style={{
-                    width: "88px",
-                    flexShrink: 0,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    color: C.text,
-                    lineHeight: 1.8,
-                  }}
-                >
-                  {row.label}
-                </span>
+          <TourDetails details={tour.details} />
 
-                <div
-                  style={{
-                    flex: 1,
-                    minWidth: 0,
-                  }}
-                >
-                  <DetailValue row={row} />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ================================
-              おすすめ・注意事項
-          ================================= */}
+          {/* ========================================
+              右：おすすめ・注意事項
+          ======================================== */}
 
           <div
             style={{
               minWidth: 0,
             }}
           >
-            {/* おすすめポイント */}
+            <RecommendedPoints items={tour.recommended} />
 
-            <div
-              style={{
-                paddingBottom: "36px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  marginBottom: "24px",
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: "18px",
-                    color: C.green,
-                    lineHeight: 1,
-                  }}
-                  aria-hidden="true"
-                >
-                  ＼
-                </span>
+            <Notes notes={tour.notes} />
 
-                <p
-                  style={{
-                    fontFamily: "'Noto Sans JP', sans-serif",
-                    fontSize: "18px",
-                    fontWeight: 700,
-                    letterSpacing: "0.06em",
-                    color: C.green,
-                    margin: 0,
-                  }}
-                >
-                  おすすめポイント
-                </p>
-
-                <span
-                  style={{
-                    fontSize: "18px",
-                    color: C.green,
-                    lineHeight: 1,
-                  }}
-                  aria-hidden="true"
-                >
-                  ／
-                </span>
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "15px",
-                }}
-              >
-                {tour.recommended?.map((item, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "12px",
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: "5px",
-                        height: "5px",
-                        borderRadius: "50%",
-                        background: C.green,
-                        marginTop: "9px",
-                        flexShrink: 0,
-                      }}
-                    />
-
-                    <span
-                      style={{
-                        fontSize: "14px",
-                        color: C.textLight,
-                        lineHeight: 1.8,
-                      }}
-                    >
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 注意事項 */}
-
-            <div
-              style={{
-                borderTop: "1px solid rgba(62, 140, 42, 0.15)",
-                paddingTop: "24px",
-              }}
-            >
-              <SectionSubHeading title="注意事項" />
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "8px",
-                  fontSize: "14px",
-                  color: C.textLight,
-                  lineHeight: 1.8,
-                }}
-              >
-                <p style={{ margin: 0 }}>
-                  ・天候や海況により、ツアー内容の変更・中止となる場合があります。
-                </p>
-
-                <p style={{ margin: 0 }}>
-                  ・服装や持ち物については、各ツアーの案内をご確認ください。
-                </p>
-
-                <p style={{ margin: 0 }}>
-                  ・小さなお子様連れや、体調面などでご不安がある場合は、事前にご相談ください。
-                </p>
-              </div>
-            </div>
-
-            {/* キャンセルについて */}
-
-            <div
-              style={{
-                borderTop: "1px solid rgba(62, 140, 42, 0.15)",
-                marginTop: "28px",
-                paddingTop: "24px",
-              }}
-            >
-              <SectionSubHeading title="キャンセルについて" />
-
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: C.textLight,
-                  lineHeight: 1.8,
-                  margin: 0,
-                }}
-              >
-                キャンセル・日程変更については、ご予約時にご案内いたします。
-                ご不明な点はお気軽にご相談ください。
-              </p>
-            </div>
+            <Cancellation />
           </div>
         </div>
       </div>
 
-      {/* ================================
+      {/* ========================================
           Responsive
-      ================================= */}
+      ======================================== */}
 
       <style>{`
         @media (max-width: 768px) {
@@ -370,7 +561,26 @@ export default function TourInfo({ tour }) {
           }
 
           .tour-detail-row {
+            grid-template-columns: 76px minmax(0, 1fr) !important;
+            column-gap: 16px !important;
             padding: 16px 18px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .tour-detail-row {
+            grid-template-columns: 68px minmax(0, 1fr) !important;
+            column-gap: 12px !important;
+            padding: 15px 16px !important;
+          }
+
+          .tour-detail-row > span:first-child,
+          .tour-detail-row-pickup > span:first-child {
+            font-size: 13px !important;
+          }
+
+          .tour-detail-row span {
+            font-size: 13px !important;
           }
         }
       `}</style>
