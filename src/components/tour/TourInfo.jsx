@@ -54,7 +54,7 @@ function DetailValue({ row }) {
   }
 
   /* ----------------------------------------
-     共通スタイル
+     共通テキストスタイル
   ---------------------------------------- */
 
   const textStyle = {
@@ -89,7 +89,7 @@ function DetailValue({ row }) {
 
   /* ----------------------------------------
      改行なし
-     → 自然に折り返す
+     → 通常の文章として表示
   ---------------------------------------- */
 
   if (typeof value !== "string" || !value.includes("\n")) {
@@ -131,7 +131,7 @@ function DetailValue({ row }) {
         const colonIndex = line.indexOf("：");
 
         /* ----------------------------------------
-           「：」がない場合
+           「：」がない通常の行
         ---------------------------------------- */
 
         if (colonIndex === -1) {
@@ -212,31 +212,20 @@ function DetailValue({ row }) {
    Detail Row
 ======================================== */
 
-function DetailRow({ row, isLast, isPickup }) {
+function DetailRow({ row, isLast }) {
   return (
     <div
-      className={`tour-detail-row ${
-        isPickup ? "tour-detail-row-pickup" : ""
-      }`}
+      className="tour-detail-row"
       style={{
         display: "grid",
         gridTemplateColumns: "88px minmax(0, 1fr)",
         columnGap: "20px",
         alignItems: "start",
         padding: "18px 24px",
-
         background: C.white,
-
         borderBottom: isLast
           ? "none"
           : "1px solid rgba(62, 140, 42, 0.1)",
-
-        /* 送迎は少し控えめに */
-        ...(isPickup && {
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          background: "rgba(245, 247, 244, 0.55)",
-        }),
       }}
     >
       {/* 項目名 */}
@@ -244,8 +233,8 @@ function DetailRow({ row, isLast, isPickup }) {
       <span
         style={{
           fontSize: "14px",
-          fontWeight: isPickup ? 500 : 600,
-          color: isPickup ? C.textLight : C.text,
+          fontWeight: 600,
+          color: C.text,
           lineHeight: 1.8,
           whiteSpace: "nowrap",
         }}
@@ -268,7 +257,7 @@ function DetailRow({ row, isLast, isPickup }) {
 
 /* ========================================
    Tour Details
-   - 送迎は必ず最後へ
+   - 「送迎」は必ず最後に表示
 ======================================== */
 
 function TourDetails({ details }) {
@@ -276,15 +265,18 @@ function TourDetails({ details }) {
     return null;
   }
 
-  /*
-   * 「送迎」を最後へ移動。
-   * siteData の並び順を変更しなくても、
-   * 表示上は必ず最後になります。
-   */
+  /* ----------------------------------------
+     「送迎」を最後へ移動
+     siteData の並び順は変更しない
+  ---------------------------------------- */
 
-  const normalDetails = details.filter((row) => row.label !== "送迎");
+  const normalDetails = details.filter(
+    (row) => row.label !== "送迎"
+  );
 
-  const pickupDetail = details.find((row) => row.label === "送迎");
+  const pickupDetail = details.find(
+    (row) => row.label === "送迎"
+  );
 
   const displayDetails = pickupDetail
     ? [...normalDetails, pickupDetail]
@@ -301,15 +293,14 @@ function TourDetails({ details }) {
       }}
     >
       {displayDetails.map((row, index) => {
-        const isLast = index === displayDetails.length - 1;
-        const isPickup = row.label === "送迎";
+        const isLast =
+          index === displayDetails.length - 1;
 
         return (
           <DetailRow
             key={`${row.label}-${index}`}
             row={row}
             isLast={isLast}
-            isPickup={isPickup}
           />
         );
       })}
@@ -520,7 +511,8 @@ export default function TourInfo({ tour }) {
           className="tour-info-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
+            gridTemplateColumns:
+              "minmax(0, 1fr) minmax(0, 1fr)",
             gap: "64px",
             alignItems: "start",
           }}
@@ -540,7 +532,9 @@ export default function TourInfo({ tour }) {
               minWidth: 0,
             }}
           >
-            <RecommendedPoints items={tour.recommended} />
+            <RecommendedPoints
+              items={tour.recommended}
+            />
 
             <Notes notes={tour.notes} />
 
@@ -561,7 +555,8 @@ export default function TourInfo({ tour }) {
           }
 
           .tour-detail-row {
-            grid-template-columns: 76px minmax(0, 1fr) !important;
+            grid-template-columns:
+              76px minmax(0, 1fr) !important;
             column-gap: 16px !important;
             padding: 16px 18px !important;
           }
@@ -569,13 +564,13 @@ export default function TourInfo({ tour }) {
 
         @media (max-width: 480px) {
           .tour-detail-row {
-            grid-template-columns: 68px minmax(0, 1fr) !important;
+            grid-template-columns:
+              68px minmax(0, 1fr) !important;
             column-gap: 12px !important;
             padding: 15px 16px !important;
           }
 
-          .tour-detail-row > span:first-child,
-          .tour-detail-row-pickup > span:first-child {
+          .tour-detail-row > span:first-child {
             font-size: 13px !important;
           }
 

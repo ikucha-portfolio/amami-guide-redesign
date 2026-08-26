@@ -4,9 +4,11 @@ import { ImageWithFallback } from "./ImageWithFallback";
 
 const HERO_IMAGES = [
   "/images/hero.jpeg",
-  "/images/night.jpeg",
   "/images/umigame_1.jpeg",
   "/images/boat.jpeg",
+  "/images/amami3.jpeg",
+  "/images/drive.jpeg",
+  "/images/night.jpeg",
 ];
 
 export default function Hero() {
