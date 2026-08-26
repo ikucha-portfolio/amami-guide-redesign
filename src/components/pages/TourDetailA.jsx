@@ -1,12 +1,12 @@
 import Nav from "../Nav";
 import TourHero from "../tour/TourHero";
+import TourNavigation from "../tour/TourNavigation";
 import TourAbout from "../tour/TourAbout";
 import TourInfo from "../tour/TourInfo";
 import TourFlow from "../tour/TourFlow";
 import Contact from "../Contact";
 import OtherTours from "../tour/OtherTours";
 import Footer from "../Footer";
-
 
 import {
   COLORS as C,
@@ -27,7 +27,14 @@ export default function TourDetailA({
     >
       <Nav onBack={onBack} />
 
+      {/* Hero */}
       <TourHero tour={tour} />
+
+      {/* Hero直下のツアー切り替え */}
+      <TourNavigation
+        currentTourId={tour.id}
+        onSelectTour={onSelectTour}
+      />
 
       <TourAbout tour={tour} />
 
@@ -35,10 +42,11 @@ export default function TourDetailA({
 
       <TourFlow tour={tour} />
 
+      {/* ページ下部の他ツアー */}
       <OtherTours
-  currentTourId={tour.id}
-  onSelectTour={onSelectTour}
-/>
+        currentTourId={tour.id}
+        onSelectTour={onSelectTour}
+      />
 
       <Contact />
 
