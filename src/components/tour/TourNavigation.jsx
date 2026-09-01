@@ -31,6 +31,11 @@ export default function TourNavigation({
     return null;
   }
 
+  // スマホではHero直下に表示しない
+  if (isMobile) {
+    return null;
+  }
+
   const currentIndex = TOURS.findIndex(
     (tour) => tour.id === currentTourId
   );
@@ -70,7 +75,8 @@ export default function TourNavigation({
       aria-label="ツアーを選択"
       style={{
         background: C.white,
-        borderBottom: "1px solid rgba(62, 140, 42, 0.12)",
+        borderBottom:
+          "1px solid rgba(62, 140, 42, 0.12)",
       }}
     >
       <div
@@ -81,8 +87,8 @@ export default function TourNavigation({
           justifyContent: "center",
           maxWidth: "1280px",
           margin: "0 auto",
-          minHeight: isMobile ? "56px" : "64px",
-          padding: isMobile ? "0 12px" : "0 24px",
+          minHeight: "64px",
+          padding: "0 24px",
         }}
       >
         {/* 左矢印 */}
@@ -93,7 +99,7 @@ export default function TourNavigation({
           className="tour-nav-arrow"
         >
           <ChevronLeft
-            size={isMobile ? 18 : 20}
+            size={20}
             strokeWidth={1.5}
           />
         </button>
@@ -112,7 +118,8 @@ export default function TourNavigation({
           }}
         >
           {TOURS.map((tour, index) => {
-            const isActive = tour.id === currentTourId;
+            const isActive =
+              tour.id === currentTourId;
 
             return (
               <div
@@ -131,21 +138,21 @@ export default function TourNavigation({
                     position: "relative",
                     border: "none",
                     background: "transparent",
-                    padding: isMobile
-                      ? "0 10px"
-                      : "0 14px",
+                    padding: "0 14px",
                     color: isActive
                       ? C.green
                       : C.textLight,
                     fontFamily:
                       "'Noto Sans JP', sans-serif",
-                    fontSize: isMobile ? "11px" : "13px",
-                    fontWeight: isActive ? 700 : 500,
+                    fontSize: "13px",
+                    fontWeight: isActive
+                      ? 700
+                      : 500,
                     whiteSpace: "nowrap",
                     cursor: isActive
                       ? "default"
                       : "pointer",
-                    height: isMobile ? "56px" : "64px",
+                    height: "64px",
                   }}
                 >
                   {tour.name}
@@ -193,7 +200,7 @@ export default function TourNavigation({
           className="tour-nav-arrow"
         >
           <ChevronRight
-            size={isMobile ? 18 : 20}
+            size={20}
             strokeWidth={1.5}
           />
         </button>
@@ -229,21 +236,6 @@ export default function TourNavigation({
 
         .tour-nav-item:hover {
           color: ${C.green} !important;
-        }
-
-        @media (max-width: 768px) {
-          .tour-nav-arrow {
-            width: 28px;
-            height: 56px;
-          }
-
-          .tour-navigation {
-            justify-content: flex-start !important;
-          }
-
-          .tour-navigation-list {
-            justify-content: flex-start !important;
-          }
         }
       `}</style>
     </nav>
