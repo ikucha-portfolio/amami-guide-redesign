@@ -283,27 +283,42 @@ function TourDetails({ details }) {
     : normalDetails;
 
   return (
-    <div
-      className="tour-details"
-      style={{
-        borderRadius: "6px",
-        overflow: "hidden",
-        border: "1px solid rgba(62, 140, 42, 0.15)",
-        background: C.white,
-      }}
-    >
-      {displayDetails.map((row, index) => {
-        const isLast =
-          index === displayDetails.length - 1;
+    <div>
+      {/* 予約人数について */}
 
-        return (
-          <DetailRow
-            key={`${row.label}-${index}`}
-            row={row}
-            isLast={isLast}
-          />
-        );
-      })}
+      <p
+  style={{
+    margin: "0 0 14px",
+    fontSize: "13px",
+    fontWeight: 600,
+    color: C.green,
+    lineHeight: 1.7,
+  }}
+>
+ ・2名様からご予約いただけます
+</p>
+      <div
+        className="tour-details"
+        style={{
+          borderRadius: "6px",
+          overflow: "hidden",
+          border: "1px solid rgba(62, 140, 42, 0.15)",
+          background: C.white,
+        }}
+      >
+        {displayDetails.map((row, index) => {
+          const isLast =
+            index === displayDetails.length - 1;
+
+          return (
+            <DetailRow
+              key={`${row.label}-${index}`}
+              row={row}
+              isLast={isLast}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
