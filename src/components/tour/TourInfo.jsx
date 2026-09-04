@@ -78,11 +78,22 @@ function DetailValue({ row }) {
           gap: "6px",
         }}
       >
-        {value.map((item, index) => (
-          <span key={index} style={textStyle}>
-            {item}
-          </span>
-        ))}
+        {value.map((item, index) => {
+  const isNote = item.trim().startsWith("※");
+
+  return (
+    <span
+      key={index}
+      style={{
+        ...textStyle,
+        fontSize: isNote ? "12px" : "14px",
+        color: isNote ? C.textLight : textStyle.color,
+      }}
+    >
+      {item}
+    </span>
+  );
+})}
       </div>
     );
   }
