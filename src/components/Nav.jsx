@@ -297,48 +297,42 @@ export default function Nav({ onBack = null }) {
           </div>
 
           <div>
-            <div
-              style={{
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: "14px",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                lineHeight: 1.1,
-                color: logoColor,
+  <div
+  style={{
+    fontFamily: "'Cabin', sans-serif",
+    fontSize: "14px",
+    fontWeight: 700,
+    letterSpacing: "0.12em",
+    lineHeight: 1.1,
+    color: logoColor,
+    transition: "color 0.35s ease",
+  }}
+>
+  ALIVE AMAMI
+</div>
 
-                transition:
-                  "color 0.35s ease",
-              }}
-            >
-              Amami
-            </div>
-
-            <div
-              style={{
-                marginTop: "2px",
-
-                fontFamily: "'Cabin', sans-serif",
-                fontSize: "9px",
-                fontWeight: 600,
-                letterSpacing: "0.1em",
-                lineHeight: 1.1,
-
-                color: logoColor,
-
-                opacity:
-                  isMenuOpen
-                    ? 0.8
-                    : isScrolled
-                    ? 0.8
-                    : 0.9,
-
-                transition:
-                  "color 0.35s ease, opacity 0.35s ease",
-              }}
-            >
-              Sunshine Guide
-            </div>
-          </div>
+<div
+  style={{
+    marginTop: "4px",
+    fontFamily: "'Cabin', sans-serif",
+    fontSize: "10px",
+    fontWeight: 600,
+    letterSpacing: "0.08em",
+    lineHeight: 1.1,
+    color: logoColor,
+    opacity:
+      isMenuOpen
+        ? 0.85
+        : isScrolled
+        ? 0.85
+        : 0.95,
+    transition:
+      "color 0.35s ease, opacity 0.35s ease",
+  }}
+>
+  ~ Guide & Experience ~
+</div>
+</div>
         </a>
 
         {/* ========================================

@@ -69,7 +69,7 @@ export default function Guide() {
               ＼
             </span>
 
-            <span>Amami Sunshine Guideだからできること</span>
+            <span>ALIVE AMAMIだからできること</span>
 
             <span
               aria-hidden="true"

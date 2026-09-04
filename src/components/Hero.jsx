@@ -105,28 +105,53 @@ export default function Hero() {
           textAlign: "center",
         }}
       >
-        <div
-          style={{
-            fontFamily: "'Cabin', sans-serif",
+        {/* ALIVE AMAMI */}
 
-            fontSize: "clamp(24px, 3.2vw, 42px)",
+<div
+  style={{
+    fontFamily: "'Cabin', sans-serif",
 
-            fontWeight: 600,
+    fontSize: "clamp(26px, 3.2vw, 42px)",
 
-            letterSpacing: "0.16em",
+    fontWeight: 600,
 
-            color: "#FFFFFF",
+    letterSpacing: "0.14em",
 
-            lineHeight: 1.05,
+    color: "#FFFFFF",
 
-            textShadow:
-              "0 2px 20px rgba(0,0,0,0.3)",
-          }}
-        >
-          Amami
-          <br />
-          Sunshine Guide
-        </div>
+    lineHeight: 1.05,
+
+    textShadow:
+      "0 2px 20px rgba(0,0,0,0.3)",
+  }}
+>
+  ALIVE AMAMI
+</div>
+
+{/* Guide & Experience */}
+
+<div
+  style={{
+    fontFamily: "'Cabin', sans-serif",
+
+    fontSize: "clamp(14px, 1.5vw, 18px)",
+
+    fontWeight: 500,
+
+    letterSpacing: "0.12em",
+
+    color: "rgba(255,255,255,0.92)",
+
+    marginTop: "4px",
+
+    lineHeight: 1.2,
+
+    textShadow:
+      "0 1px 8px rgba(0,0,0,0.3)",
+  }}
+>
+  ~ Guide & Experience ~
+</div>
 
         <div
           style={{

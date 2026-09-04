@@ -58,7 +58,8 @@ export default function Footer() {
               lineHeight: 1.4,
             }}
           >
-            Amami Sunshine Guide
+            ALIVE AMAMI
+            ~Guide & Experience~
           </span>
         </div>
 
@@ -72,7 +73,7 @@ export default function Footer() {
             flexShrink: 0,
           }}
         >
-          © 2026 Amami Sunshine Guide.
+          © 2026 ALIVE AMAMI~Guide & Experience~. All rights reserved.
           <br className="footer-break" />
           All rights reserved.
         </span>
