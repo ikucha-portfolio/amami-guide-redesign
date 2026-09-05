@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { COLORS } from "../siteData";
 
 const C = COLORS;
@@ -34,9 +34,7 @@ export default function Nav({ onBack = null }) {
   // ========================================
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      "(max-width: 768px)"
-    );
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
 
     const handleResize = () => {
       setIsMobile(mediaQuery.matches);
@@ -51,15 +49,12 @@ export default function Nav({ onBack = null }) {
     mediaQuery.addEventListener("change", handleResize);
 
     return () => {
-      mediaQuery.removeEventListener(
-        "change",
-        handleResize
-      );
+      mediaQuery.removeEventListener("change", handleResize);
     };
   }, []);
 
   // ========================================
-  // Lock body scroll while menu is open
+  // Lock body scroll
   // ========================================
 
   useEffect(() => {
@@ -93,25 +88,22 @@ export default function Nav({ onBack = null }) {
     return true;
   };
 
-  // ----------------------------------------
+  // ========================================
   // Home
-  // ----------------------------------------
+  // ========================================
 
   const handleHomeClick = (e) => {
     e.preventDefault();
 
     setIsMenuOpen(false);
 
-    // Home上にいる場合
     if (scrollToSection("top")) {
       return;
     }
 
-    // 詳細ページなどからHomeへ戻る
     if (onBack) {
       onBack();
 
-      // Home描画後にトップへ
       setTimeout(() => {
         const top = document.getElementById("top");
 
@@ -131,32 +123,27 @@ export default function Nav({ onBack = null }) {
       return;
     }
 
-    // フォールバック
     window.location.href = "/";
   };
 
-  // ----------------------------------------
-  // Home Section
-  // ----------------------------------------
+  // ========================================
+  // Section
+  // ========================================
 
   const handleSectionClick = (e, sectionId) => {
     e.preventDefault();
 
     setIsMenuOpen(false);
 
-    // Home上に該当セクションがある場合
     if (scrollToSection(sectionId)) {
       return;
     }
 
-    // 詳細ページなどからHomeへ戻る
     if (onBack) {
       onBack();
 
-      // Home描画後に該当セクションへ移動
       setTimeout(() => {
-        const element =
-          document.getElementById(sectionId);
+        const element = document.getElementById(sectionId);
 
         if (element) {
           element.scrollIntoView({
@@ -169,7 +156,6 @@ export default function Nav({ onBack = null }) {
       return;
     }
 
-    // フォールバック
     window.location.href = `/#${sectionId}`;
   };
 
@@ -177,8 +163,6 @@ export default function Nav({ onBack = null }) {
   // Header Colors
   // ========================================
 
-  // メニューを開いている間は
-  // 屋号と×を常に緑色＋白背景にする
   const textColor =
     isMenuOpen
       ? C.textLight
@@ -226,9 +210,6 @@ export default function Nav({ onBack = null }) {
           top: 0,
           left: 0,
           right: 0,
-
-          // メニューを開いたときも
-          // メニューより必ず前面に表示
           zIndex: 300,
 
           height: "64px",
@@ -258,58 +239,58 @@ export default function Nav({ onBack = null }) {
             "background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease",
         }}
       >
-      {/* ========================================
-    Logo
-======================================== */}
+        {/* ========================================
+            Logo
+        ======================================== */}
 
-<a
-  href="#"
-  onClick={handleHomeClick}
-  style={{
-    display: "flex",
-    alignItems: "center",
-    flexShrink: 0,
-    textDecoration: "none",
-  }}
->
-  <div>
-    <div
-      style={{
-        fontFamily: "'Cabin', sans-serif",
-        fontSize: "14px",
-        fontWeight: 700,
-        letterSpacing: "0.12em",
-        lineHeight: 1.1,
-        color: logoColor,
-        transition: "color 0.35s ease",
-      }}
-    >
-      ALIVE AMAMI
-    </div>
+        <a
+          href="#"
+          onClick={handleHomeClick}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexShrink: 0,
+            textDecoration: "none",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                fontFamily: "'Cabin', sans-serif",
+                fontSize: "14px",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                lineHeight: 1.1,
+                color: logoColor,
+                transition: "color 0.35s ease",
+              }}
+            >
+              ALIVE AMAMI
+            </div>
 
-    <div
-      style={{
-        marginTop: "4px",
-        fontFamily: "'Cabin', sans-serif",
-        fontSize: "10px",
-        fontWeight: 600,
-        letterSpacing: "0.08em",
-        lineHeight: 1.1,
-        color: logoColor,
-        opacity:
-          isMenuOpen
-            ? 0.85
-            : isScrolled
-            ? 0.85
-            : 0.95,
-        transition:
-          "color 0.35s ease, opacity 0.35s ease",
-      }}
-    >
-      ~ Guide & Experience ~
-    </div>
-  </div>
-</a>
+            <div
+              style={{
+                marginTop: "4px",
+                fontFamily: "'Cabin', sans-serif",
+                fontSize: "10px",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                lineHeight: 1.1,
+                color: logoColor,
+                opacity: isMenuOpen
+                  ? 0.85
+                  : isScrolled
+                  ? 0.85
+                  : 0.95,
+                transition:
+                  "color 0.35s ease, opacity 0.35s ease",
+              }}
+            >
+              ~ Guide & Experience ~
+            </div>
+          </div>
+        </a>
+
         {/* ========================================
             Desktop Navigation
         ======================================== */}
@@ -386,10 +367,7 @@ export default function Nav({ onBack = null }) {
               <a
                 href="#tours"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "tours"
-                  )
+                  handleSectionClick(e, "tours")
                 }
                 style={{
                   display: "inline-flex",
@@ -408,10 +386,9 @@ export default function Nav({ onBack = null }) {
 
                   textDecoration: "none",
 
-                  boxShadow:
-                    isScrolled
-                      ? "none"
-                      : "0 4px 16px rgba(0,0,0,0.16)",
+                  boxShadow: isScrolled
+                    ? "none"
+                    : "0 4px 16px rgba(0,0,0,0.16)",
 
                   transition:
                     "box-shadow 0.35s ease",
@@ -423,10 +400,7 @@ export default function Nav({ onBack = null }) {
               <a
                 href="#contact"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "contact"
-                  )
+                  handleSectionClick(e, "contact")
                 }
                 style={{
                   display: "inline-flex",
@@ -435,20 +409,17 @@ export default function Nav({ onBack = null }) {
 
                   padding: "8px 18px",
 
-                  background:
-                    isScrolled
-                      ? "transparent"
-                      : "rgba(255,255,255,0.08)",
+                  background: isScrolled
+                    ? "transparent"
+                    : "rgba(255,255,255,0.08)",
 
-                  color:
-                    isScrolled
-                      ? C.green
-                      : "#FFFFFF",
+                  color: isScrolled
+                    ? C.green
+                    : "#FFFFFF",
 
-                  border:
-                    isScrolled
-                      ? `1.5px solid ${C.green}`
-                      : "1.5px solid rgba(255,255,255,0.85)",
+                  border: isScrolled
+                    ? `1.5px solid ${C.green}`
+                    : "1.5px solid rgba(255,255,255,0.85)",
 
                   borderRadius: "4px",
 
@@ -500,19 +471,18 @@ export default function Nav({ onBack = null }) {
 
               cursor: "pointer",
 
-              transition:
-                "color 0.35s ease",
+              transition: "color 0.35s ease",
             }}
           >
             {isMenuOpen ? (
               <X
-                size={30}
-                strokeWidth={1.8}
+                size={28}
+                strokeWidth={1.7}
               />
             ) : (
               <Menu
-                size={28}
-                strokeWidth={1.8}
+                size={27}
+                strokeWidth={1.7}
               />
             )}
           </button>
@@ -534,8 +504,7 @@ export default function Nav({ onBack = null }) {
 
             background: dividerColor,
 
-            transform:
-              "translateX(-50%)",
+            transform: "translateX(-50%)",
 
             opacity: isMenuOpen
               ? 1
@@ -572,15 +541,13 @@ export default function Nav({ onBack = null }) {
 
             opacity: isMenuOpen ? 1 : 0,
 
-            visibility:
-              isMenuOpen
-                ? "visible"
-                : "hidden",
+            visibility: isMenuOpen
+              ? "visible"
+              : "hidden",
 
-            transform:
-              isMenuOpen
-                ? "translateY(0)"
-                : "translateY(-12px)",
+            transform: isMenuOpen
+              ? "translateY(0)"
+              : "translateY(-12px)",
 
             transition:
               "opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease",
@@ -593,10 +560,7 @@ export default function Nav({ onBack = null }) {
               display: "flex",
               flexDirection: "column",
 
-              // Header 64px分だけ下から
-              // メニューを開始
-              padding:
-                "64px 28px 40px",
+              padding: "64px 30px 40px",
             }}
           >
             {/* ========================================
@@ -605,12 +569,13 @@ export default function Nav({ onBack = null }) {
 
             <div
               style={{
-                paddingTop: "28px",
+                paddingTop: "24px",
               }}
             >
               <MobileLink
                 href="#"
                 onClick={handleHomeClick}
+                en="HOME"
               >
                 ホーム
               </MobileLink>
@@ -618,11 +583,9 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#tours"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "tours"
-                  )
+                  handleSectionClick(e, "tours")
                 }
+                en="TOURS"
               >
                 ツアー
               </MobileLink>
@@ -630,11 +593,9 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#guide"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "guide"
-                  )
+                  handleSectionClick(e, "guide")
                 }
+                en="GUIDE"
               >
                 ガイド
               </MobileLink>
@@ -642,75 +603,35 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#faq"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "faq"
-                  )
+                  handleSectionClick(e, "faq")
                 }
+                en="FAQ"
               >
                 よくある質問
               </MobileLink>
             </div>
 
             {/* ========================================
-                Mobile CTA
+                Contact / SNS
+                ※ 上側のborderTopは入れない
+                   → FAQ下の線が二重にならない
             ======================================== */}
 
             <div
               style={{
-                marginTop: "28px",
+                marginTop: "0px",
                 paddingTop: "24px",
-
-                borderTop:
-                  "1px solid rgba(62,140,42,0.14)",
               }}
             >
               <div
                 style={{
-                  display: "grid",
-                  gridTemplateColumns:
-                    "1fr 1fr",
-                  gap: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "18px",
                 }}
               >
-                {/* ツアーを見る */}
-
-                <a
-                  href="#tours"
-                  onClick={(e) =>
-                    handleSectionClick(
-                      e,
-                      "tours"
-                    )
-                  }
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-
-                    height: "48px",
-
-                    background: C.green,
-                    color: "#FFFFFF",
-
-                    borderRadius: "4px",
-
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    letterSpacing: "0.04em",
-
-                    textDecoration: "none",
-
-                    boxSizing: "border-box",
-
-                    transition:
-                      "opacity 0.2s ease, transform 0.2s ease",
-                  }}
-                >
-                  ツアーを見る
-                </a>
-
-                {/* お問い合わせ */}
+                {/* Contact */}
 
                 <a
                   href="#contact"
@@ -721,34 +642,73 @@ export default function Nav({ onBack = null }) {
                     )
                   }
                   style={{
-                    display: "flex",
+                    display: "inline-flex",
                     alignItems: "center",
-                    justifyContent: "center",
 
-                    height: "48px",
-
-                    background: "#FFFFFF",
                     color: C.green,
 
-                    border:
-                      `1.5px solid ${C.green}`,
+                    fontFamily:
+                      "'Noto Sans JP', sans-serif",
 
-                    borderRadius: "4px",
-
-                    fontSize: "13px",
+                    fontSize: "14px",
                     fontWeight: 600,
-                    letterSpacing: "0.04em",
+
+                    letterSpacing: "0.03em",
 
                     textDecoration: "none",
 
-                    boxSizing: "border-box",
-
-                    transition:
-                      "background 0.2s ease, transform 0.2s ease",
+                    whiteSpace: "nowrap",
                   }}
                 >
-                  お問い合わせ
+                  お問い合わせはこちら
+                  <span
+                    style={{
+                      marginLeft: "8px",
+                      fontFamily:
+                        "'Cabin', sans-serif",
+                      fontSize: "17px",
+                      fontWeight: 400,
+                      lineHeight: 1,
+                      opacity: 0.75,
+                    }}
+                  >
+                    →
+                  </span>
                 </a>
+
+                {/* SNS */}
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  {/* Instagram */}
+
+                  <a
+                    href="https://www.instagram.com/seasummer630/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    style={socialIconStyle}
+                  >
+                    <InstagramIcon />
+                  </a>
+
+                  {/* LINE */}
+
+                  <a
+                    href="https://line.me/ti/p/YDpNqHNQou"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LINE"
+                    style={socialIconStyle}
+                  >
+                    <LineIcon />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -778,6 +738,7 @@ function MobileLink({
   href,
   onClick,
   children,
+  en,
 }) {
   return (
     <a
@@ -786,25 +747,144 @@ function MobileLink({
       style={{
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
 
-        minHeight: "68px",
+        minHeight: "72px",
 
         borderBottom:
-          "1px solid rgba(62,140,42,0.14)",
+          "1px solid rgba(62,140,42,0.12)",
 
         color: C.textLight,
 
         fontFamily:
           "'Noto Sans JP', sans-serif",
 
-        fontSize: "18px",
-        fontWeight: 700,
-        letterSpacing: "0.02em",
+        fontSize: "17px",
+        fontWeight: 500,
+
+        letterSpacing: "0.03em",
 
         textDecoration: "none",
       }}
     >
-      {children}
+      <span>{children}</span>
+
+      <span
+        style={{
+          fontFamily:
+            "'Cabin', sans-serif",
+
+          fontSize: "10px",
+          fontWeight: 500,
+
+          letterSpacing: "0.14em",
+
+          color: C.green,
+
+          opacity: 0.7,
+        }}
+      >
+        {en}
+      </span>
     </a>
+  );
+}
+
+/* ========================================
+   Social Icon Button
+======================================== */
+
+const socialIconStyle = {
+  width: "40px",
+  height: "40px",
+
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+  border:
+    "1px solid rgba(62,140,42,0.20)",
+
+  borderRadius: "50%",
+
+  color: C.green,
+
+  background:
+    "rgba(62,140,42,0.03)",
+
+  textDecoration: "none",
+
+  flexShrink: 0,
+};
+
+/* ========================================
+   Instagram Icon
+======================================== */
+
+function InstagramIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      <circle
+        cx="17.5"
+        cy="6.5"
+        r="1"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+/* ========================================
+   LINE Icon
+======================================== */
+
+function LineIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 4C7.03 4 3 7.22 3 11.2C3 14.77 6.09 17.73 10.29 18.28C10.67 18.33 10.8 18.52 10.76 18.83C10.7 19.13 10.47 20.01 10.42 20.25C10.34 20.54 10.31 20.66 10.4 20.73C10.49 20.8 10.68 20.75 10.92 20.64C11.17 20.52 15.13 18.23 16.75 17.17C19.35 15.47 21 13.04 21 11.2C21 7.22 16.97 4 12 4Z"
+        fill="currentColor"
+      />
+
+      <path
+        d="M8 9.5V13.5M10 9.5V13.5L14 9.5V13.5M16 9.5V13.5"
+        stroke="#FFFFFF"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
