@@ -34,7 +34,7 @@ export default function Guide() {
     >
       <div style={CONTAINER}>
         {/* ========================================
-            Amami Sunshine Guideだからできること
+            ALIVE AMAMIだからできること
         ======================================== */}
 
         <div
@@ -154,12 +154,16 @@ export default function Guide() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "1fr 420px",
+              gridTemplateColumns: isMobile
+                ? "1fr"
+                : "1fr 420px",
               gap: isMobile ? "36px" : "80px",
               alignItems: "start",
             }}
           >
-            {/* Profile Text */}
+            {/* ========================================
+                Profile Text
+            ======================================== */}
 
             <div
               style={{
@@ -167,19 +171,19 @@ export default function Guide() {
               }}
             >
               <h3
-  style={{
-    margin: "0 0 4px",
-    fontFamily: "'Noto Sans JP', sans-serif",
-    fontSize: isMobile
-  ? "22px"
-  : "clamp(22px, 2.3vw, 28px)",
-    fontWeight: 700,
-    lineHeight: 1.3,
-    color: C.text,
-  }}
->
-  {GUIDE.name}
-</h3>
+                style={{
+                  margin: "0 0 4px",
+                  fontFamily: "'Noto Sans JP', sans-serif",
+                  fontSize: isMobile
+                    ? "22px"
+                    : "clamp(22px, 2.3vw, 28px)",
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  color: C.text,
+                }}
+              >
+                {GUIDE.name}
+              </h3>
 
               <p
                 style={{
@@ -194,6 +198,8 @@ export default function Guide() {
                 {GUIDE.experience}
               </p>
 
+              {/* Profile Message */}
+
               <p
                 style={{
                   margin: 0,
@@ -205,9 +211,136 @@ export default function Guide() {
               >
                 {GUIDE.message}
               </p>
+
+              {/* ========================================
+                  Qualifications / Guide History
+              ======================================== */}
+
+              <div
+                style={{
+                  marginTop: isMobile ? "32px" : "40px",
+                  paddingTop: isMobile ? "24px" : "28px",
+                  borderTop:
+                    "1px solid rgba(62, 45, 33, 0.12)",
+                  display: "grid",
+                  gridTemplateColumns: isMobile
+                  ? "1fr"
+                  : "1.2fr 0.8fr",
+                  gap: isMobile ? "24px" : "40px",
+                }}
+              >
+                {/* 資格・講習 */}
+
+                <div>
+                  <p
+                    style={{
+                      margin: "0 0 10px",
+                      fontSize: isMobile ? "13px" : "14px",
+                      fontWeight: 700,
+                      color: C.orange,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    資格・講習
+                  </p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "4px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: isMobile ? "13px" : "14px",
+                        color: C.textLight,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      SSI Snorkel インストラクター
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: isMobile ? "13px" : "14px",
+                        color: C.textLight,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      SSI リアクトライト
+                    </span>
+                    <span
+                      style={{
+                        fontSize: isMobile ? "13px" : "14px",
+                        color: C.textLight,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                    （心肺蘇生法・救急法）
+                    </span>
+                  </div>
+                </div>
+
+                {/* ガイド歴 */}
+
+                <div>
+                  <p
+                    style={{
+                      margin: "0 0 10px",
+                      fontSize: isMobile ? "13px" : "14px",
+                      fontWeight: 700,
+                      color: C.orange,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    ガイド歴
+                  </p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "4px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: isMobile ? "13px" : "14px",
+                        color: C.textLight,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      奄美大島｜5年
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: isMobile ? "13px" : "14px",
+                        color: C.textLight,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      カヌー・シュノーケルを中心にご案内
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: isMobile ? "13px" : "14px",
+                        color: C.textLight,
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      島内ドライブツアー
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Guide Photo */}
+            {/* ========================================
+                Guide Photo
+            ======================================== */}
 
             <div
               style={{
@@ -218,12 +351,13 @@ export default function Guide() {
                 aspectRatio: "3 / 4",
                 overflow: "hidden",
                 borderRadius: "8px",
-                boxShadow: "0 8px 40px rgba(62, 140, 42, 0.12)",
+                boxShadow:
+                  "0 8px 40px rgba(62, 140, 42, 0.12)",
               }}
             >
               <ImageWithFallback
                 src={GUIDE.image}
-                alt="ずーちゃん｜Amami Sunshine Guide"
+                alt="ずーちゃん｜ALIVE AMAMI"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -269,14 +403,15 @@ export default function Guide() {
               }}
             >
               {/* Instagram Icon */}
-<svg
-  width="28"
-  height="28"
-  viewBox="0 0 24 24"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
-  aria-hidden="true"
->
+
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
                 <rect
                   x="3"
                   y="3"
@@ -302,7 +437,8 @@ export default function Guide() {
                   fill="currentColor"
                 />
               </svg>
-<span
+
+              <span
                 aria-hidden="true"
                 style={{
                   marginLeft: "2px",
@@ -311,9 +447,10 @@ export default function Guide() {
               >
                 ←
               </span>
-              <span>ガイドの日常をゆるっと発信しています🌺</span>
 
-              
+              <span>
+                ガイドの日常をゆるっと発信しています🌺
+              </span>
             </a>
           </div>
         </div>
