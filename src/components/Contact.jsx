@@ -26,7 +26,7 @@ export default function Contact() {
       style={{
         ...SECTION,
         position: "relative",
-        backgroundImage: "url('/images/amami2.jpeg')",
+       backgroundImage: `url("${import.meta.env.BASE_URL}images/amami2.jpeg")`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
         backgroundAttachment: "fixed",
