@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Leaf, Menu, X } from "lucide-react";
+import {  Menu, X } from "lucide-react";
 import { COLORS } from "../siteData";
 
 const C = COLORS;
@@ -258,83 +258,58 @@ export default function Nav({ onBack = null }) {
             "background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease",
         }}
       >
-        {/* ========================================
-            Logo
-        ======================================== */}
+      {/* ========================================
+    Logo
+======================================== */}
 
-        <a
-          href="#"
-          onClick={handleHomeClick}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "9px",
-            flexShrink: 0,
-            textDecoration: "none",
-          }}
-        >
-          <div
-            style={{
-              width: "34px",
-              height: "34px",
-
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-
-              border: `2px solid ${logoColor}`,
-              borderRadius: "50%",
-
-              transition:
-                "border-color 0.35s ease",
-            }}
-          >
-            <Leaf
-              size={16}
-              color={logoColor}
-              strokeWidth={1.8}
-            />
-          </div>
-
-          <div>
-  <div
+<a
+  href="#"
+  onClick={handleHomeClick}
   style={{
-    fontFamily: "'Cabin', sans-serif",
-    fontSize: "14px",
-    fontWeight: 700,
-    letterSpacing: "0.12em",
-    lineHeight: 1.1,
-    color: logoColor,
-    transition: "color 0.35s ease",
+    display: "flex",
+    alignItems: "center",
+    flexShrink: 0,
+    textDecoration: "none",
   }}
 >
-  ALIVE AMAMI
-</div>
+  <div>
+    <div
+      style={{
+        fontFamily: "'Cabin', sans-serif",
+        fontSize: "14px",
+        fontWeight: 700,
+        letterSpacing: "0.12em",
+        lineHeight: 1.1,
+        color: logoColor,
+        transition: "color 0.35s ease",
+      }}
+    >
+      ALIVE AMAMI
+    </div>
 
-<div
-  style={{
-    marginTop: "4px",
-    fontFamily: "'Cabin', sans-serif",
-    fontSize: "10px",
-    fontWeight: 600,
-    letterSpacing: "0.08em",
-    lineHeight: 1.1,
-    color: logoColor,
-    opacity:
-      isMenuOpen
-        ? 0.85
-        : isScrolled
-        ? 0.85
-        : 0.95,
-    transition:
-      "color 0.35s ease, opacity 0.35s ease",
-  }}
->
-  ~ Guide & Experience ~
-</div>
-</div>
-        </a>
-
+    <div
+      style={{
+        marginTop: "4px",
+        fontFamily: "'Cabin', sans-serif",
+        fontSize: "10px",
+        fontWeight: 600,
+        letterSpacing: "0.08em",
+        lineHeight: 1.1,
+        color: logoColor,
+        opacity:
+          isMenuOpen
+            ? 0.85
+            : isScrolled
+            ? 0.85
+            : 0.95,
+        transition:
+          "color 0.35s ease, opacity 0.35s ease",
+      }}
+    >
+      ~ Guide & Experience ~
+    </div>
+  </div>
+</a>
         {/* ========================================
             Desktop Navigation
         ======================================== */}

@@ -1,6 +1,10 @@
 import { COLORS as C } from "../../siteData";
 import { CONTAINER } from "../../styles/designSystem";
 
+/* ========================================
+   Section Heading
+======================================== */
+
 function SectionHeading({ ja }) {
   return (
     <div
@@ -34,6 +38,10 @@ function SectionHeading({ ja }) {
   );
 }
 
+/* ========================================
+   Tour Flow
+======================================== */
+
 export default function TourFlow({ tour }) {
   return (
     <section
@@ -50,145 +58,152 @@ export default function TourFlow({ tour }) {
         <SectionHeading ja="当日の流れ" />
 
         <div className="tour-flow">
-          {tour.flow?.map((step, index) => (
-            <div
-              key={index}
-              className="tour-flow-item"
-              style={{
-                position: "relative",
-                flex: 1,
-                paddingRight:
-                  index < tour.flow.length - 1
-                    ? "32px"
-                    : "0",
-              }}
-            >
-              {/* Connecting Line */}
-              {index < tour.flow.length - 1 && (
-                <div
-                  className="tour-flow-line"
-                  style={{
-                    position: "absolute",
-                    top: "20px",
-                    left: "40px",
-                    right: "0",
-                    height: "1px",
-                    background:
-                      "rgba(62, 140, 42, 0.25)",
-                    zIndex: 0,
-                  }}
-                />
-              )}
+          {tour.flow?.map((step, index) => {
+            const isLast = index === tour.flow.length - 1;
 
-              {/* Number */}
+            return (
               <div
+                key={index}
+                className="tour-flow-item"
                 style={{
                   position: "relative",
-                  zIndex: 1,
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  background: C.green,
-                  color: "#FFFFFF",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "16px",
-                  fontFamily: "'Cabin', sans-serif",
-                  fontSize: "13px",
-                  fontWeight: 700,
+                  display: "grid",
+                  gridTemplateColumns: "40px minmax(0, 1fr)",
+                  columnGap: "30px",
+                  minWidth: 0,
+                  paddingBottom: isLast ? "0" : "44px",
                 }}
               >
-                {step.num}
+                {/* ========================================
+                    Number
+                ======================================== */}
+
+                <div
+                  style={{
+                    position: "relative",
+                    zIndex: 1,
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    background: C.green,
+                    color: "#FFFFFF",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "'Cabin', sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    flexShrink: 0,
+                  }}
+                >
+                  {step.num}
+                </div>
+
+                {/* ========================================
+                    Content
+                ======================================== */}
+
+                <div
+                  style={{
+                    minWidth: 0,
+                    paddingTop: "1px",
+                  }}
+                >
+                  {/* Title */}
+
+                  <p
+                    style={{
+                      fontFamily: "'Noto Sans JP', sans-serif",
+                      fontSize: "16px",
+                      fontWeight: 700,
+                      color: C.text,
+                      margin: "0 0 10px",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {step.title}
+                  </p>
+
+                  {/* Description */}
+
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: C.textLight,
+                      margin: 0,
+                      lineHeight: 1.8,
+                      overflowWrap: "anywhere",
+                    }}
+                  >
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* ========================================
+                    Step Separator
+
+                    文章の下の余白に配置
+                    → 次のステップとの間を区切る
+                ======================================== */}
+
+                {!isLast && (
+                  <div
+                    aria-hidden="true"
+                    className="tour-flow-line"
+                    style={{
+                      position: "absolute",
+                      left: "70px",
+                      right: "0",
+                      bottom: "22px",
+                      borderTop:
+                        "1px dashed rgba(62, 140, 42, 0.22)",
+                      zIndex: 0,
+                    }}
+                  />
+                )}
               </div>
-
-              {/* Step Label */}
-              <p
-                style={{
-                  fontFamily: "'Cabin', sans-serif",
-                  fontSize: "10px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  color: C.green,
-                  margin: "0 0 6px",
-                  lineHeight: 1.4,
-                }}
-              >
-                STEP {step.num}
-              </p>
-
-              {/* Title */}
-              <p
-                style={{
-                  fontFamily: "'Noto Sans JP', sans-serif",
-                  fontSize: "16px",
-                  fontWeight: 700,
-                  color: C.text,
-                  margin: "0 0 10px",
-                  lineHeight: 1.6,
-                }}
-              >
-                {step.title}
-              </p>
-
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: "13px",
-                  color: C.textLight,
-                  margin: 0,
-                  lineHeight: 1.8,
-                }}
-              >
-                {step.desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Responsive */}
+      {/* ========================================
+          Responsive
+      ======================================== */}
+
       <style>{`
         @media (max-width: 768px) {
-          .tour-flow {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 0 !important;
-          }
-
           .tour-flow-item {
-            display: grid !important;
-            grid-template-columns: 40px 1fr !important;
+            grid-template-columns: 40px minmax(0, 1fr) !important;
             column-gap: 18px !important;
-            padding-right: 0 !important;
-            padding-bottom: 32px !important;
+            padding-bottom: 36px !important;
           }
 
           .tour-flow-item:last-child {
             padding-bottom: 0 !important;
           }
 
+          .tour-flow-line {
+            left: 58px !important;
+            right: 0 !important;
+            bottom: 18px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .tour-flow-item {
+            column-gap: 16px !important;
+            padding-bottom: 32px !important;
+          }
+
           .tour-flow-item > div:first-child {
-            grid-column: 1 !important;
-            grid-row: 1 / span 3 !important;
-          }
-
-          .tour-flow-item > p:nth-of-type(1),
-          .tour-flow-item > p:nth-of-type(2),
-          .tour-flow-item > p:nth-of-type(3) {
-            grid-column: 2 !important;
-          }
-
-          .tour-flow-item > p:nth-of-type(1) {
-            margin-top: 2px !important;
+            width: 40px !important;
+            height: 40px !important;
           }
 
           .tour-flow-line {
-            top: 40px !important;
-            left: 19px !important;
-            right: auto !important;
-            width: 1px !important;
-            height: calc(100% - 8px) !important;
+            left: 56px !important;
+            bottom: 16px !important;
           }
         }
       `}</style>

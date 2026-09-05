@@ -242,16 +242,16 @@ function DetailRow({ row, isLast }) {
       {/* 項目名 */}
 
       <span
-        style={{
-          fontSize: "14px",
-          fontWeight: 600,
-          color: C.text,
-          lineHeight: 1.8,
-          whiteSpace: "nowrap",
-        }}
-      >
-        {row.label}
-      </span>
+  style={{
+    fontSize: "14px",
+    fontWeight: 500,
+    color: C.text,
+    lineHeight: 1.8,
+    whiteSpace: "nowrap",
+  }}
+>
+  {row.label}
+</span>
 
       {/* 内容 */}
 
@@ -465,19 +465,38 @@ function Notes({ notes }) {
         }}
       >
         {notes.map((note, index) => (
-          <p
-            key={index}
-            style={{
-              margin: 0,
-              fontSize: "14px",
-              color: C.textLight,
-              lineHeight: 1.8,
-              overflowWrap: "anywhere",
-            }}
-          >
-            ・{note}
-          </p>
-        ))}
+  <div
+    key={index}
+    style={{
+      display: "flex",
+      alignItems: "flex-start",
+      gap: "8px",
+    }}
+  >
+    <span
+      style={{
+        flexShrink: 0,
+        fontSize: "14px",
+        lineHeight: 1.8,
+        color: C.textLight,
+      }}
+    >
+      ・
+    </span>
+
+    <p
+      style={{
+        margin: 0,
+        fontSize: "14px",
+        color: C.textLight,
+        lineHeight: 1.8,
+        overflowWrap: "anywhere",
+      }}
+    >
+      {note}
+    </p>
+  </div>
+))}
       </div>
     </div>
   );
