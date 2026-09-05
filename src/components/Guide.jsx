@@ -45,20 +45,21 @@ export default function Guide() {
           {/* Heading */}
 
           <h2
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: isMobile ? "10px" : "14px",
-              margin: "0 0 44px",
-              fontSize: isMobile ? "20px" : "26px",
-              fontWeight: 700,
-              lineHeight: 1.5,
-              color: C.text,
-              textAlign: "center",
-              letterSpacing: "0.02em",
-            }}
-          >
+  style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: isMobile ? "6px" : "14px",
+    margin: "0 0 44px",
+    fontSize: isMobile ? "18px" : "26px",
+    fontWeight: 700,
+    lineHeight: 1.5,
+    color: C.text,
+    textAlign: "center",
+    letterSpacing: "0.02em",
+    whiteSpace: "nowrap",
+  }}
+>
             <span
               aria-hidden="true"
               style={{
