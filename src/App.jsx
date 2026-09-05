@@ -5,15 +5,24 @@ import TourDetailA from "./components/pages/TourDetailA";
 function App() {
   const [selectedTour, setSelectedTour] = useState(null);
 
-  // ツアー切り替え時にページ先頭へ
+  /* ========================================
+     ページ表示時・ツアー切り替え時に
+     ページ先頭へ移動
+  ======================================== */
+
   useEffect(() => {
-    if (selectedTour) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
+    window.history.scrollRestoration = "manual";
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
   }, [selectedTour]);
+
+  /* ========================================
+     Tour Detail
+  ======================================== */
 
   if (selectedTour) {
     return (
@@ -24,6 +33,10 @@ function App() {
       />
     );
   }
+
+  /* ========================================
+     Home
+  ======================================== */
 
   return (
     <DesignA
