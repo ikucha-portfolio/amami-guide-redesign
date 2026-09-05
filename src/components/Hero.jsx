@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
 
+const BASE = import.meta.env.BASE_URL;
+
 const HERO_IMAGES = [
-  "/images/hero.jpeg",
-  "/images/umigame_1.jpeg",
-  "/images/boat.jpeg",
-  "/images/amami3.jpeg",
-  "/images/drive.jpeg",
-  "/images/night.jpeg",
+  `${BASE}images/hero.jpeg`,
+  `${BASE}images/umigame_1.jpeg`,
+  `${BASE}images/boat.jpeg`,
+  `${BASE}images/amami3.jpeg`,
+  `${BASE}images/drive.jpeg`,
+  `${BASE}images/night.jpeg`,
 ];
 
 export default function Hero() {

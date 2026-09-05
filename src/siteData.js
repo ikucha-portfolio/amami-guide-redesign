@@ -18,7 +18,7 @@ export const TOURS = [
     description:
       "マングローブをカヌーで進み、周辺の滝を巡る人気No.1ツアー。\n奄美らしい自然を満喫できます。",
     tag: "人気No.1",
-    image: "/images/hero.jpeg",
+    image: `${import.meta.env.BASE_URL}images/hero.jpeg`,
 
     about: [
       "奄美のマングローブをカヌーで巡り、周辺の滝も訪れるツアーです。",
@@ -123,7 +123,7 @@ export const TOURS = [
     description:
       "ウミガメと泳げるチャンス！記念撮影も楽しめる人気のシュノーケリングツアー。",
     tag: "おすすめ",
-    image: "/images/umigame_1.jpeg",
+    image: `${import.meta.env.BASE_URL}images/umigame_1.jpeg`,
 
     about: [
       "奄美の海でシュノーケリングをしながら、ウミガメを探すツアーです。",
@@ -235,7 +235,7 @@ export const TOURS = [
     description:
       "船でサンゴ礁のポイントへ向かい、美しい海中世界を観察する本格シュノーケリング。",
     tag: "海満喫",
-    image: "/images/boat.jpeg",
+    image: `${import.meta.env.BASE_URL}images/boat.jpeg`,
 
     about: [
       "港から船に乗ってサンゴ礁のポイントへ向かい、シュノーケリングを楽しむツアーです。",
@@ -344,7 +344,7 @@ export const TOURS = [
     description:
       "アマミノクロウサギをはじめ、奄美ならではの夜行性生物を車中から探します。",
     tag: "夜限定",
-    image: "/images/night.jpeg",
+    image: `${import.meta.env.BASE_URL}images/night.jpeg`,
 
     about: [
       "夜の森を車で巡りながら、アマミノクロウサギをはじめとする生き物を探すツアーです。",
@@ -454,7 +454,7 @@ export const TOURS = [
     description:
       "奄美の絶景や隠れた名所を巡る、のんびり楽しめるプライベートドライブツアー。",
     tag: "のんびり",
-    image: "/images/drive.jpeg",
+    image: `${import.meta.env.BASE_URL}images/drive.jpeg`,
 
     about: [
   "奄美大島の絶景や隠れた名所を巡る、プライベートドライブツアーです。",
@@ -580,9 +580,8 @@ export const GUIDE = {
     "空港やご宿泊先への送迎も可能です！",
   ],
 
-  image: "/images/guide1.jpeg",
-
-  forestImage: "/images/guide-sub.jpg",
+  image: `${import.meta.env.BASE_URL}images/guide1.jpeg`,
+  forestImage: `${import.meta.env.BASE_URL}images/guide-sub.jpg`,
 };
 
 
