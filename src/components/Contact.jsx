@@ -347,7 +347,7 @@ function contactButtonStyle(background) {
     boxSizing: "border-box",
 
     background,
-    borderRadius: "6px",
+    borderRadius: "4px",
 
     padding: "12px 16px",
 
@@ -366,7 +366,7 @@ function contactButtonStyle(background) {
 const iconCircleStyle = {
   width: "32px",
   height: "32px",
-  borderRadius: "50%",
+  borderRadius: "70%",
 
   background: "rgba(255,255,255,0.2)",
 

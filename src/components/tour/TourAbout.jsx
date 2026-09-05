@@ -14,33 +14,8 @@ export default function TourAbout({ tour }) {
           ...CONTAINER,
         }}
       >
-        {/* Heading */}
-        <div
-          style={{
-            marginBottom: "28px",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "24px",
-              fontWeight: 700,
-              color: C.text,
-              margin: 0,
-              marginBottom: "12px",
-              lineHeight: 1.4,
-            }}
-          >
-            このツアーについて
-          </h2>
-
-          <div
-            style={{
-              width: "36px",
-              height: "2px",
-              background: C.green,
-            }}
-          />
-        </div>
+        
+          
 
         {/* Body */}
         <div

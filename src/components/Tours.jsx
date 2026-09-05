@@ -11,7 +11,7 @@ import {
 const C = COLORS;
 
 const cardBase = {
-  borderRadius: "6px",
+  borderRadius: "2px",
   overflow: "hidden",
   background: C.white,
   boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
@@ -619,7 +619,7 @@ function TagBadge({ label }) {
 
         padding: "4px 11px",
 
-        borderRadius: "4px",
+        borderRadius: "2px",
 
         fontSize: "10.5px",
         fontWeight: 700,

@@ -350,7 +350,7 @@ export default function Guide() {
                 margin: isMobile ? "0 auto" : 0,
                 aspectRatio: "3 / 4",
                 overflow: "hidden",
-                borderRadius: "8px",
+                borderRadius: "4px",
                 boxShadow:
                   "0 8px 40px rgba(62, 140, 42, 0.12)",
               }}

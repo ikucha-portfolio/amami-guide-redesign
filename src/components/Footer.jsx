@@ -1,5 +1,4 @@
 import { COLORS } from "../siteData";
-import { Leaf } from "lucide-react";
 
 const C = COLORS;
 
@@ -29,24 +28,7 @@ export default function Footer() {
             minWidth: 0,
           }}
         >
-          <div
-            style={{
-              width: "28px",
-              height: "28px",
-              borderRadius: "50%",
-              border: "1.5px solid rgba(255,255,255,0.5)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-            }}
-          >
-            <Leaf
-              size={13}
-              color="rgba(255,255,255,0.8)"
-              strokeWidth={1.8}
-            />
-          </div>
+          
 
           <span
             style={{

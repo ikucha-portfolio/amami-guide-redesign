@@ -379,7 +379,7 @@ export default function Nav({ onBack = null }) {
                   background: C.green,
                   color: "#FFFFFF",
 
-                  borderRadius: "4px",
+                  borderRadius: "2px",
 
                   fontSize: "13px",
                   fontWeight: 700,
@@ -421,7 +421,7 @@ export default function Nav({ onBack = null }) {
                     ? `1.5px solid ${C.green}`
                     : "1.5px solid rgba(255,255,255,0.85)",
 
-                  borderRadius: "4px",
+                  borderRadius: "2px",
 
                   fontSize: "13px",
                   fontWeight: 600,

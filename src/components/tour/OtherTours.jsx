@@ -90,7 +90,7 @@ export default function OtherTours({
               key={tour.id}
               onClick={() => onSelectTour?.(tour)}
               style={{
-                borderRadius: "6px",
+                borderRadius: "2px",
                 overflow: "hidden",
                 background: C.white,
                 boxShadow: "0 2px 20px rgba(0,0,0,0.08)",

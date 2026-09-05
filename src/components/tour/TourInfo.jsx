@@ -31,7 +31,7 @@ function SectionHeading({ ja }) {
           width: "32px",
           height: "2px",
           background: C.green,
-          borderRadius: "2px",
+          borderRadius: "4px",
         }}
       />
     </div>
@@ -311,7 +311,7 @@ function TourDetails({ details }) {
       <div
         className="tour-details"
         style={{
-          borderRadius: "6px",
+          borderRadius: "4px",
           overflow: "hidden",
           border: "1px solid rgba(62, 140, 42, 0.15)",
           background: C.white,
