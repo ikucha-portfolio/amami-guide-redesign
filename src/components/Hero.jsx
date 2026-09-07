@@ -171,7 +171,7 @@ export default function Hero() {
               "0 1px 8px rgba(0,0,0,0.3)",
           }}
         >
-          奄美大島の自然を、ガイドと一緒に体験しよう。
+          奄美の自然と、生きるを楽しむ。
         </div>
       </div>
 
