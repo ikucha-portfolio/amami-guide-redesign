@@ -21,6 +21,46 @@ const cardBase = {
   boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
 };
 
+/* ========================================
+   Desktop Image Overlay
+   写真を暗くしすぎず、
+   下部の文字だけ読みやすくする
+======================================== */
+
+const imageOverlay =
+  "linear-gradient(" +
+  "to bottom, " +
+  "rgba(0,0,0,0.02) 0%, " +
+  "rgba(0,0,0,0.04) 40%, " +
+  "rgba(8,24,12,0.18) 60%, " +
+  "rgba(8,24,12,0.70) 100%" +
+  ")";
+
+/* ========================================
+   Typography
+======================================== */
+
+const englishLabelStyle = {
+  fontFamily: "'Cabin', sans-serif",
+  fontSize: "10px",
+  fontWeight: 500,
+  letterSpacing: "0.16em",
+  lineHeight: 1.15,
+};
+
+const descriptionLightStyle = {
+  fontSize: "12.5px",
+  fontWeight: 400,
+  color: "rgba(255,255,255,0.92)",
+  lineHeight: 1.6,
+  textShadow:
+    "0 1px 3px rgba(0,0,0,0.35), 0 3px 10px rgba(0,0,0,0.18)",
+};
+
+/* ========================================
+   Tours
+======================================== */
+
 export default function Tours({ onSelectTour }) {
   return (
     <section
@@ -156,6 +196,8 @@ function TourCardFeatured({
         minWidth: 0,
       }}
     >
+      {/* Image */}
+
       <ImageWithFallback
         src={tour.image}
         alt={tour.name}
@@ -165,25 +207,34 @@ function TourCardFeatured({
           width: "100%",
           height: "100%",
           objectFit: "cover",
+
           transform: isHovered
-            ? "scale(1.045)"
+            ? "scale(1.035)"
             : "scale(1)",
-          transition: "transform 0.7s ease",
+
+          transition:
+            "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
+
+      {/* Overlay */}
 
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "linear-gradient(to top, rgba(10,25,10,0.84) 0%, rgba(10,25,10,0.22) 48%, rgba(10,25,10,0.04) 100%)",
+          background: imageOverlay,
+          pointerEvents: "none",
         }}
       />
+
+      {/* Tag */}
 
       {tour.tag && (
         <TagBadge label={tour.tag} />
       )}
+
+      {/* Content */}
 
       <div
         style={{
@@ -191,21 +242,24 @@ function TourCardFeatured({
           left: 0,
           right: 0,
           bottom: 0,
-          padding: "20px 26px 18px",
+          padding: "22px 26px 20px",
         }}
       >
+        {/* English */}
+
         <p
           style={{
-            fontFamily: "'Cabin', sans-serif",
-            fontSize: "10px",
-            letterSpacing: "0.16em",
-            color: "rgba(255,255,255,0.62)",
+            ...englishLabelStyle,
+            color: "rgba(255,255,255,0.72)",
             margin: "0 0 6px",
-            lineHeight: 1.15,
+            textShadow:
+              "0 1px 3px rgba(0,0,0,0.4)",
           }}
         >
           {tour.nameEn.toUpperCase()}
         </p>
+
+        {/* Japanese Title */}
 
         <h3
           style={{
@@ -213,18 +267,21 @@ function TourCardFeatured({
             fontWeight: 700,
             color: "#FFFFFF",
             margin: "0 0 8px",
-            lineHeight: 1.25,
+            lineHeight: 1.3,
+            letterSpacing: "0.02em",
+            textShadow:
+              "0 1px 3px rgba(0,0,0,0.45), 0 3px 12px rgba(0,0,0,0.22)",
           }}
         >
           {tour.name}
         </h3>
 
+        {/* Description */}
+
         <p
           style={{
-            fontSize: "12.5px",
-            color: "rgba(255,255,255,0.86)",
-            lineHeight: 1.55,
-            margin: "0 0 12px",
+            ...descriptionLightStyle,
+            margin: "0 0 13px",
             maxWidth: "88%",
             whiteSpace: "pre-line",
           }}
@@ -232,11 +289,13 @@ function TourCardFeatured({
           {tour.description}
         </p>
 
+        {/* Meta */}
+
         <CardMeta
           tour={tour}
           light
           compact
-          priceSize="17px"
+          priceSize="18px"
           metaSize="11.5px"
         />
       </div>
@@ -269,6 +328,8 @@ function TourCardTall({
         height: "100%",
       }}
     >
+      {/* Image */}
+
       <ImageWithFallback
         src={tour.image}
         alt={tour.name}
@@ -278,25 +339,34 @@ function TourCardTall({
           width: "100%",
           height: "100%",
           objectFit: "cover",
+
           transform: isHovered
-            ? "scale(1.045)"
+            ? "scale(1.035)"
             : "scale(1)",
-          transition: "transform 0.7s ease",
+
+          transition:
+            "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
+
+      {/* Overlay */}
 
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "linear-gradient(to top, rgba(10,25,10,0.90) 0%, rgba(10,25,10,0.38) 55%, rgba(10,25,10,0.08) 100%)",
+          background: imageOverlay,
+          pointerEvents: "none",
         }}
       />
+
+      {/* Tag */}
 
       {tour.tag && (
         <TagBadge label={tour.tag} />
       )}
+
+      {/* Content */}
 
       <div
         style={{
@@ -307,18 +377,22 @@ function TourCardTall({
           padding: "20px 22px 18px",
         }}
       >
+        {/* English */}
+
         <p
           style={{
-            fontFamily: "'Cabin', sans-serif",
+            ...englishLabelStyle,
             fontSize: "9.5px",
-            letterSpacing: "0.16em",
-            color: "rgba(255,255,255,0.62)",
+            color: "rgba(255,255,255,0.72)",
             margin: "0 0 6px",
-            lineHeight: 1.15,
+            textShadow:
+              "0 1px 3px rgba(0,0,0,0.4)",
           }}
         >
           {tour.nameEn.toUpperCase()}
         </p>
+
+        {/* Japanese Title */}
 
         <h3
           style={{
@@ -326,17 +400,20 @@ function TourCardTall({
             fontWeight: 700,
             color: "#FFFFFF",
             margin: "0 0 8px",
-            lineHeight: 1.3,
+            lineHeight: 1.35,
+            letterSpacing: "0.02em",
+            textShadow:
+              "0 1px 3px rgba(0,0,0,0.45), 0 3px 12px rgba(0,0,0,0.22)",
           }}
         >
           {tour.name}
         </h3>
 
+        {/* Description */}
+
         <p
           style={{
-            fontSize: "12.5px",
-            color: "rgba(255,255,255,0.86)",
-            lineHeight: 1.55,
+            ...descriptionLightStyle,
             margin: "0 0 12px",
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -347,12 +424,14 @@ function TourCardTall({
           {tour.description}
         </p>
 
+        {/* Meta */}
+
         <CardMeta
           tour={tour}
           light
           compact
-          priceSize="16px"
-          metaSize="11.5px"
+          priceSize="16.5px"
+          metaSize="11px"
         />
       </div>
     </div>
@@ -380,8 +459,21 @@ function TourCardStandard({
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
+
+        transition:
+          "transform 0.3s ease, box-shadow 0.3s ease",
+
+        transform: isHovered
+          ? "translateY(-2px)"
+          : "translateY(0)",
+
+        boxShadow: isHovered
+          ? "0 8px 28px rgba(0,0,0,0.12)"
+          : "0 2px 20px rgba(0,0,0,0.08)",
       }}
     >
+      {/* Image */}
+
       <div
         style={{
           position: "relative",
@@ -397,10 +489,13 @@ function TourCardStandard({
             width: "100%",
             height: "100%",
             objectFit: "cover",
+
             transform: isHovered
-              ? "scale(1.045)"
+              ? "scale(1.035)"
               : "scale(1)",
-            transition: "transform 0.7s ease",
+
+            transition:
+              "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)",
           }}
         />
 
@@ -409,41 +504,49 @@ function TourCardStandard({
         )}
       </div>
 
+      {/* Information */}
+
       <div
         style={{
-          padding: "14px 18px 16px",
+          padding: "15px 18px 17px",
           display: "flex",
           flexDirection: "column",
+          flex: 1,
         }}
       >
+        {/* English */}
+
         <p
           style={{
-            fontFamily: "'Cabin', sans-serif",
-            fontSize: "9.5px",
-            letterSpacing: "0.15em",
+            ...englishLabelStyle,
             color: C.green,
             margin: "0 0 5px",
-            lineHeight: 1.15,
           }}
         >
           {tour.nameEn.toUpperCase()}
         </p>
 
+        {/* Japanese Title */}
+
         <h3
           style={{
-            fontSize: "15px",
+            fontSize: "16px",
             fontWeight: 700,
             color: C.text,
             margin: "0 0 7px",
-            lineHeight: 1.3,
+            lineHeight: 1.35,
+            letterSpacing: "0.01em",
           }}
         >
           {tour.name}
         </h3>
 
+        {/* Description */}
+
         <p
           style={{
             fontSize: "12.5px",
+            fontWeight: 400,
             color: C.textLight,
             lineHeight: 1.6,
             margin: "0 0 12px",
@@ -457,17 +560,20 @@ function TourCardStandard({
           {tour.description}
         </p>
 
+        {/* Meta */}
+
         <div
           style={{
             paddingTop: "10px",
             borderTop:
               "1px solid rgba(62,140,42,0.10)",
+            marginTop: "auto",
           }}
         >
           <CardMeta
             tour={tour}
             compact
-            priceSize="15.5px"
+            priceSize="16px"
             metaSize="11.5px"
           />
         </div>
@@ -478,7 +584,7 @@ function TourCardStandard({
 
 /* ========================================
    Mobile
-   Full Width Image + Simple Information
+   Full Width Image + Information
 ======================================== */
 
 function TourCardMobile({
@@ -533,12 +639,9 @@ function TourCardMobile({
 
         <p
           style={{
-            fontFamily: "'Cabin', sans-serif",
-            fontSize: "10px",
-            letterSpacing: "0.15em",
+            ...englishLabelStyle,
             color: C.green,
             margin: "0 0 5px",
-            lineHeight: 1.2,
           }}
         >
           {tour.nameEn.toUpperCase()}
@@ -553,6 +656,7 @@ function TourCardMobile({
             color: C.text,
             margin: "0 0 8px",
             lineHeight: 1.4,
+            letterSpacing: "0.01em",
           }}
         >
           {tour.name}
@@ -563,6 +667,7 @@ function TourCardMobile({
         <p
           style={{
             fontSize: "13px",
+            fontWeight: 400,
             color: C.textLight,
             lineHeight: 1.7,
             margin: "0 0 14px",
@@ -598,6 +703,7 @@ function TourCardMobile({
           >
             <Clock
               size={11.5}
+              strokeWidth={1.8}
               style={{
                 color: C.green,
                 flexShrink: 0,
@@ -622,6 +728,7 @@ function TourCardMobile({
           >
             <Users
               size={11.5}
+              strokeWidth={1.8}
               style={{
                 color: C.green,
                 flexShrink: 0,
@@ -688,10 +795,26 @@ function TourCardMobile({
               fontWeight: 700,
               letterSpacing: "0.04em",
               cursor: "pointer",
+
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: "8px",
+
+              transition:
+                "transform 0.25s ease, box-shadow 0.25s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(-1px)";
+              e.currentTarget.style.boxShadow =
+                "0 5px 16px rgba(62,140,42,0.25)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "none";
             }}
           >
             <span>
@@ -701,6 +824,7 @@ function TourCardMobile({
             <span
               aria-hidden="true"
               style={{
+                fontFamily: "'Cabin', sans-serif",
                 fontSize: "17px",
                 lineHeight: 1,
                 fontWeight: 400,
@@ -726,14 +850,24 @@ function TagBadge({ label }) {
         position: "absolute",
         top: "14px",
         left: "14px",
+
         background: C.green,
         color: "#FFFFFF",
-        padding: "4px 11px",
+
+        padding: "5px 11px",
+
         borderRadius: "2px",
+
         fontSize: "10.5px",
         fontWeight: 700,
         letterSpacing: "0.03em",
+
+        lineHeight: 1.2,
+
         zIndex: 2,
+
+        boxShadow:
+          "0 2px 8px rgba(0,0,0,0.12)",
       }}
     >
       {label}
@@ -753,11 +887,11 @@ function CardMeta({
   metaSize = "12px",
 }) {
   const textColor = light
-    ? "rgba(255,255,255,0.82)"
+    ? "rgba(255,255,255,0.90)"
     : C.textLight;
 
   const iconColor = light
-    ? "rgba(255,255,255,0.55)"
+    ? "rgba(255,255,255,0.72)"
     : C.green;
 
   const priceColor = light
@@ -780,14 +914,23 @@ function CardMeta({
           display: "flex",
           alignItems: "center",
           gap: "4px",
+
           fontSize: metaSize,
+          fontWeight: 400,
+
           color: textColor,
+
           lineHeight: 1.15,
           whiteSpace: "nowrap",
+
+          textShadow: light
+            ? "0 1px 3px rgba(0,0,0,0.35)"
+            : "none",
         }}
       >
         <Clock
           size={11.5}
+          strokeWidth={1.8}
           style={{
             color: iconColor,
             flexShrink: 0,
@@ -804,14 +947,23 @@ function CardMeta({
           display: "flex",
           alignItems: "center",
           gap: "4px",
+
           fontSize: metaSize,
+          fontWeight: 400,
+
           color: textColor,
+
           lineHeight: 1.15,
           whiteSpace: "nowrap",
+
+          textShadow: light
+            ? "0 1px 3px rgba(0,0,0,0.35)"
+            : "none",
         }}
       >
         <Users
           size={11.5}
+          strokeWidth={1.8}
           style={{
             color: iconColor,
             flexShrink: 0,
@@ -826,12 +978,20 @@ function CardMeta({
       <span
         style={{
           marginLeft: "auto",
+
           fontFamily: "'Cabin', sans-serif",
           fontWeight: 700,
+
           fontSize: priceSize,
+
           color: priceColor,
+
           lineHeight: 1,
           whiteSpace: "nowrap",
+
+          textShadow: light
+            ? "0 1px 4px rgba(0,0,0,0.35)"
+            : "none",
         }}
       >
         {tour.price}
@@ -841,9 +1001,12 @@ function CardMeta({
             fontFamily: "'Noto Sans JP', sans-serif",
             fontSize: "10.5px",
             fontWeight: 400,
+
             color: light
-              ? "rgba(255,255,255,0.72)"
+              ? "rgba(255,255,255,0.78)"
               : C.textLight,
+
+            marginLeft: "2px",
           }}
         >
           {tour.priceNote}

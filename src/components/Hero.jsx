@@ -67,13 +67,16 @@ export default function Hero() {
 
             transition: "opacity 1.8s ease-in-out",
 
-            filter: "saturate(1.08) contrast(1.04)",
+            // 写真の色味をほんの少しだけ整える
+            filter: "saturate(1.06) contrast(1.03)",
           }}
         />
       ))}
 
       {/* ========================================
           Overlay
+          写真の美しさを残しながら
+          全体のコントラストを整える
       ======================================== */}
 
       <div
@@ -82,7 +85,46 @@ export default function Hero() {
           inset: 0,
 
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.3) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0.03) 38%, rgba(0,0,0,0.22) 100%)",
+
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* ========================================
+          Center Contrast
+          中央の文字周辺を少しだけ暗くして
+          文字を読みやすくする
+      ======================================== */}
+
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+
+          background:
+            "radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.07) 45%, rgba(0,0,0,0) 75%)",
+
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* ========================================
+          Header Contrast
+          上部ナビゲーションを読みやすくする
+      ======================================== */}
+
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+
+          height: "180px",
+
+          background:
+            "linear-gradient(180deg, rgba(0,0,0,0.26) 0%, rgba(0,0,0,0) 100%)",
 
           pointerEvents: "none",
         }}
@@ -105,70 +147,87 @@ export default function Hero() {
           padding: "0 24px",
 
           textAlign: "center",
+
+          // Hero中央の文字を少しだけ上に配置
+          transform: "translateY(-2%)",
         }}
       >
-        {/* ALIVE AMAMI */}
-
-<div
-  style={{
-    fontFamily: "'Cabin', sans-serif",
-
-    fontSize: "clamp(26px, 3.2vw, 42px)",
-
-    fontWeight: 600,
-
-    letterSpacing: "0.14em",
-
-    color: "#FFFFFF",
-
-    lineHeight: 1.05,
-
-    textShadow:
-      "0 2px 20px rgba(0,0,0,0.3)",
-  }}
->
-  ALIVE AMAMI
-</div>
-
-{/* Guide & Experience */}
-
-<div
-  style={{
-    fontFamily: "'Cabin', sans-serif",
-
-    fontSize: "clamp(14px, 1.5vw, 18px)",
-
-    fontWeight: 500,
-
-    letterSpacing: "0.12em",
-
-    color: "rgba(255,255,255,0.92)",
-
-    marginTop: "4px",
-
-    lineHeight: 1.2,
-
-    textShadow:
-      "0 1px 8px rgba(0,0,0,0.3)",
-  }}
->
-  ~ Guide & Experience ~
-</div>
+        {/* ========================================
+            ALIVE AMAMI
+        ======================================== */}
 
         <div
           style={{
-            color: "rgba(255,255,255,0.88)",
+            fontFamily: "'Cabin', sans-serif",
 
-            fontSize: "clamp(13px, 1.4vw, 16px)",
+            fontSize: "clamp(28px, 3.4vw, 44px)",
 
-            marginTop: "18px",
+            fontWeight: 500,
 
-            letterSpacing: "0.06em",
+            letterSpacing: "0.16em",
 
-            lineHeight: 1.7,
+            color: "#FFFFFF",
+
+            lineHeight: 1.05,
+
+            // 写真に埋もれないように
+            // ごく薄く影を強める
+            textShadow:
+              "0 2px 14px rgba(0,0,0,0.38)",
+          }}
+        >
+          ALIVE AMAMI
+        </div>
+
+        {/* ========================================
+            Guide & Experience
+        ======================================== */}
+
+        <div
+          style={{
+            fontFamily: "'Cabin', sans-serif",
+
+            fontSize: "clamp(14px, 1.5vw, 18px)",
+
+            fontWeight: 500,
+
+            letterSpacing: "0.12em",
+
+            color: "#FFFFFF",
+
+            marginTop: "6px",
+
+            lineHeight: 1.2,
 
             textShadow:
-              "0 1px 8px rgba(0,0,0,0.3)",
+              "0 1px 10px rgba(0,0,0,0.35)",
+          }}
+        >
+          ~ Guide & Experience ~
+        </div>
+
+        {/* ========================================
+            Catch Copy
+        ======================================== */}
+
+        <div
+          style={{
+            fontFamily: "'Noto Sans JP', sans-serif",
+
+            fontSize: "clamp(14px, 1.5vw, 18px)",
+
+            fontWeight: 500,
+
+            color: "#FFFFFF",
+
+            marginTop: "20px",
+
+            letterSpacing: "0.1em",
+
+            lineHeight: 1.8,
+
+            textShadow:
+              "0 1px 10px rgba(0,0,0,0.35)",
           }}
         >
           奄美の自然と、生きるを楽しむ。
@@ -194,7 +253,10 @@ export default function Hero() {
 
           gap: "6px",
 
-          color: "rgba(255,255,255,0.7)",
+          color: "rgba(255,255,255,0.72)",
+
+          textShadow:
+            "0 1px 6px rgba(0,0,0,0.2)",
         }}
       >
         <span

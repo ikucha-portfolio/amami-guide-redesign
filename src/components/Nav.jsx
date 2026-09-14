@@ -8,6 +8,7 @@ export default function Nav({ onBack = null }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   // ========================================
   // Scroll
@@ -181,8 +182,8 @@ export default function Nav({ onBack = null }) {
     isMenuOpen
       ? "#FFFFFF"
       : isScrolled
-      ? "rgba(255,255,255,0.96)"
-      : "rgba(255,255,255,0)";
+      ? "rgba(255,255,255,0.97)"
+      : "rgba(0,0,0,0.10)";
 
   const navShadow =
     isMenuOpen
@@ -196,7 +197,7 @@ export default function Nav({ onBack = null }) {
       ? "rgba(62,140,42,0.14)"
       : isScrolled
       ? "rgba(62,140,42,0.14)"
-      : "rgba(255,255,255,0.34)";
+      : "rgba(255,255,255,0.40)";
 
   return (
     <>
@@ -262,7 +263,14 @@ export default function Nav({ onBack = null }) {
                 letterSpacing: "0.12em",
                 lineHeight: 1.1,
                 color: logoColor,
-                transition: "color 0.35s ease",
+
+                textShadow:
+                  !isScrolled && !isMenuOpen
+                    ? "0 1px 8px rgba(0,0,0,0.30)"
+                    : "none",
+
+                transition:
+                  "color 0.35s ease, text-shadow 0.35s ease",
               }}
             >
               ALIVE AMAMI
@@ -271,19 +279,31 @@ export default function Nav({ onBack = null }) {
             <div
               style={{
                 marginTop: "4px",
-                fontFamily: "'Cabin', sans-serif",
+
+                fontFamily:
+                  "'Cabin', sans-serif",
+
                 fontSize: "10px",
                 fontWeight: 600,
                 letterSpacing: "0.08em",
                 lineHeight: 1.1,
+
                 color: logoColor,
-                opacity: isMenuOpen
-                  ? 0.85
-                  : isScrolled
-                  ? 0.85
-                  : 0.95,
+
+                opacity:
+                  isMenuOpen
+                    ? 0.85
+                    : isScrolled
+                    ? 0.85
+                    : 0.96,
+
+                textShadow:
+                  !isScrolled && !isMenuOpen
+                    ? "0 1px 6px rgba(0,0,0,0.30)"
+                    : "none",
+
                 transition:
-                  "color 0.35s ease, opacity 0.35s ease",
+                  "color 0.35s ease, opacity 0.35s ease, text-shadow 0.35s ease",
               }}
             >
               ~ Guide & Experience ~
@@ -310,6 +330,10 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+                  textShadow:
+                    !isScrolled
+                      ? "0 1px 8px rgba(0,0,0,0.32)"
+                      : "none",
                 }}
               >
                 ホーム
@@ -323,6 +347,10 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+                  textShadow:
+                    !isScrolled
+                      ? "0 1px 8px rgba(0,0,0,0.32)"
+                      : "none",
                 }}
               >
                 ツアー
@@ -336,6 +364,10 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+                  textShadow:
+                    !isScrolled
+                      ? "0 1px 8px rgba(0,0,0,0.32)"
+                      : "none",
                 }}
               >
                 ガイド
@@ -349,13 +381,19 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+                  textShadow:
+                    !isScrolled
+                      ? "0 1px 8px rgba(0,0,0,0.32)"
+                      : "none",
                 }}
               >
                 よくある質問
               </a>
             </div>
 
-            {/* Desktop CTA */}
+            {/* ========================================
+                Desktop CTA
+            ======================================== */}
 
             <div
               style={{
@@ -364,72 +402,89 @@ export default function Nav({ onBack = null }) {
                 gap: "10px",
               }}
             >
+              {/* Tours Button */}
+
               <a
                 href="#tours"
                 onClick={(e) =>
                   handleSectionClick(e, "tours")
                 }
+                onMouseEnter={() =>
+                  setHoveredButton("tours")
+                }
+                onMouseLeave={() =>
+                  setHoveredButton(null)
+                }
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  ...ctaBaseStyle,
 
-                  padding: "9px 20px",
+                  background:
+                    hoveredButton === "tours"
+                      ? "#4FAE36"
+                      : C.green,
 
-                  background: C.green,
                   color: "#FFFFFF",
 
-                  borderRadius: "2px",
+                  transform:
+                    hoveredButton === "tours"
+                      ? "translateY(-2px)"
+                      : "translateY(0)",
 
-                  fontSize: "13px",
-                  fontWeight: 700,
-
-                  textDecoration: "none",
-
-                  boxShadow: isScrolled
-                    ? "none"
-                    : "0 4px 16px rgba(0,0,0,0.16)",
-
-                  transition:
-                    "box-shadow 0.35s ease",
+                  boxShadow:
+                    hoveredButton === "tours"
+                      ? "0 8px 20px rgba(0,0,0,0.20)"
+                      : isScrolled
+                      ? "0 2px 8px rgba(0,0,0,0.08)"
+                      : "0 4px 16px rgba(0,0,0,0.16)",
                 }}
               >
                 ツアーを見る
               </a>
+
+              {/* Contact Button */}
 
               <a
                 href="#contact"
                 onClick={(e) =>
                   handleSectionClick(e, "contact")
                 }
+                onMouseEnter={() =>
+                  setHoveredButton("contact")
+                }
+                onMouseLeave={() =>
+                  setHoveredButton(null)
+                }
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  ...ctaBaseStyle,
 
-                  padding: "8px 18px",
+                  background:
+                    hoveredButton === "contact"
+                      ? isScrolled
+                        ? "rgba(62,140,42,0.08)"
+                        : "rgba(255,255,255,0.20)"
+                      : isScrolled
+                      ? "transparent"
+                      : "rgba(255,255,255,0.08)",
 
-                  background: isScrolled
-                    ? "transparent"
-                    : "rgba(255,255,255,0.08)",
+                  color:
+                    isScrolled
+                      ? C.green
+                      : "#FFFFFF",
 
-                  color: isScrolled
-                    ? C.green
-                    : "#FFFFFF",
+                  border:
+                    isScrolled
+                      ? `1.5px solid ${C.green}`
+                      : "1.5px solid rgba(255,255,255,0.90)",
 
-                  border: isScrolled
-                    ? `1.5px solid ${C.green}`
-                    : "1.5px solid rgba(255,255,255,0.85)",
+                  transform:
+                    hoveredButton === "contact"
+                      ? "translateY(-2px)"
+                      : "translateY(0)",
 
-                  borderRadius: "2px",
-
-                  fontSize: "13px",
-                  fontWeight: 600,
-
-                  textDecoration: "none",
-
-                  transition:
-                    "color 0.35s ease, border-color 0.35s ease, background 0.35s ease",
+                  boxShadow:
+                    hoveredButton === "contact"
+                      ? "0 8px 20px rgba(0,0,0,0.16)"
+                      : "none",
                 }}
               >
                 お問い合わせ
@@ -471,7 +526,8 @@ export default function Nav({ onBack = null }) {
 
               cursor: "pointer",
 
-              transition: "color 0.35s ease",
+              transition:
+                "color 0.35s ease",
             }}
           >
             {isMenuOpen ? (
@@ -504,13 +560,15 @@ export default function Nav({ onBack = null }) {
 
             background: dividerColor,
 
-            transform: "translateX(-50%)",
+            transform:
+              "translateX(-50%)",
 
-            opacity: isMenuOpen
-              ? 1
-              : isScrolled
-              ? 1
-              : 0.9,
+            opacity:
+              isMenuOpen
+                ? 1
+                : isScrolled
+                ? 1
+                : 0.9,
 
             pointerEvents: "none",
 
@@ -541,13 +599,15 @@ export default function Nav({ onBack = null }) {
 
             opacity: isMenuOpen ? 1 : 0,
 
-            visibility: isMenuOpen
-              ? "visible"
-              : "hidden",
+            visibility:
+              isMenuOpen
+                ? "visible"
+                : "hidden",
 
-            transform: isMenuOpen
-              ? "translateY(0)"
-              : "translateY(-12px)",
+            transform:
+              isMenuOpen
+                ? "translateY(0)"
+                : "translateY(-12px)",
 
             transition:
               "opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease",
@@ -560,12 +620,11 @@ export default function Nav({ onBack = null }) {
               display: "flex",
               flexDirection: "column",
 
-              padding: "64px 30px 40px",
+              padding:
+                "64px 30px 40px",
             }}
           >
-            {/* ========================================
-                Menu Links
-            ======================================== */}
+            {/* Menu Links */}
 
             <div
               style={{
@@ -583,7 +642,10 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#tours"
                 onClick={(e) =>
-                  handleSectionClick(e, "tours")
+                  handleSectionClick(
+                    e,
+                    "tours"
+                  )
                 }
                 en="TOURS"
               >
@@ -593,7 +655,10 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#guide"
                 onClick={(e) =>
-                  handleSectionClick(e, "guide")
+                  handleSectionClick(
+                    e,
+                    "guide"
+                  )
                 }
                 en="GUIDE"
               >
@@ -603,7 +668,10 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#faq"
                 onClick={(e) =>
-                  handleSectionClick(e, "faq")
+                  handleSectionClick(
+                    e,
+                    "faq"
+                  )
                 }
                 en="FAQ"
               >
@@ -611,11 +679,7 @@ export default function Nav({ onBack = null }) {
               </MobileLink>
             </div>
 
-            {/* ========================================
-                Contact / SNS
-                ※ 上側のborderTopは入れない
-                   → FAQ下の線が二重にならない
-            ======================================== */}
+            {/* Contact / SNS */}
 
             <div
               style={{
@@ -627,7 +691,8 @@ export default function Nav({ onBack = null }) {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between",
+                  justifyContent:
+                    "space-between",
                   gap: "18px",
                 }}
               >
@@ -661,14 +726,19 @@ export default function Nav({ onBack = null }) {
                   }}
                 >
                   お問い合わせはこちら
+
                   <span
                     style={{
                       marginLeft: "8px",
+
                       fontFamily:
                         "'Cabin', sans-serif",
+
                       fontSize: "17px",
                       fontWeight: 400,
+
                       lineHeight: 1,
+
                       opacity: 0.75,
                     }}
                   >
@@ -723,11 +793,52 @@ export default function Nav({ onBack = null }) {
 ======================================== */
 
 const linkStyle = {
+  fontFamily:
+    "'Noto Sans JP', sans-serif",
+
   textDecoration: "none",
+
   fontSize: "13px",
-  fontWeight: 600,
-  letterSpacing: "0.03em",
-  transition: "color 0.35s ease",
+
+  fontWeight: 700,
+
+  letterSpacing: "0.04em",
+
+  transition:
+    "color 0.35s ease, text-shadow 0.35s ease",
+};
+
+/* ========================================
+   CTA Base Style
+======================================== */
+
+const ctaBaseStyle = {
+  display: "inline-flex",
+
+  alignItems: "center",
+  justifyContent: "center",
+
+  minHeight: "46px",
+
+  padding: "0 20px",
+
+  borderRadius: "3px",
+
+  fontFamily:
+    "'Noto Sans JP', sans-serif",
+
+  fontSize: "13px",
+
+  fontWeight: 700,
+
+  letterSpacing: "0.04em",
+
+  textDecoration: "none",
+
+  cursor: "pointer",
+
+  transition:
+    "background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease",
 };
 
 /* ========================================
@@ -747,7 +858,8 @@ function MobileLink({
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent:
+          "space-between",
 
         minHeight: "72px",
 
@@ -760,6 +872,7 @@ function MobileLink({
           "'Noto Sans JP', sans-serif",
 
         fontSize: "17px",
+
         fontWeight: 500,
 
         letterSpacing: "0.03em",
@@ -775,6 +888,7 @@ function MobileLink({
             "'Cabin', sans-serif",
 
           fontSize: "10px",
+
           fontWeight: 500,
 
           letterSpacing: "0.14em",
