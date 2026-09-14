@@ -46,6 +46,10 @@ export default function Contact() {
         }}
       />
 
+      {/* ========================================
+          Container
+      ======================================== */}
+
       <div
         style={{
           ...CONTAINER,
@@ -64,7 +68,7 @@ export default function Contact() {
         />
 
         {/* ========================================
-            Contact Content
+            Contact Grid
         ======================================== */}
 
         <div
@@ -81,16 +85,8 @@ export default function Contact() {
               お問い合わせ時に必要な情報
           ======================================== */}
 
-          <div>
-            <h3
-              style={{
-                margin: "0 0 18px",
-                fontSize: "15px",
-                fontWeight: 600,
-                lineHeight: 1.7,
-                color: "#FFFFFF",
-              }}
-            >
+          <div className="contact-left">
+            <h3 style={sectionTitleStyle}>
               以下を教えていただくとスムーズです。
             </h3>
 
@@ -110,10 +106,10 @@ export default function Contact() {
                     display: "flex",
                     alignItems: "center",
                     gap: "16px",
-                    minHeight: "48px",
+                    minHeight: "46px",
                     borderBottom:
                       index < contactItems.length - 1
-                        ? "1px solid rgba(255,255,255,0.18)"
+                        ? dividerStyle
                         : "none",
                   }}
                 >
@@ -136,8 +132,8 @@ export default function Contact() {
                   <span
                     style={{
                       fontSize: "14px",
-                      color: "rgba(255,255,255,0.94)",
                       lineHeight: 1.5,
+                      color: "rgba(255,255,255,0.94)",
                     }}
                   >
                     {item}
@@ -161,8 +157,8 @@ export default function Contact() {
               <div
                 style={{
                   width: "100%",
-                  borderTop: "1px solid rgba(255,255,255,0.18)",
-                  marginBottom: "26px",
+                  borderTop: dividerStyle,
+                  marginBottom: "24px",
                 }}
               />
 
@@ -183,7 +179,7 @@ export default function Contact() {
                   margin: 0,
                   fontSize: "14px",
                   color: "rgba(255,255,255,0.88)",
-                  lineHeight: 1.9,
+                  lineHeight: 1.8,
                 }}
               >
                 LINEまたはInstagramのDMからお問い合わせください。
@@ -196,7 +192,7 @@ export default function Contact() {
                   margin: "10px 0 0",
                   fontSize: "12px",
                   color: "rgba(255,255,255,0.68)",
-                  lineHeight: 1.8,
+                  lineHeight: 1.7,
                 }}
               >
                 ※お問い合わせ時点では予約確定ではありません。
@@ -209,24 +205,16 @@ export default function Contact() {
               お問い合わせ・CTA
           ======================================== */}
 
-          <div>
-            <h3
-              style={{
-                margin: "0 0 18px",
-                fontSize: "15px",
-                fontWeight: 600,
-                lineHeight: 1.7,
-                color: "#FFFFFF",
-              }}
-            >
-              まずはお気軽にご相談ください。
+          <div className="contact-right">
+            <h3 style={sectionTitleStyle}>
+              まずはお気軽にご相談ください♪
             </h3>
 
             <p
               style={{
                 margin: "0 0 10px",
                 fontSize: "14px",
-                lineHeight: 1.9,
+                lineHeight: 1.8,
                 color: "rgba(255,255,255,0.92)",
               }}
             >
@@ -239,7 +227,7 @@ export default function Contact() {
               style={{
                 margin: "0 0 28px",
                 fontSize: "14px",
-                lineHeight: 1.9,
+                lineHeight: 1.8,
                 color: "rgba(255,255,255,0.82)",
               }}
             >
@@ -255,7 +243,7 @@ export default function Contact() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "10px",
-                maxWidth: "470px",
+                width: "100%",
               }}
             >
               {/* LINE */}
@@ -384,6 +372,7 @@ export default function Contact() {
           }
 
           #contact .contact-grid > div {
+            width: 100% !important;
             max-width: 100% !important;
           }
         }
@@ -391,6 +380,20 @@ export default function Contact() {
     </section>
   );
 }
+
+/* ========================================
+   Shared Styles
+======================================== */
+
+const dividerStyle = "1px solid rgba(255,255,255,0.18)";
+
+const sectionTitleStyle = {
+  margin: "0 0 18px",
+  fontSize: "15px",
+  fontWeight: 600,
+  lineHeight: 1.7,
+  color: "#FFFFFF",
+};
 
 /* ========================================
    Contact Button
