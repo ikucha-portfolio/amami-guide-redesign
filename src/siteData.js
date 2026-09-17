@@ -681,8 +681,8 @@ export const COLORS = {
   brownLight: "#7A5C4A",
 
   // brand green
-  green: "#3E8C2A",
-  greenDark: "#2A6219",
+  green: "#4AAE45",
+  greenDark: "#367A30",
   greenLight: "#5AAD45",
   greenPale: "#EBF5E8",
 

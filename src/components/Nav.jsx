@@ -164,40 +164,29 @@ export default function Nav({ onBack = null }) {
   // Header Colors
   // ========================================
 
-  const textColor =
-    isMenuOpen
-      ? C.textLight
-      : isScrolled
-      ? C.textLight
-      : "#FFFFFF";
+  const textColor = isMenuOpen
+    ? C.textLight
+    : isScrolled
+    ? C.textLight
+    : "#FFFFFF";
 
-  const logoColor =
-    isMenuOpen
-      ? C.green
-      : isScrolled
-      ? C.green
-      : "#FFFFFF";
+  const logoColor = isMenuOpen
+    ? C.green
+    : isScrolled
+    ? C.green
+    : "#FFFFFF";
 
-  const navBackground =
-    isMenuOpen
-      ? "#FFFFFF"
-      : isScrolled
-      ? "rgba(255,255,255,0.97)"
-      : "rgba(0,0,0,0.10)";
+  const navBackground = isMenuOpen
+    ? "#FFFFFF"
+    : isScrolled
+    ? "rgba(255,255,255,0.97)"
+    : "rgba(0,0,0,0.10)";
 
-  const navShadow =
-    isMenuOpen
-      ? "0 4px 20px rgba(0,0,0,0.06)"
-      : isScrolled
-      ? "0 8px 28px rgba(0,0,0,0.08)"
-      : "none";
-
-  const dividerColor =
-    isMenuOpen
-      ? "rgba(62,140,42,0.14)"
-      : isScrolled
-      ? "rgba(62,140,42,0.14)"
-      : "rgba(255,255,255,0.40)";
+  const navShadow = isMenuOpen
+    ? "0 4px 20px rgba(0,0,0,0.06)"
+    : isScrolled
+    ? "0 8px 28px rgba(0,0,0,0.08)"
+    : "none";
 
   return (
     <>
@@ -213,15 +202,12 @@ export default function Nav({ onBack = null }) {
           right: 0,
           zIndex: 300,
 
-          height: "64px",
+          height: "72px",
 
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
 
-          padding: isMobile
-            ? "0 20px"
-            : "0 6%",
+          padding: isMobile ? "0 20px" : "0 6%",
 
           background: navBackground,
           boxShadow: navShadow,
@@ -262,7 +248,7 @@ export default function Nav({ onBack = null }) {
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 lineHeight: 1.1,
-                color: logoColor,
+                color: textColor,
 
                 textShadow:
                   !isScrolled && !isMenuOpen
@@ -288,7 +274,7 @@ export default function Nav({ onBack = null }) {
                 letterSpacing: "0.08em",
                 lineHeight: 1.1,
 
-                color: logoColor,
+                color: textColor,
 
                 opacity:
                   isMenuOpen
@@ -316,12 +302,23 @@ export default function Nav({ onBack = null }) {
         ======================================== */}
 
         {!isMobile && (
-          <>
+          <div
+            style={{
+              marginLeft: "auto",
+
+              display: "flex",
+              alignItems: "center",
+
+              gap: "52px",
+            }}
+          >
+            {/* Navigation Links */}
+
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "32px",
+                gap: "40px",
               }}
             >
               <a
@@ -330,6 +327,7 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+
                   textShadow:
                     !isScrolled
                       ? "0 1px 8px rgba(0,0,0,0.32)"
@@ -347,6 +345,7 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+
                   textShadow:
                     !isScrolled
                       ? "0 1px 8px rgba(0,0,0,0.32)"
@@ -364,6 +363,7 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+
                   textShadow:
                     !isScrolled
                       ? "0 1px 8px rgba(0,0,0,0.32)"
@@ -381,6 +381,7 @@ export default function Nav({ onBack = null }) {
                 style={{
                   ...linkStyle,
                   color: textColor,
+
                   textShadow:
                     !isScrolled
                       ? "0 1px 8px rgba(0,0,0,0.32)"
@@ -399,7 +400,7 @@ export default function Nav({ onBack = null }) {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "8px",
               }}
             >
               {/* Tours Button */}
@@ -490,7 +491,7 @@ export default function Nav({ onBack = null }) {
                 お問い合わせ
               </a>
             </div>
-          </>
+          </div>
         )}
 
         {/* ========================================
@@ -510,6 +511,8 @@ export default function Nav({ onBack = null }) {
             }
             aria-expanded={isMenuOpen}
             style={{
+              marginLeft: "auto",
+
               width: "44px",
               height: "44px",
 
@@ -526,8 +529,7 @@ export default function Nav({ onBack = null }) {
 
               cursor: "pointer",
 
-              transition:
-                "color 0.35s ease",
+              transition: "color 0.35s ease",
             }}
           >
             {isMenuOpen ? (
@@ -543,39 +545,6 @@ export default function Nav({ onBack = null }) {
             )}
           </button>
         )}
-
-        {/* ========================================
-            Header Divider
-        ======================================== */}
-
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            bottom: 0,
-
-            width: "88%",
-            maxWidth: "1120px",
-            height: "1px",
-
-            background: dividerColor,
-
-            transform:
-              "translateX(-50%)",
-
-            opacity:
-              isMenuOpen
-                ? 1
-                : isScrolled
-                ? 1
-                : 0.9,
-
-            pointerEvents: "none",
-
-            transition:
-              "background 0.35s ease, opacity 0.35s ease",
-          }}
-        />
       </nav>
 
       {/* ========================================
@@ -620,8 +589,7 @@ export default function Nav({ onBack = null }) {
               display: "flex",
               flexDirection: "column",
 
-              padding:
-                "64px 30px 40px",
+              padding: "64px 30px 40px",
             }}
           >
             {/* Menu Links */}
@@ -642,10 +610,7 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#tours"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "tours"
-                  )
+                  handleSectionClick(e, "tours")
                 }
                 en="TOURS"
               >
@@ -655,10 +620,7 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#guide"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "guide"
-                  )
+                  handleSectionClick(e, "guide")
                 }
                 en="GUIDE"
               >
@@ -668,10 +630,7 @@ export default function Nav({ onBack = null }) {
               <MobileLink
                 href="#faq"
                 onClick={(e) =>
-                  handleSectionClick(
-                    e,
-                    "faq"
-                  )
+                  handleSectionClick(e, "faq")
                 }
                 en="FAQ"
               >
@@ -691,8 +650,7 @@ export default function Nav({ onBack = null }) {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent:
-                    "space-between",
+                  justifyContent: "space-between",
                   gap: "18px",
                 }}
               >
@@ -798,9 +756,9 @@ const linkStyle = {
 
   textDecoration: "none",
 
-  fontSize: "13px",
+  fontSize: "14px",
 
-  fontWeight: 700,
+  fontWeight: 600,
 
   letterSpacing: "0.04em",
 
@@ -818,18 +776,18 @@ const ctaBaseStyle = {
   alignItems: "center",
   justifyContent: "center",
 
-  minHeight: "46px",
+  minHeight: "32px",
 
-  padding: "0 20px",
+  padding: "0 16px",
 
-  borderRadius: "3px",
+  borderRadius: "4px",
 
   fontFamily:
     "'Noto Sans JP', sans-serif",
 
-  fontSize: "13px",
+  fontSize: "14px",
 
-  fontWeight: 700,
+  fontWeight: 600,
 
   letterSpacing: "0.04em",
 
@@ -858,8 +816,7 @@ function MobileLink({
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent:
-          "space-between",
+        justifyContent: "space-between",
 
         minHeight: "72px",
 

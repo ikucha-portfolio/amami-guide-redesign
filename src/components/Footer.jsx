@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: C.greenDark,
+        background: C.green,
         padding: "32px 6%",
       }}
     >
@@ -48,14 +48,14 @@ export default function Footer() {
         {/* Copyright */}
         <span
           style={{
-            color: "rgba(255,255,255,0.35)",
+            color: "rgba(255,255,255,0.7)",
             fontSize: "11px",
             lineHeight: 1.5,
             textAlign: "right",
             flexShrink: 0,
           }}
         >
-          © 2026 ALIVE AMAMI~Guide & Experience~. All rights reserved.
+          © 2026 ALIVE AMAMI~Guide & Experience~.
           <br className="footer-break" />
           All rights reserved.
         </span>
