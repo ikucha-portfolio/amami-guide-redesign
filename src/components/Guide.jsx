@@ -210,20 +210,19 @@ export default function Guide() {
               }}
             >
               <h3
-                style={{
-                  margin: "0 0 4px",
-                  fontFamily: "'Noto Sans JP', sans-serif",
-                  fontSize: isMobile
-                    ? "22px"
-                    : "clamp(22px, 2.3vw, 22px)",
-                  fontWeight: 700,
-                  lineHeight: 1.3,
-                  color: C.text,
-                }}
-              >
-                {GUIDE.name}
-              </h3>
-
+  style={{
+    margin: "0 0 4px",
+    fontFamily: "'Noto Sans JP', sans-serif",
+    fontSize: isMobile
+      ? "18px"
+      : "clamp(22px, 2.3vw, 22px)",
+    fontWeight: 700,
+    lineHeight: 1.4,
+    color: C.text,
+  }}
+>
+  {GUIDE.name}
+</h3>
               <p
                 style={{
                   margin: "6px 0 28px",
