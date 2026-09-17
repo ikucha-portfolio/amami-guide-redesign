@@ -71,7 +71,7 @@ export default function Guide() {
               justifyContent: "center",
               gap: isMobile ? "6px" : "14px",
               margin: "0 0 48px",
-              fontSize: isMobile ? "18px" : "26px",
+              fontSize: isMobile ? "18px" : "24px",
               fontWeight: 700,
               lineHeight: 1.5,
               color: C.text,
@@ -215,7 +215,7 @@ export default function Guide() {
                   fontFamily: "'Noto Sans JP', sans-serif",
                   fontSize: isMobile
                     ? "22px"
-                    : "clamp(22px, 2.3vw, 28px)",
+                    : "clamp(22px, 2.3vw, 22px)",
                   fontWeight: 700,
                   lineHeight: 1.3,
                   color: C.text,

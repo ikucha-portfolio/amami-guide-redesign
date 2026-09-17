@@ -27,7 +27,7 @@ export const SECTION_TITLE_ROW = {
 
 export const SECTION_TITLE = {
   fontFamily: "'Cabin', sans-serif",
-  fontSize: "clamp(28px, 3vw, 44px)",
+  fontSize: "clamp(28px, 3vw, 32px)",
   fontWeight: 700,
   letterSpacing: "0.04em",
   lineHeight: 1,
@@ -36,7 +36,7 @@ export const SECTION_TITLE = {
 
 export const SECTION_SUBTITLE = {
   fontFamily: "'Noto Sans JP', sans-serif",
-  fontSize: "clamp(14px, 1.4vw, 18px)",
+  fontSize: "clamp(14px, 1.4vw, 14px)",
   fontWeight: 500,
   paddingBottom: "8px",
 };

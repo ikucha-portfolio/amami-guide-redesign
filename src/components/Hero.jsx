@@ -36,8 +36,7 @@ export default function Hero() {
         // PC：以前の仕様
         // スマホ：画面いっぱい
         height:
-          typeof window !== "undefined" &&
-          window.innerWidth <= 768
+          typeof window !== "undefined" && window.innerWidth <= 768
             ? "100svh"
             : "calc(100vh - 116px)",
 
@@ -67,8 +66,8 @@ export default function Hero() {
 
             transition: "opacity 1.8s ease-in-out",
 
-            // 写真の色味をほんの少しだけ整える
-            filter: "saturate(1.06) contrast(1.03)",
+            // 写真の色味をほんの少し整える
+            filter: "saturate(1.08) contrast(1.03) brightness(1.02)",
           }}
         />
       ))}
@@ -103,7 +102,7 @@ export default function Hero() {
           inset: 0,
 
           background:
-            "radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.07) 45%, rgba(0,0,0,0) 75%)",
+            "radial-gradient(ellipse at center, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0) 75%)",
 
           pointerEvents: "none",
         }}
@@ -160,20 +159,17 @@ export default function Hero() {
           style={{
             fontFamily: "'Cabin', sans-serif",
 
-            fontSize: "clamp(28px, 3.4vw, 44px)",
+            fontSize: "clamp(28px, 3.2vw, 40px)",
 
             fontWeight: 500,
 
-            letterSpacing: "0.16em",
+            letterSpacing: "0.14em",
 
             color: "#FFFFFF",
 
             lineHeight: 1.05,
 
-            // 写真に埋もれないように
-            // ごく薄く影を強める
-            textShadow:
-              "0 2px 14px rgba(0,0,0,0.38)",
+            textShadow: "0 2px 12px rgba(0,0,0,0.32)",
           }}
         >
           ALIVE AMAMI
@@ -187,20 +183,19 @@ export default function Hero() {
           style={{
             fontFamily: "'Cabin', sans-serif",
 
-            fontSize: "clamp(14px, 1.5vw, 18px)",
+            fontSize: "clamp(13px, 1.3vw, 16px)",
 
             fontWeight: 500,
 
-            letterSpacing: "0.12em",
+            letterSpacing: "0.1em",
 
             color: "#FFFFFF",
 
-            marginTop: "6px",
+            marginTop: "4px",
 
             lineHeight: 1.2,
 
-            textShadow:
-              "0 1px 10px rgba(0,0,0,0.35)",
+            textShadow: "0 1px 8px rgba(0,0,0,0.3)",
           }}
         >
           ~ Guide & Experience ~
@@ -214,20 +209,19 @@ export default function Hero() {
           style={{
             fontFamily: "'Noto Sans JP', sans-serif",
 
-            fontSize: "clamp(14px, 1.5vw, 18px)",
+            fontSize: "clamp(14px, 1.4vw, 17px)",
 
             fontWeight: 500,
 
             color: "#FFFFFF",
 
-            marginTop: "20px",
+            marginTop: "18px",
 
-            letterSpacing: "0.1em",
+            letterSpacing: "0.08em",
 
             lineHeight: 1.8,
 
-            textShadow:
-              "0 1px 10px rgba(0,0,0,0.35)",
+            textShadow: "0 1px 9px rgba(0,0,0,0.32)",
           }}
         >
           奄美の自然と、生きるを楽しむ。
@@ -255,8 +249,7 @@ export default function Hero() {
 
           color: "rgba(255,255,255,0.72)",
 
-          textShadow:
-            "0 1px 6px rgba(0,0,0,0.2)",
+          textShadow: "0 1px 6px rgba(0,0,0,0.2)",
         }}
       >
         <span
