@@ -715,8 +715,8 @@ function TourCardMobile({
             onClick={() => onSelectTour?.(tour)}
             style={{
               flexShrink: 0,
-              width: "160px",
-              height: "44px",
+              width: "136px",
+              height: "42px",
               border: "none",
               borderRadius: "3px",
               background: C.green,
