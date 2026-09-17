@@ -60,7 +60,10 @@ export default function TourHero({ tour }) {
         overflow: "hidden",
       }}
     >
-      {/* Hero Image */}
+      {/* ========================================
+          Hero Image
+      ======================================== */}
+
       <div
         ref={imageRef}
         style={{
@@ -83,7 +86,10 @@ export default function TourHero({ tour }) {
         />
       </div>
 
-      {/* Overlay */}
+      {/* ========================================
+          Overlay
+      ======================================== */}
+
       <div
         style={{
           position: "absolute",
@@ -94,7 +100,10 @@ export default function TourHero({ tour }) {
         }}
       />
 
-      {/* Text */}
+      {/* ========================================
+          Text
+      ======================================== */}
+
       <div
         style={{
           position: "absolute",
@@ -105,21 +114,8 @@ export default function TourHero({ tour }) {
           pointerEvents: "none",
         }}
       >
-        {/* English Title */}
-        <p
-          style={{
-            fontFamily: "'Cabin', sans-serif",
-            fontSize: "10px",
-            letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.68)",
-            margin: "0 0 10px",
-            lineHeight: 1.4,
-          }}
-        >
-          {tour.nameEn.toUpperCase()}
-        </p>
-
         {/* Japanese Title */}
+
         <h1
           style={{
             fontFamily: "'Noto Sans JP', sans-serif",
@@ -137,6 +133,7 @@ export default function TourHero({ tour }) {
         </h1>
 
         {/* Description */}
+
         <p
           style={{
             fontSize: "14px",

@@ -28,7 +28,7 @@ export default function OtherTours({
   }, []);
 
   const OTHER_TOURS = TOURS.filter(
-    (t) => t.id !== currentTourId
+    (tour) => tour.id !== currentTourId
   );
 
   return (
@@ -44,7 +44,9 @@ export default function OtherTours({
           margin: "0 auto",
         }}
       >
-        {/* Section Heading */}
+        {/* ========================================
+            Section Heading
+        ======================================== */}
 
         <div
           style={{
@@ -57,8 +59,7 @@ export default function OtherTours({
               fontSize: isMobile ? "18px" : "20px",
               fontWeight: 700,
               color: C.text,
-              margin: 0,
-              marginBottom: "12px",
+              margin: "0 0 12px",
             }}
           >
             他のツアーを見る
@@ -74,7 +75,9 @@ export default function OtherTours({
           />
         </div>
 
-        {/* Tour Cards */}
+        {/* ========================================
+            Tour Cards
+        ======================================== */}
 
         <div
           style={{
@@ -93,16 +96,19 @@ export default function OtherTours({
                 borderRadius: "2px",
                 overflow: "hidden",
                 background: C.white,
-                boxShadow: "0 2px 20px rgba(0,0,0,0.08)",
+                boxShadow:
+                  "0 2px 20px rgba(0,0,0,0.08)",
                 cursor: "pointer",
               }}
             >
-              {/* Image */}
+              {/* ========================================
+                  Image
+              ======================================== */}
 
               <div
                 style={{
                   position: "relative",
-                  aspectRatio: "4/3",
+                  aspectRatio: "4 / 3",
                   overflow: "hidden",
                 }}
               >
@@ -113,13 +119,16 @@ export default function OtherTours({
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    transition: "transform 0.6s ease",
+                    transition:
+                      "transform 0.6s ease",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.06)";
+                  onMouseEnter={(event) => {
+                    event.currentTarget.style.transform =
+                      "scale(1.06)";
                   }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
+                  onMouseLeave={(event) => {
+                    event.currentTarget.style.transform =
+                      "scale(1)";
                   }}
                 />
 
@@ -157,7 +166,7 @@ export default function OtherTours({
                   </div>
                 )}
 
-                {/* Image Text */}
+                {/* Japanese Tour Name */}
 
                 <div
                   style={{
@@ -166,23 +175,10 @@ export default function OtherTours({
                     left: 0,
                     right: 0,
                     padding: isMobile
-                      ? "10px 10px"
+                      ? "10px"
                       : "16px 20px",
                   }}
                 >
-                  <p
-                    style={{
-                      fontFamily: "'Cabin', sans-serif",
-                      fontSize: isMobile ? "7px" : "9px",
-                      letterSpacing: "0.12em",
-                      color: "rgba(255,255,255,0.55)",
-                      margin: 0,
-                      marginBottom: "3px",
-                    }}
-                  >
-                    {tour.nameEn.toUpperCase()}
-                  </p>
-
                   <p
                     style={{
                       fontSize: isMobile ? "11px" : "13px",
@@ -197,7 +193,9 @@ export default function OtherTours({
                 </div>
               </div>
 
-              {/* Card Info */}
+              {/* ========================================
+                  Card Info
+              ======================================== */}
 
               <div
                 style={{
@@ -247,6 +245,7 @@ export default function OtherTours({
                           flexShrink: 0,
                         }}
                       />
+
                       {tour.duration}
                     </span>
 
@@ -267,6 +266,7 @@ export default function OtherTours({
                           flexShrink: 0,
                         }}
                       />
+
                       {tour.target}
                     </span>
                   </div>
@@ -290,7 +290,8 @@ export default function OtherTours({
 
                     <span
                       style={{
-                        fontFamily: "'Noto Sans JP', sans-serif",
+                        fontFamily:
+                          "'Noto Sans JP', sans-serif",
                         fontSize: isMobile ? "9px" : "11px",
                         fontWeight: 400,
                         color: C.textLight,

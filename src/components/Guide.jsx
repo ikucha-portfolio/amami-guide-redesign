@@ -6,6 +6,25 @@ import { SECTION, CONTAINER } from "../styles/designSystem";
 
 const C = COLORS;
 
+/* ========================================
+   ALIVE AMAMIだからできること
+======================================== */
+
+const GUIDE_VALUES = [
+  {
+    title: "あなたに合わせた旅",
+    text: "一人ひとりのペースや希望に合わせて、自分らしく旅を楽しめます。",
+  },
+  {
+    title: "誰でも安心して楽しめる",
+    text: "初心者からお子さま連れ、ご年配の方まで、それぞれに合わせてサポートします。",
+  },
+  {
+    title: "海も陸も、奄美をまるごと",
+    text: "海のアクティビティから滝やナイトツアー、島のドライブまで奄美の自然や魅力を楽しめます。",
+  },
+];
+
 export default function Guide() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -33,6 +52,7 @@ export default function Guide() {
       }}
     >
       <div style={CONTAINER}>
+
         {/* ========================================
             ALIVE AMAMIだからできること
         ======================================== */}
@@ -45,21 +65,21 @@ export default function Guide() {
           {/* Heading */}
 
           <h2
-  style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: isMobile ? "6px" : "14px",
-    margin: "0 0 44px",
-    fontSize: isMobile ? "18px" : "26px",
-    fontWeight: 700,
-    lineHeight: 1.5,
-    color: C.text,
-    textAlign: "center",
-    letterSpacing: "0.02em",
-    whiteSpace: "nowrap",
-  }}
->
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: isMobile ? "6px" : "14px",
+              margin: "0 0 48px",
+              fontSize: isMobile ? "18px" : "26px",
+              fontWeight: 700,
+              lineHeight: 1.5,
+              color: C.text,
+              textAlign: "center",
+              letterSpacing: "0.02em",
+              whiteSpace: "nowrap",
+            }}
+          >
             <span
               aria-hidden="true"
               style={{
@@ -70,7 +90,7 @@ export default function Guide() {
               ＼
             </span>
 
-            <span>ALIVE AMAMIだからできること</span>
+            <span>ALIVE AMAMIの魅力</span>
 
             <span
               aria-hidden="true"
@@ -83,53 +103,73 @@ export default function Guide() {
             </span>
           </h2>
 
-          {/* Reasons */}
+          {/* Values */}
 
           <div
             style={{
-              width: isMobile ? "100%" : "fit-content",
-              maxWidth: "100%",
+              display: "grid",
+              gridTemplateColumns: isMobile
+                ? "1fr"
+                : "repeat(3, 1fr)",
+              gap: isMobile ? "32px" : "0",
+              maxWidth: "980px",
               margin: "0 auto",
-              display: "flex",
-              flexDirection: "column",
-              gap: isMobile ? "22px" : "24px",
             }}
           >
-            {GUIDE.certifications.map((reason) => (
+            {GUIDE_VALUES.map((value, index) => (
               <div
-                key={reason}
+                key={value.title}
                 style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "10px",
+                  padding: isMobile ? "0" : "0 32px",
+                  borderLeft:
+                    !isMobile && index !== 0
+                      ? "1px solid rgba(62, 45, 33, 0.15)"
+                      : "none",
+                  textAlign: isMobile ? "center" : "left",
                 }}
               >
-                <span
-                  aria-hidden="true"
+                <h3
                   style={{
-                    flexShrink: 0,
-                    color: C.orange,
-                    fontSize: "18px",
-                    lineHeight: 1.7,
+                    margin: "0 0 10px",
+                    fontSize: isMobile ? "16px" : "17px",
+                    fontWeight: 700,
+                    lineHeight: 1.5,
+                    color: C.text,
+                    letterSpacing: "0.02em",
                   }}
                 >
-                  ・
-                </span>
+                  {value.title}
+                </h3>
 
                 <p
                   style={{
-                    margin: 0,
-                    fontSize: isMobile ? "14px" : "16px",
-                    fontWeight: 700,
-                    lineHeight: 1.7,
-                    color: C.text,
+                    maxWidth: isMobile ? "320px" : "none",
+                    margin: isMobile ? "0 auto" : "0",
+                    fontSize: isMobile ? "13px" : "14px",
+                    fontWeight: 400,
+                    lineHeight: 1.8,
+                    color: C.textLight,
                   }}
                 >
-                  {reason}
+                  {value.text}
                 </p>
               </div>
             ))}
           </div>
+
+          {/* Pickup */}
+
+          <p
+            style={{
+              margin: isMobile ? "32px 0 0" : "40px 0 0",
+              textAlign: "center",
+              fontSize: isMobile ? "12px" : "13px",
+              lineHeight: 1.7,
+              color: C.textLight,
+            }}
+          >
+            ★ 空港・宿泊先への送迎も可能です！（一部エリアは追加料金あり）
+          </p>
         </div>
 
         {/* ========================================
@@ -162,9 +202,7 @@ export default function Guide() {
               alignItems: "start",
             }}
           >
-            {/* ========================================
-                Profile Text
-            ======================================== */}
+            {/* Profile Text */}
 
             <div
               style={{
@@ -213,9 +251,7 @@ export default function Guide() {
                 {GUIDE.message}
               </p>
 
-              {/* ========================================
-                  Qualifications / Guide History
-              ======================================== */}
+              {/* Qualifications / Guide History */}
 
               <div
                 style={{
@@ -225,8 +261,8 @@ export default function Guide() {
                     "1px solid rgba(62, 45, 33, 0.12)",
                   display: "grid",
                   gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : "1.2fr 0.8fr",
+                    ? "1fr"
+                    : "1.2fr 0.8fr",
                   gap: isMobile ? "24px" : "40px",
                 }}
               >
@@ -271,6 +307,7 @@ export default function Guide() {
                     >
                       SSI リアクトライト
                     </span>
+
                     <span
                       style={{
                         fontSize: isMobile ? "13px" : "14px",
@@ -278,7 +315,7 @@ export default function Guide() {
                         lineHeight: 1.7,
                       }}
                     >
-                    （心肺蘇生法・救急法）
+                      （心肺蘇生法・救急法）
                     </span>
                   </div>
                 </div>
@@ -339,9 +376,7 @@ export default function Guide() {
               </div>
             </div>
 
-            {/* ========================================
-                Guide Photo
-            ======================================== */}
+            {/* Guide Photo */}
 
             <div
               style={{
@@ -369,9 +404,7 @@ export default function Guide() {
             </div>
           </div>
 
-          {/* ========================================
-              Instagram
-          ======================================== */}
+          {/* Instagram */}
 
           <div
             style={{
