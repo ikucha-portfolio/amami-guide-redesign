@@ -127,7 +127,7 @@ export default function Faq() {
                   lineHeight: 1,
                 }}
               >
-                {showAll ? "↑" : "↓"}
+                {showAll ? "∧" : "∨"}
               </span>
             </button>
           </div>
