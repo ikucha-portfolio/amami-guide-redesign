@@ -544,29 +544,37 @@ function TourCardMobile({
           Full Width Image
       ======================================== */}
 
-      <div
-        style={{
-          position: "relative",
-          width: "100vw",
-          marginLeft: "calc(50% - 50vw)",
-          aspectRatio: "16 / 9",
-          overflow: "hidden",
-        }}
-      >
-        <ImageWithFallback
-          src={tour.image}
-          alt={tour.name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
+      <button
+  type="button"
+  onClick={() => onSelectTour?.(tour)}
+  aria-label={`${tour.name}の詳細を見る`}
+  style={{
+    position: "relative",
+    display: "block",
+    width: "100vw",
+    marginLeft: "calc(50% - 50vw)",
+    aspectRatio: "16 / 9",
+    overflow: "hidden",
+    padding: 0,
+    border: "none",
+    background: "none",
+    cursor: "pointer",
+  }}
+>
+  <ImageWithFallback
+    src={tour.image}
+    alt={tour.name}
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+    }}
+  />
 
-        {tour.tag && (
-          <TagBadge label={tour.tag} />
-        )}
-      </div>
+  {tour.tag && (
+    <TagBadge label={tour.tag} />
+  )}
+</button>
 
       {/* ========================================
           Tour Information
