@@ -32,9 +32,10 @@ export default function TourDetailA({
 
       {/* Hero直下のツアー切り替え */}
       <TourNavigation
-        currentTourId={tour.id}
-        onSelectTour={onSelectTour}
-      />
+  currentTourId={tour.id}
+  onSelectTour={onSelectTour}
+  onBack={onBack}
+/>
 
       <TourAbout tour={tour} />
 

@@ -9,6 +9,7 @@ import {
 export default function TourNavigation({
   currentTourId,
   onSelectTour,
+  onBack,
 }) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -31,9 +32,48 @@ export default function TourNavigation({
     return null;
   }
 
-  // スマホではHero直下に表示しない
+  // スマホではHero直下に「＜ TOP」のみ表示
   if (isMobile) {
-    return null;
+    return (
+      <nav
+        aria-label="ホームへ戻る"
+        style={{
+          background: C.white,
+          borderBottom:
+            "1px solid rgba(62, 140, 42, 0.12)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            height: "44px",
+            display: "flex",
+            alignItems: "center",
+            padding: "0 20px",
+          }}
+        >
+          <button
+            type="button"
+            onClick={onBack}
+            style={{
+              border: "none",
+              background: "transparent",
+              padding: 0,
+              color: C.textLight,
+              fontFamily:
+                "'Noto Sans JP', sans-serif",
+              fontSize: "12px",
+              fontWeight: 500,
+              letterSpacing: "0.04em",
+              cursor: "pointer",
+            }}
+          >
+            ＜ HOME
+          </button>
+        </div>
+      </nav>
+    );
   }
 
   const currentIndex = TOURS.findIndex(
