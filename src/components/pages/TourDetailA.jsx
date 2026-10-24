@@ -7,6 +7,7 @@ import TourFlow from "../tour/TourFlow";
 import Contact from "../Contact";
 import OtherTours from "../tour/OtherTours";
 import Footer from "../Footer";
+import TourBookingCTA from "../tour/TourBookingCTA";
 
 import {
   COLORS as C,
@@ -31,18 +32,18 @@ export default function TourDetailA({
       <TourHero tour={tour} />
 
       {/* Hero直下のツアー切り替え */}
-      <TourNavigation
-  currentTourId={tour.id}
-  onSelectTour={onSelectTour}
-  onBack={onBack}
-/>
-
+            <TourNavigation
+        currentTourId={tour.id}
+        onSelectTour={onSelectTour}
+        onBack={onBack}
+      />
       <TourAbout tour={tour} />
 
       <TourInfo tour={tour} />
 
       <TourFlow tour={tour} />
 
+      <TourBookingCTA />
       {/* ページ下部の他ツアー */}
       <OtherTours
         currentTourId={tour.id}

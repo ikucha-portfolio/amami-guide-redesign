@@ -33,11 +33,11 @@ export default function OtherTours({
 
   return (
     <section
-      style={{
-        padding: isMobile ? "64px 5%" : "96px 6%",
-        background: C.offWhite,
-      }}
-    >
+  style={{
+    padding: isMobile ? "64px 5%" : "96px 6%",
+    background: C.white,
+  }}
+>
       <div
         style={{
           maxWidth: "1280px",

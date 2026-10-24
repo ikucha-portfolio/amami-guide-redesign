@@ -1,5 +1,7 @@
+
 import Hero from "./Hero";
 import Tours from "./Tours";
+import TourBookingCTA from "./tour/TourBookingCTA";
 import Guide from "./Guide";
 import Faq from "./Faq";
 import Contact from "./Contact";
@@ -27,6 +29,9 @@ export default function DesignA({ onSelectTour }) {
 
       {/* TOURS */}
       <Tours onSelectTour={onSelectTour} />
+
+      {/* TOUR BOOKING CTA */}
+      <TourBookingCTA variant="home" />
 
       {/* GUIDE */}
       <Guide />

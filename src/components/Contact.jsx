@@ -1,15 +1,16 @@
+
 import { COLORS } from "../siteData";
 import SectionHeader from "./common/SectionHeader";
-
-import {
-  SECTION,
-  CONTAINER,
-} from "../styles/designSystem";
+import { SECTION, CONTAINER } from "../styles/designSystem";
 
 const C = COLORS;
 
 const LINE_URL = "https://line.me/ti/p/YDpNqHNQou";
 const INSTAGRAM_URL = "https://www.instagram.com/seasummer630/";
+
+// 公開前に実際の電話番号へ変更してください
+const PHONE_NUMBER = "090-6977-3575";
+const PHONE_TEL = PHONE_NUMBER.replace(/-/g, "");
 
 export default function Contact() {
   const contactItems = [
@@ -32,10 +33,7 @@ export default function Contact() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* ========================================
-          Overlay
-      ======================================== */}
-
+      {/* Background Overlay */}
       <div
         style={{
           position: "absolute",
@@ -46,10 +44,7 @@ export default function Contact() {
         }}
       />
 
-      {/* ========================================
-          Container
-      ======================================== */}
-
+      {/* Main Container */}
       <div
         style={{
           ...CONTAINER,
@@ -57,20 +52,13 @@ export default function Contact() {
           zIndex: 1,
         }}
       >
-        {/* ========================================
-            Section Header
-        ======================================== */}
-
         <SectionHeader
           title="CONTACT"
           subtitle="お問い合わせ・ご予約"
           light
         />
 
-        {/* ========================================
-            Contact Grid
-        ======================================== */}
-
+        {/* Contact Grid */}
         <div
           className="contact-grid"
           style={{
@@ -80,17 +68,11 @@ export default function Contact() {
             alignItems: "start",
           }}
         >
-          {/* ========================================
-              LEFT
-              お問い合わせ時に必要な情報
-          ======================================== */}
-
+          {/* Left: Inquiry Information */}
           <div className="contact-left">
             <h3 style={sectionTitleStyle}>
               以下を教えていただくとスムーズです。
             </h3>
-
-            {/* Contact Items */}
 
             <div
               style={{
@@ -113,8 +95,6 @@ export default function Contact() {
                         : "none",
                   }}
                 >
-                  {/* Number */}
-
                   <span
                     style={{
                       width: "24px",
@@ -126,8 +106,6 @@ export default function Contact() {
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
-
-                  {/* Text */}
 
                   <span
                     style={{
@@ -142,18 +120,13 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* ========================================
-                Reservation Flow
-            ======================================== */}
-
+            {/* Reservation Flow */}
             <div
               style={{
                 marginTop: "28px",
                 width: "100%",
               }}
             >
-              {/* Divider */}
-
               <div
                 style={{
                   width: "100%",
@@ -200,11 +173,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* ========================================
-              RIGHT
-              お問い合わせ・CTA
-          ======================================== */}
-
+          {/* Right: Contact Methods */}
           <div className="contact-right">
             <h3 style={sectionTitleStyle}>
               まずはお気軽にご相談ください♪
@@ -234,10 +203,7 @@ export default function Contact() {
               通常1日以内を目安にご返信します。
             </p>
 
-            {/* ========================================
-                CTA
-            ======================================== */}
-
+            {/* LINE and Instagram Buttons */}
             <div
               style={{
                 display: "flex",
@@ -247,21 +213,13 @@ export default function Contact() {
               }}
             >
               {/* LINE */}
-
               <a
                 href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={contactButtonStyle("#06C755")}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    minWidth: 0,
-                  }}
-                >
+                <div style={contactButtonContentStyle}>
                   <div style={iconCircleStyle}>
                     <svg
                       width="17"
@@ -275,25 +233,10 @@ export default function Contact() {
                   </div>
 
                   <div style={{ minWidth: 0 }}>
-                    <div
-                      style={{
-                        color: "#FFFFFF",
-                        fontWeight: 600,
-                        fontSize: "15px",
-                        lineHeight: 1.4,
-                      }}
-                    >
+                    <div style={contactButtonTitleStyle}>
                       LINEで問い合わせる
                     </div>
-
-                    <div
-                      style={{
-                        color: "rgba(255,255,255,0.84)",
-                        fontSize: "11px",
-                        lineHeight: 1.5,
-                        marginTop: "2px",
-                      }}
-                    >
+                    <div style={contactButtonDescriptionStyle}>
                       友だち追加してメッセージをお送りください
                     </div>
                   </div>
@@ -303,7 +246,6 @@ export default function Contact() {
               </a>
 
               {/* Instagram */}
-
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
@@ -312,38 +254,16 @@ export default function Contact() {
                   "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)"
                 )}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    minWidth: 0,
-                  }}
-                >
+                <div style={contactButtonContentStyle}>
                   <div style={iconCircleStyle}>
                     <InstagramIcon />
                   </div>
 
                   <div style={{ minWidth: 0 }}>
-                    <div
-                      style={{
-                        color: "#FFFFFF",
-                        fontWeight: 600,
-                        fontSize: "15px",
-                        lineHeight: 1.4,
-                      }}
-                    >
+                    <div style={contactButtonTitleStyle}>
                       InstagramでDM
                     </div>
-
-                    <div
-                      style={{
-                        color: "rgba(255,255,255,0.86)",
-                        fontSize: "11px",
-                        lineHeight: 1.5,
-                        marginTop: "2px",
-                      }}
-                    >
+                    <div style={contactButtonDescriptionStyle}>
                       @seasummer630
                     </div>
                   </div>
@@ -352,14 +272,81 @@ export default function Contact() {
                 <ArrowIcon />
               </a>
             </div>
+
+            {/* Phone Contact */}
+            <div
+              style={{
+                marginTop: "14px",
+                paddingTop: "22px",
+                borderTop: "1px solid rgba(255,255,255,0.25)",
+                display: "flex",
+                alignItems: "center",
+                gap: "16px",
+              }}
+            >
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.18)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                  style={{ color: "#FFFFFF" }}
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+
+              <div style={{ minWidth: 0 }}>
+                <div
+                  style={{
+                    color: "#FFFFFF",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    lineHeight: 1.6,
+                    marginBottom: "4px",
+                  }}
+                >
+                  お電話でのお問い合わせ
+                </div>
+
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  style={{
+                    display: "inline-block",
+                    color: "#FFFFFF",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    lineHeight: 1.5,
+                    textDecoration: "none",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {PHONE_NUMBER}
+                </a>
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ========================================
-          Mobile Responsive
-      ======================================== */}
-
+      {/* Mobile Responsive */}
       <style>{`
         @media (max-width: 768px) {
           #contact {
@@ -381,9 +368,7 @@ export default function Contact() {
   );
 }
 
-/* ========================================
-   Shared Styles
-======================================== */
+/* Shared Styles */
 
 const dividerStyle = "1px solid rgba(255,255,255,0.18)";
 
@@ -395,54 +380,54 @@ const sectionTitleStyle = {
   color: "#FFFFFF",
 };
 
-/* ========================================
-   Contact Button
-======================================== */
-
 function contactButtonStyle(background) {
   return {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-
     width: "100%",
-    minHeight: "66px",
-
+    minHeight: "58px",
     boxSizing: "border-box",
-
     background,
     borderRadius: "4px",
-
-    padding: "10px 14px",
-
+    padding: "8px 14px",
     textDecoration: "none",
     cursor: "pointer",
-
     transition: "transform 0.2s ease, opacity 0.2s ease",
   };
 }
 
-/* ========================================
-   Icon Circle
-======================================== */
+const contactButtonContentStyle = {
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+  minWidth: 0,
+};
+
+const contactButtonTitleStyle = {
+  color: "#FFFFFF",
+  fontWeight: 600,
+  fontSize: "14px",
+  lineHeight: 1.4,
+};
+
+const contactButtonDescriptionStyle = {
+  color: "rgba(255,255,255,0.84)",
+  fontSize: "11px",
+  lineHeight: 1.5,
+  marginTop: "2px",
+};
 
 const iconCircleStyle = {
   width: "32px",
   height: "32px",
   borderRadius: "50%",
-
   background: "rgba(255,255,255,0.2)",
-
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-
   flexShrink: 0,
 };
-
-/* ========================================
-   Instagram Icon
-======================================== */
 
 function InstagramIcon() {
   return (
@@ -457,20 +442,8 @@ function InstagramIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <rect
-        x="3"
-        y="3"
-        width="18"
-        height="18"
-        rx="5"
-      />
-
-      <circle
-        cx="12"
-        cy="12"
-        r="4"
-      />
-
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
       <circle
         cx="17.5"
         cy="6.5"
@@ -481,10 +454,6 @@ function InstagramIcon() {
     </svg>
   );
 }
-
-/* ========================================
-   Arrow
-======================================== */
 
 function ArrowIcon() {
   return (

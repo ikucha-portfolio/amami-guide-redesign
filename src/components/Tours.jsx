@@ -3,6 +3,7 @@ import { TOURS, COLORS } from "../siteData";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { Clock, Users } from "lucide-react";
 import SectionHeader from "./common/SectionHeader";
+import TourBookingCTA from "./tour/TourBookingCTA";
 import {
   SECTION,
   CONTAINER_WIDE,
